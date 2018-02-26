@@ -46,11 +46,11 @@
         
     }else if(self.tag==2){//蛋白质  水分  脂肪量
         self.title1Label.text = @"肌肉";
-        self.value1Label.text = [NSString stringWithFormat:@"%.1fkg",item.muscleWeight];
+        self.value1Label.text = [NSString stringWithFormat:@"%.1f%%",item.musclePercentage];
         self.status1Label.text = [self getHealthDetailStatusTextWithStatus:IS_MODEL_MUSCLE item:item];
 
         self.title2Label.text = @"蛋白质";
-        self.value2Label.text = [NSString stringWithFormat:@"%.1fkg",item.proteinWeight];
+        self.value2Label.text = [NSString stringWithFormat:@"%.1f%%",item.proteinPercentage];
         self.status2Label.text = [self getHealthDetailStatusTextWithStatus:IS_MODEL_PROTEIN item:item];
         
         self.title3Label.text = @"骨量";
@@ -66,11 +66,11 @@
 
 
         self.title2Label.text = @"骨骼肌";
-        self.value2Label.text = [NSString stringWithFormat:@"%.1fkg",item.boneMuscleWeight];
+        self.value2Label.text = [NSString stringWithFormat:@"%.1f%%",item.boneMusclePercentage];
         self.status2Label.text = [self getHealthDetailStatusTextWithStatus:IS_MODEL_BONEMUSCLE item:item];
 
         self.title3Label.text = @"水分";
-        self.value3Label.text = [NSString stringWithFormat:@"%.1fkg",item.waterWeight];
+        self.value3Label.text = [NSString stringWithFormat:@"%.1f%%",item.waterPercentage];
         self.status3Label.text = [self getHealthDetailStatusTextWithStatus:IS_MODEL_WATER item:item];
 
         
@@ -141,7 +141,7 @@
             self.secondHeadImage.image = self.headerImageView.image;
             self.sliderBgImageView.image = getImage(@"sliderBg4_");
             
-            self.sliderLislb.text =@"4";
+            self.sliderLislb.text =[SubUserItem shareInstance].sex ==1?@"6":@"4";
             self.sliderMorlb.text = @"9";
             
             currX = [self getlocationDianL:self.currItem.visceralFatPercentage Withleft:[self.sliderLislb.text floatValue] right:[self.sliderMorlb.text floatValue]];
@@ -151,7 +151,7 @@
             
             self.headerImageView.image = getImage(@"jirou1_");
             self.headerNamelb.text = @"肌肉";
-            self.headerValuelb.text = [NSString stringWithFormat:@"%.1f",self.currItem.muscleWeight];
+            self.headerValuelb.text = [NSString stringWithFormat:@"%.1fkg",self.currItem.muscleWeight];
             self.secondTitle.text = self.headerNamelb.text;
             self.secondHeadImage.image = self.headerImageView.image;
             self.sliderBgImageView.image = getImage(@"sliderBg3_");
@@ -166,7 +166,7 @@
         case 5:
             self.headerImageView.image = getImage(@"danBZ1_");
             self.headerNamelb.text = @"蛋白质";
-            self.headerValuelb.text = [NSString stringWithFormat:@"%.1f",self.currItem.proteinWeight];
+            self.headerValuelb.text = [NSString stringWithFormat:@"%.1fkg",self.currItem.proteinWeight];
             self.secondTitle.text = self.headerNamelb.text;
             self.secondHeadImage.image = self.headerImageView.image;
             self.sliderBgImageView.image = getImage(@"sliderBg3_");
@@ -208,7 +208,7 @@
         case 8:
             self.headerImageView.image = getImage(@"boneMuscle1_");
             self.headerNamelb.text = @"骨骼肌";
-            self.headerValuelb.text = [NSString stringWithFormat:@"%.1f",self.currItem.boneMuscleWeight];
+            self.headerValuelb.text = [NSString stringWithFormat:@"%.1fkg",self.currItem.boneMuscleWeight];
             self.sliderBgImageView.image = getImage(@"sliderBg3_");
 
             self.secondTitle.text = self.headerNamelb.text;
@@ -223,7 +223,7 @@
         case 9:
             self.headerImageView.image = getImage(@"water1_");
             self.headerNamelb.text = @"水分";
-            self.headerValuelb.text = [NSString stringWithFormat:@"%.1f",self.currItem.waterWeight];
+            self.headerValuelb.text = [NSString stringWithFormat:@"%.1fkg",self.currItem.waterWeight];
             self.secondTitle.text = self.headerNamelb.text;
             self.secondHeadImage.image = self.headerImageView.image;
             self.sliderBgImageView.image = getImage(@"sliderBg2_");

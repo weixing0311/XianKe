@@ -11,7 +11,7 @@
 #import "BaseWebViewController.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
-
+#import "PaySuccessViewController.h"
 @interface PhoneChargesViewController ()<UITextFieldDelegate,ABPeoplePickerNavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumlb;
 @property (weak, nonatomic) IBOutlet UILabel *integrallb;
@@ -111,12 +111,18 @@
         NSDictionary * dataDic = [dic safeObjectForKey:@"data"];
         float price = [[dataDic safeObjectForKey:@"payableAmount"]floatValue];
         if (price==0) {
-            IntegralOrderViewController * ordVC = [[IntegralOrderViewController alloc]init];
-            ordVC.hidesBottomBarWhenPushed = YES;
-            NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-            [arr removeLastObject];
-            [arr addObject:ordVC];
-            [self.navigationController setViewControllers:arr];
+            PaySuccessViewController * succ = [[PaySuccessViewController alloc]init];
+            succ.orderType = 5;
+            succ.paySuccess = YES;
+            succ.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:succ animated:YES];
+
+//            IntegralOrderViewController * ordVC = [[IntegralOrderViewController alloc]init];
+//            ordVC.hidesBottomBarWhenPushed = YES;
+//            NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+//            [arr removeLastObject];
+//            [arr addObject:ordVC];
+//            [self.navigationController setViewControllers:arr];
         }else{
             BaseWebViewController *web = [[BaseWebViewController alloc]init];
             web.urlStr = @"app/checkstand.html";

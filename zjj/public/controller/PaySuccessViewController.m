@@ -7,10 +7,6 @@
 //
 
 #import "PaySuccessViewController.h"
-#import "OrderViewController.h"
-#import "TZSDistributionViewController.h"
-#import "TZSMyDingGouViewController.h"
-#import "GoodsDetailViewController.h"
 #import "BaseWebViewController.h"
 #import "IntegralOrderViewController.h"
 #import "IntegralOrderDetailViewController.h"
@@ -86,75 +82,7 @@
 {
     //        1 消费者订购 2 配送订购 3 服务订购 4 充值 5积分
     
-    if (orderType ==1)
-    {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[GoodsDetailViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                return;
-            }
-            
-            if ([controller isKindOfClass:[OrderViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                return ;
-            }
-        }
-        OrderViewController * ordVC = [[OrderViewController alloc]init];
-        ordVC.hidesBottomBarWhenPushed = YES;
-        NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-        [arr removeLastObject];
-        [arr removeLastObject];
-//        if (self.orderType ==1||self.orderType ==2) {
-//            [arr removeLastObject];
-//        }
-
-        [arr addObject:ordVC];
-        [self.navigationController setViewControllers:arr];
-        
-    }
-    else if (orderType ==2)
-    {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[TZSDistributionViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                //                DLog(@"我曹草草草");
-                return ;
-            }
-        }
-        TZSDistributionViewController * disVC =[[TZSDistributionViewController alloc]init];
-        disVC.hidesBottomBarWhenPushed = YES;
-        
-        NSMutableArray * arr = [NSMutableArray array];
-        [arr addObject:[[NSMutableArray arrayWithArray:self.navigationController.viewControllers]objectAtIndex:0] ];
-//        [arr removeLastObject];
-//        [arr removeLastObject];
-        [arr addObject:disVC];
-        [self.navigationController setViewControllers:arr];
-        
-    }
-    else if (orderType ==3)
-    {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[TZSMyDingGouViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                //                DLog(@"我曹草草草");
-                return ;
-            }
-        }
-        TZSMyDingGouViewController * mdVC = [[TZSMyDingGouViewController alloc]init];
-        mdVC.hidesBottomBarWhenPushed = YES;
-        
-        NSMutableArray * arr = [NSMutableArray array];
-        [arr addObject:[[NSMutableArray arrayWithArray:self.navigationController.viewControllers]objectAtIndex:0] ];
-        
-        [arr addObject:mdVC];
-        [self.navigationController setViewControllers:arr];
-        
-    }
-    else if (orderType ==5)
+     if (orderType ==5)
     {
         for (UIViewController * controller in self.navigationController.viewControllers) {
             

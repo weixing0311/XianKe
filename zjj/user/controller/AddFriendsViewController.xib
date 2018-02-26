@@ -68,7 +68,7 @@
                         <constraint firstItem="1FE-KR-MHp" firstAttribute="leading" secondItem="8VP-LA-rkt" secondAttribute="leading" constant="10" id="jbm-X1-78G"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdz-yf-R7S">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdz-yf-R7S">
                     <rect key="frame" x="0.0" y="128" width="375" height="55"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scanning_" translatesAutoresizingMaskIntoConstraints="NO" id="Yal-BT-oC4">
@@ -121,7 +121,7 @@
                         <constraint firstItem="hAx-RT-6sr" firstAttribute="leading" secondItem="Yal-BT-oC4" secondAttribute="trailing" constant="20" id="tTl-lu-gTm"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIF-aj-069">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIF-aj-069">
                     <rect key="frame" x="0.0" y="183" width="375" height="55"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myRecode_" translatesAutoresizingMaskIntoConstraints="NO" id="JfN-A8-5rA">

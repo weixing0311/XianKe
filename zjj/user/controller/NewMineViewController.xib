@@ -11,7 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewMineViewController">
             <connections>
-                <outlet property="tableview" destination="zB6-bK-vBx" id="5Vh-SJ-CbV"/>
+                <outlet property="collectionView" destination="271-or-Dmw" id="EPa-Og-viY"/>
+                <outlet property="layout" destination="1mY-VD-nyH" id="bHR-Jx-bur"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,17 +21,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zB6-bK-vBx">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="271-or-Dmw">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1mY-VD-nyH">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="zB6-bK-vBx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BQO-O7-Gnn"/>
-                <constraint firstItem="zB6-bK-vBx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZMY-3E-AC4"/>
-                <constraint firstAttribute="trailing" secondItem="zB6-bK-vBx" secondAttribute="trailing" id="xaR-tp-8dT"/>
-                <constraint firstAttribute="bottom" secondItem="zB6-bK-vBx" secondAttribute="bottom" id="yHO-Bt-YMu"/>
+                <constraint firstItem="271-or-Dmw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Edb-LQ-Org"/>
+                <constraint firstItem="271-or-Dmw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZLh-6b-iF9"/>
+                <constraint firstAttribute="trailing" secondItem="271-or-Dmw" secondAttribute="trailing" id="dEb-YC-1d1"/>
+                <constraint firstAttribute="bottom" secondItem="271-or-Dmw" secondAttribute="bottom" id="hDM-E9-fu4"/>
             </constraints>
         </view>
     </objects>

@@ -27,7 +27,7 @@
 @property (nonatomic,strong) UIPickerView * pickView;
 @property (nonatomic,strong) UIDatePicker * datePicker;
 @property (weak, nonatomic) IBOutlet UILabel *StitleLabel;
-
+@property (nonatomic,assign) UIImage * headImage;
 @end
 
 @implementation ADDChengUserViewController
@@ -168,9 +168,12 @@
         return;
         
     }
+    NSData *fileData;
+    if (self.headImage) {
+     fileData = UIImageJPEGRepresentation(self.headImage,0.01);
+    }
 
-    
-    NSData *fileData = UIImageJPEGRepresentation(self.headImageView.image,0.01);
+//    NSData *fileData = UIImageJPEGRepresentation(self.headImageView.image,0.01);
 
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
 
@@ -181,7 +184,7 @@
     [params safeSetObject:birthdayStr forKey:@"birthday"];
 
     
-    self.currentTasks = [[BaseSservice sharedManager]postImage:@"app/evaluatUser/perfectMainUser.do" paramters:params imageData:fileData imageName:@"headimgurl" success:^(NSDictionary *dic) {
+    self.currentTasks = [[BaseSservice sharedManager]postImage:@"app/evaluatUser/perfectMainUser.do" paramters:params imageData:fileData?fileData:nil imageName:@"headimgurl" success:^(NSDictionary *dic) {
         
         NSDictionary * dataDic =[dic safeObjectForKey:@"data"];
         NSString * subId =[NSString stringWithFormat:@"%@",[dataDic safeObjectForKey:@"id"]];
@@ -308,7 +311,7 @@
     else if ([self.heighttf isFirstResponder])
     {
         [self.heighttf resignFirstResponder];
-        self.heighttf.text = [NSString stringWithFormat:@"%ld",pickRow+80];
+        self.heighttf.text = [NSString stringWithFormat:@"%ld",pickRow+120];
     }
 }
 -(void)cancelChoose
@@ -385,6 +388,7 @@
         [image scaledToSize:CGSizeMake(JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH/image.size.width*image.size.height)];
         
         self.headImageView.image = image;
+        self.headImage = image;
         
     }
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -423,12 +427,12 @@
 
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     
-    return 200;
+    return 81;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString  stringWithFormat:@"%ld",row+80];
+    return [NSString  stringWithFormat:@"%d",row+120];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {

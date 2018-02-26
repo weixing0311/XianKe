@@ -177,6 +177,9 @@
             [self.delegate weightingSuccessWithSubtractMaxWeight:[dataDict safeObjectForKey:@"subtractMaxWeight"]dataId:[dataDict safeObjectForKey:@"DataId"]shareDict:dataDict];
         }
         
+        
+        
+        
         [self dismissViewControllerAnimated:YES completion:nil];
         DLog(@"url-app/evaluatData/addEvaluatData.do  dic--%@",dic);
         

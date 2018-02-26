@@ -9,5 +9,5 @@
 #import "JFABaseTableViewController.h"
 
 @interface GrowthStstemViewController : JFABaseTableViewController
-
+@property (nonatomic,assign)BOOL isShowQDProgress;
 @end

@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的推荐人";
-    [self setTBRedColor];
+    [self setTBWhiteColor];
     
     
     self.mobiletf.clearButtonMode=UITextFieldViewModeAlways;

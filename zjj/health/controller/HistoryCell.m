@@ -55,19 +55,30 @@
         
         self.value6lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"fatWeight"]floatValue]];
         
-        self.value7lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"muscleWeight"]floatValue]];
+        double musclePercentage = [[infoDict safeObjectForKey:@"muscleWeight"]doubleValue]*100/[[infoDict safeObjectForKey:@"weight"]doubleValue];
+        
+        self.value7lb.text = [NSString stringWithFormat:@"%.1f",musclePercentage];
+        
         
         self.value8lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"bmi"]floatValue]];
         
-        self.value9lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"proteinWeight"]floatValue]];
+        double proteinPercentage = [[infoDict safeObjectForKey:@"proteinWeight"]doubleValue]*100/[[infoDict safeObjectForKey:@"weight"]doubleValue];
+
+        self.value9lb.text = [NSString stringWithFormat:@"%.1f",proteinPercentage];
         
         self.value10lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"boneWeight"]floatValue]];
         
-        self.value11lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"waterWeight"]floatValue]];
+        
+        double waterPercentage = [[infoDict safeObjectForKey:@"waterWeight"]doubleValue]*100/[[infoDict safeObjectForKey:@"weight"]doubleValue];
+
+        self.value11lb.text = [NSString stringWithFormat:@"%.1f",waterPercentage];
         
         self.value12lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"visceralFatPercentage"]floatValue]];
         
-        self.value13lb.text = [NSString stringWithFormat:@"%.1f",[[infoDict safeObjectForKey:@"boneMuscleWeight"]floatValue]];
+        
+        double boneMusclePercentage = [[infoDict safeObjectForKey:@"boneMuscleWeight"]doubleValue]*100/[[infoDict safeObjectForKey:@"weight"]doubleValue];
+
+        self.value13lb.text = [NSString stringWithFormat:@"%.1f",boneMusclePercentage];
 
         
         self.second3Lb.text = [self getwl:[[infoDict objectForKey:@"weightLevel"]intValue]];
@@ -190,7 +201,7 @@
     NSDate *inputDate = [inputFormatter dateFromString:str];
     NSDateFormatter *outputFormatter= [[NSDateFormatter alloc] init];
     [outputFormatter setLocale:[NSLocale currentLocale]];
-    [outputFormatter setDateFormat:@"hh:mm"];
+    [outputFormatter setDateFormat:@"HH:mm"];
     NSString *string= [outputFormatter stringFromDate:inputDate];
     return string;
     

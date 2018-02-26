@@ -11,7 +11,6 @@
 #import "UpdataOrderViewController.h"
 #import "CXdetailView.h"
 #import "BaseWebViewController.h"
-#import "BodyFatDivisionAgreementViewController.h"
 @interface ShopCarViewController ()
 @property (nonatomic ,strong)NSMutableArray * dataArray;//列表数据
 @property (nonatomic ,strong)UIButton * editBtn;
@@ -282,8 +281,6 @@
     }
     
     
-    UIAlertController * al = [UIAlertController alertControllerWithTitle:@"" message:@"此页面为消费者购买专属，如需升级体脂师，请点击“去认证”" preferredStyle:UIAlertControllerStyleAlert];
-    [al addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:_chooseArray options:NSJSONWritingPrettyPrinted error:nil];
         NSString * str =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         
@@ -304,18 +301,6 @@
         [self.navigationController pushViewController:uo animated:YES];
         [self changePriceIsNull:YES];
 
-    }]];
-    [al addAction:[UIAlertAction actionWithTitle:@"去认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        self.chooseBtn.selected = NO;
-        [self.chooseArray removeAllObjects];
-        [self changePriceIsNull:YES];
-
-        BodyFatDivisionAgreementViewController * bf = [[BodyFatDivisionAgreementViewController alloc]init];
-        [self.navigationController pushViewController:bf animated:YES];
-        
-    }]];
-    
-    [self presentViewController:al animated:YES completion:nil];
     
     
     

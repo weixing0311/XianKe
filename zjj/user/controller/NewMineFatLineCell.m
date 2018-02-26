@@ -12,6 +12,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    
+    self.firstImg.contentMode =UIViewContentModeScaleAspectFill;
+    self.firstImg.clipsToBounds = YES;
+    self.secondImg.contentMode =UIViewContentModeScaleAspectFill;
+    self.secondImg.clipsToBounds = YES;
+
+    
     // Initialization code
 }
 -(void)setModel:(ReducedLineModel *)model

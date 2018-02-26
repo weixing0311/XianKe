@@ -10,5 +10,7 @@
 
 @interface NewMineViewController : JFABaseTableViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 
 @end

@@ -68,7 +68,6 @@
     return _emptyView;
 }
 
-
 -(void)showEmptyViewWithTitle:(NSString *)title
 {
     _emptyView.hidden =NO;
@@ -79,6 +78,109 @@
 {
     _emptyView.hidden =YES;
 }
+
+-(WXProgressView *)wxprsView
+{
+    if (!_wxprsView) {
+        _wxprsView = [self getXibCellWithTitle:@"WXProgressView"];
+        _wxprsView.hidden = YES;
+        _wxprsView.frame = self.view.bounds;
+        [self.view addSubview:_wxprsView];
+    }
+    return _wxprsView;
+    
+}
+
+-(void)showWXProgressViewWithTitle:(NSString *)title integral:(int)integral
+{
+    if (!_wxprsView) {
+        [self wxprsView];
+    }
+    _wxprsView.hidden = NO;
+    _wxprsView.titlelb.text = title;
+    _wxprsView.integrallb.text = [NSString stringWithFormat:@"+%d",integral];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        _wxprsView.hidden = YES;
+    });
+}
+
+-(void)didCompleteTheTaskWithId:(NSString *)taskId
+{
+    
+    NSString * successMsg = @"";
+    
+    if ([taskId isEqualToString:@"1"]) {
+        successMsg = @"签到成功";
+    }
+    else if([taskId isEqualToString:@"2"])
+    {
+        successMsg = @"点赞成功";
+
+    }
+    else if([taskId isEqualToString:@"3"])
+    {
+        successMsg = @"称重成功";
+
+    }
+    else if([taskId isEqualToString:@"4"])
+    {
+        successMsg = @"评论成功";
+
+    }
+    else if([taskId isEqualToString:@"5"])
+    {
+        successMsg = @"分享文章成功";
+
+    }
+    else if([taskId isEqualToString:@"6"])
+    {
+        successMsg = @"发表文章成功";
+
+    }
+    else if([taskId isEqualToString:@"7"])
+    {
+        successMsg = @"分享个人主页成功";
+
+    }
+    else if([taskId isEqualToString:@"8"])
+    {
+        successMsg = @"分享健康报告成功";
+
+    }
+    else if([taskId isEqualToString:@"9"])
+    {
+        successMsg = @"分享减脂前照片成功";
+
+    }
+    else if([taskId isEqualToString:@"10"])
+    {
+        successMsg = @"分享减脂后照片成功";
+
+    }
+    else if([taskId isEqualToString:@"11"])
+    {
+        successMsg = @"文章置顶成功";
+    }
+    if (!taskId) {
+        return;
+    }
+
+    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+    [params setObject:taskId forKey:@"taskId"];
+    [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
+    
+    [[BaseSservice sharedManager]post1:@"app/integral/growthsystem/gainPoints.do" HiddenProgress:YES paramters:params success:^(NSDictionary *dic) {
+        
+        NSDictionary * dataDict =[dic safeObjectForKey:@"data"];
+            [self showWXProgressViewWithTitle:successMsg integral:[[dataDict safeObjectForKey:@"integral"]intValue]];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
 -(void)setNbColor
 {
     self.navigationController.navigationBar.barTintColor = HEXCOLOR(0xfb0628);

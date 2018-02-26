@@ -137,6 +137,7 @@
 
 -(void)didSignIn
 {
+    
     NSMutableDictionary * params  = [NSMutableDictionary dictionary];
     [params setObject:@"1" forKey:@"taskId"];
     [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
@@ -146,6 +147,9 @@
         [[UserModel shareInstance]showSuccessWithStatus:@"签到成功！"];
         self.signInBtn.selected = YES;
         self.signInBtn.backgroundColor = HEXCOLOR(0x9b9b9b);
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"QDSuccess" object:nil];
+        
         self.hidden = YES;
         [self removeFromSuperview];
     } failure:^(NSError *error) {

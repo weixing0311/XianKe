@@ -10,10 +10,7 @@
 //#import "HealthViewController.h"
 #import "MessageViewController.h"
 #import "foundViewController.h"
-#import "ShopTabbbarController.h"
-//#import "UserViewController.h"
-#import "ShopTestViewController.h"
-#import "TzsTabbarViewController.h"
+#import "YFWViewController.h"
 #import "JzSchoolViewController.h"
 #import "HomePageWebViewController.h"
 #import "FriendsCircleViewController.h"
@@ -22,6 +19,7 @@
 #import "CommunityViewController.h"
 #import "NewHealthViewController.h"
 #import "IntegralSignInView.h"
+#import "GrowthStstemViewController.h"
 @interface TabbarViewController ()<UITabBarControllerDelegate>
 
 @end
@@ -37,43 +35,45 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    
     self.delegate = self;
     
     health = [[NewHealthViewController alloc]init];
-
-//    health = [[HealthViewController alloc]init];
+    
+    //    health = [[HealthViewController alloc]init];
     UINavigationController * nav1 = [[UINavigationController alloc]initWithRootViewController:health];
     health.title = @"健康";
-
+    
     news = [[MessageViewController alloc]init];
     UINavigationController * nav2 = [[UINavigationController alloc]initWithRootViewController:news];
     news.title = @"消息";
-
     
-//    found = [[foundViewController alloc]init];
-//    
+    
+    //    found = [[foundViewController alloc]init];
+    //
     CommunityViewController *found = [[CommunityViewController alloc]init];
     UINavigationController * nav3 = [[UINavigationController alloc]initWithRootViewController:found];
     found.title = @"社群";
-
-//    ShopTabbbarController *shop = [[ShopTabbbarController alloc]init];
-//    shop.title = @"商城";
+    
+    //    ShopTabbbarController *shop = [[ShopTabbbarController alloc]init];
+    //    shop.title = @"商城";
     
     
     
     
-    ShopTestViewController *shop = [[ShopTestViewController alloc]init];
+    YFWViewController *shop = [[YFWViewController alloc]init];
     UINavigationController * nav4 = [[UINavigationController alloc]initWithRootViewController:shop];
-
+    
     shop.title = @"云服务";
     
     
     
     NewMineViewController * user = [[NewMineViewController alloc]init];
-//    UserViewController *user = [[UserViewController alloc]init];
+    //    UserViewController *user = [[UserViewController alloc]init];
     UINavigationController * nav5 = [[UINavigationController alloc]initWithRootViewController:user];
     user.title = @"我的";
-
+    
     self.viewControllers = @[nav1,nav2,nav3,nav4,nav5];
     
     
@@ -82,7 +82,7 @@
     UITabBarItem * item3 =[self.tabBar.items objectAtIndex:2];
     UITabBarItem * item4 =[self.tabBar.items objectAtIndex:3];
     UITabBarItem * item5 =[self.tabBar.items lastObject];
-
+    
     item1.image = [UIImage imageNamed:@"health  gray_"];
     item1.selectedImage = [UIImage imageNamed:@"health_"];
     
@@ -90,16 +90,16 @@
     item2.selectedImage = [UIImage imageNamed:@"discuss_"];
     
     item3.image = [UIImage imageNamed:@"tab_comm_"];
-//    item3.selectedImage = [UIImage imageNamed:@"tab_comm1_"];
-
+    //    item3.selectedImage = [UIImage imageNamed:@"tab_comm1_"];
+    
     item4.image = [UIImage imageNamed:@"store gray_"];
     item4.selectedImage = [UIImage imageNamed:@"store_"];
-
+    
     item5.image = [UIImage imageNamed:@"mine  gray_"];
     item5.selectedImage = [UIImage imageNamed:@"mine_"];
     self.tabBar.backgroundColor = [UIColor whiteColor];
     self.tabBar.tintColor = HEXCOLOR(0xfb0628);
-   
+
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didClickNotification:) name:@"GETNOTIFICATIONINFOS" object:nil];
     
@@ -134,6 +134,8 @@
         
     }];
 }
+
+
 ///显示弹框 然后请求接口
 -(void)showSignInView
 {
@@ -143,7 +145,6 @@
     [ap.keyWindow addSubview:signView];
 
 }
-
 -(void)didClickNotification:(NSNotification *)noti
 {
     //判断是不是mainview
@@ -174,7 +175,7 @@
 {
     UITabBarItem* item = tabBarController.tabBarItem;
     
-    if (viewController ==self.viewControllers[2]||viewController ==self.viewControllers[4]) {
+    if (viewController ==self.viewControllers[3]) {
         if (![[UserModel shareInstance].subId isEqualToString:[UserModel shareInstance].healthId]) {
             [[UserModel shareInstance]showInfoWithStatus:@"请切换成主用户再来使用此功能"];
             return NO;
@@ -184,25 +185,6 @@
     }
     return YES;
 
-}
-- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
-{
-    DLog(@"item name = %@", item.title);
-    
-    if ([item.title isEqualToString:@"云服务"]) {
-        
-        if ([[UserModel shareInstance].userType isEqualToString:@"1"]) {
-            ShopTabbbarController *tb =[[ShopTabbbarController alloc]init];
-            [UserModel shareInstance].tabbarStyle = @"shop";
-
-            self.view.window.rootViewController = tb;
-        }
-        else{
-            TzsTabbarViewController *tb =[[TzsTabbarViewController alloc]init];
-            [UserModel shareInstance].tabbarStyle = @"tzs";
-            self.view.window.rootViewController = tb;
-        }
-    }
 }
 
 - (void)didReceiveMemoryWarning {

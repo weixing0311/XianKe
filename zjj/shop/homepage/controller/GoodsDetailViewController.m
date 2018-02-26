@@ -17,7 +17,6 @@
 #import "ShopCarViewController.h"
 #import "UpdataOrderViewController.h"
 #import "CXdetailView.h"
-#import "BodyFatDivisionAgreementViewController.h"
 @interface GoodsDetailViewController ()<decailTitleCellDelegate>
 @property (nonatomic,assign)int goodsCount;
 @end
@@ -38,7 +37,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setNbColor];
+    [self setTBWhiteColor];
     self.title = @"商品详情";
     self.goodsCount =1;
     if (goodscarouselView) {
@@ -363,8 +362,6 @@
 
 - (IBAction)didBuy:(id)sender {
     
-    UIAlertController * al = [UIAlertController alertControllerWithTitle:@"" message:@"此页面为消费者购买专属，如需升级体脂师，请点击“去认证”" preferredStyle:UIAlertControllerStyleAlert];
-    [al addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UpdataOrderViewController *upd =[[UpdataOrderViewController alloc]init];
 
         upd.dataArray= [NSMutableArray arrayWithObject:item];
@@ -376,21 +373,6 @@
         
         [self.navigationController pushViewController:upd animated:YES];
 
-    }]];
-    
-    
-    
-    
-    [al addAction:[UIAlertAction actionWithTitle:@"去认证" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        BodyFatDivisionAgreementViewController * bf = [[BodyFatDivisionAgreementViewController alloc]init];
-        [self.navigationController pushViewController:bf animated:YES];
-        
-    }]];
-    
-    [self presentViewController:al animated:YES completion:nil];
-
-    
-    
 }
 //获取上传数据
 -(NSString *)getUpdateInfo

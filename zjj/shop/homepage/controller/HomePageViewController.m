@@ -26,31 +26,19 @@
 @implementation HomePageViewController
 {
     NSMutableArray * _dataArray;
-    NSMutableArray * _bannerArray;//banner数据
-    float            _bannerHight;
-    NSMutableArray * _bannerInfoArray;//所有数据
     
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
-    self.hidesBottomBarWhenPushed =NO;
-//    self.navigationController.navigationBarHidden = YES;
-//    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self setTBWhiteColor];
+    self.title = @"纤客商城";
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self setNbColor];
     _dataArray =[NSMutableArray array];
-    _bannerArray =[NSMutableArray array];
-    _bannerInfoArray =[NSMutableArray array];
-    _bannerHight =JFA_SCREEN_WIDTH/375*235;
-    UIBarButtonItem *backBar = [[UIBarButtonItem alloc]initWithTitle:@"back" style:UIBarButtonItemStyleDone target:self action:@selector(didback)];
-    self.navigationItem.leftBarButtonItem = backBar;
-
 
     self.layout.headerReferenceSize = CGSizeMake(JFA_SCREEN_WIDTH, 200);
     
@@ -67,16 +55,14 @@
     
     
      [self.collectionView registerNib:[UINib nibWithNibName:@"GoodSCell"bundle:nil]forCellWithReuseIdentifier:@"GoodSCell"];
-    [self.collectionView registerNib:[UINib nibWithNibName:@"Goods2Cell"bundle:nil]forCellWithReuseIdentifier:@"Goods2Cell"];
 
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headView"];
-    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footView"];
 
     
     [self setRefrshWithTableView:(UITableView *)self.collectionView];
     [self.collectionView.mj_header beginRefreshing];
     
-    [self getBanner];
+//    [self getBanner];
 }
 -(void)headerRereshing
 {
@@ -134,32 +120,32 @@
         }
     }];
 }
--(void)getBanner
-{
-    self.currentTasks = [[BaseSservice sharedManager]post1:kBannerListUrl HiddenProgress:NO paramters:nil success:^(NSDictionary *dic) {
-        DLog(@"bannerdic---%@",dic);
-        NSMutableArray *arr =[[dic objectForKey:@"data"]objectForKey:@"array"];
-        NSMutableArray *array =[[HomeModel shareInstance]arraySortingWithArray:arr];
-        
-        [_bannerArray removeAllObjects];
-        [_bannerInfoArray removeAllObjects];
-        
-        for (NSDictionary *dict  in array) {
-            BannerItem *item = [[BannerItem alloc]init];
-            [item setBannerInfoWithDict:dict];
-            [_bannerInfoArray addObject:item];
-            if ([item.recommendID isEqualToString:@"1"]) {
-                [_bannerArray addObject:item];
-            }
-        }
-
-        [self.collectionView reloadData];
-
-    } failure:^(NSError *error) {
-        
-    }];
-
-}
+//-(void)getBanner
+//{
+//    self.currentTasks = [[BaseSservice sharedManager]post1:kBannerListUrl HiddenProgress:NO paramters:nil success:^(NSDictionary *dic) {
+//        DLog(@"bannerdic---%@",dic);
+//        NSMutableArray *arr =[[dic objectForKey:@"data"]objectForKey:@"array"];
+//        NSMutableArray *array =[[HomeModel shareInstance]arraySortingWithArray:arr];
+//
+//        [_bannerArray removeAllObjects];
+//        [_bannerInfoArray removeAllObjects];
+//
+//        for (NSDictionary *dict  in array) {
+//            BannerItem *item = [[BannerItem alloc]init];
+//            [item setBannerInfoWithDict:dict];
+//            [_bannerInfoArray addObject:item];
+//            if ([item.recommendID isEqualToString:@"1"]) {
+//                [_bannerArray addObject:item];
+//            }
+//        }
+//
+//        [self.collectionView reloadData];
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
+//
+//}
 
 -(void)didback
 {
@@ -173,13 +159,13 @@
 //设置HeadView
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
-        return CGSizeMake(JFA_SCREEN_WIDTH, _bannerHight+44);
+        return CGSizeMake(JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH/2.2+20+JFA_SCREEN_WIDTH*0.1);
     
 }
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeMake(JFA_SCREEN_WIDTH, 530);
-}
+//-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//    return CGSizeMake(JFA_SCREEN_WIDTH, 530);
+//}
 //创建headview
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView
            viewForSupplementaryElementOfKind:(NSString *)kind
@@ -187,58 +173,52 @@
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
         UICollectionReusableView *headView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader
             withReuseIdentifier:@"headView"forIndexPath:indexPath];
+
+//        headView.backgroundColor = [UIColor whiteColor];
+//
+//        NSMutableArray * images =[NSMutableArray array];
+//        for (int i =0; i<_bannerArray.count; i++) {
+//            BannerItem *item = [_bannerArray objectAtIndex:i];
+//            [images addObject:item.imageUrl];
+//        }
+//
+//
+//        ADCarouselView *carouselView = [ADCarouselView carouselViewWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, _bannerHight)];
+//        carouselView.loop = YES;
+//        carouselView.delegate = self;
+//        carouselView.automaticallyScrollDuration = 5;
+//
+//        carouselView.imgs = images;
+//        carouselView.placeholderImage = [UIImage imageNamed:@"zhanweifu"];
+//        [headView addSubview:carouselView];
+//
+//        HomeHeadView *hh =[self getXibCellWithTitle:@"HomeHeadView"];
+//        hh.frame = CGRectMake(0, _bannerHight, JFA_SCREEN_WIDTH, 44);
+//        [headView addSubview:hh];
+        UIImageView * imageView =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH/2.2)];
+
+        imageView.image = getImage(@"shopTop_");
+        [headView addSubview:imageView];
         
-        headView.backgroundColor = [UIColor whiteColor];
         
-        NSMutableArray * images =[NSMutableArray array];
-        for (int i =0; i<_bannerArray.count; i++) {
-            BannerItem *item = [_bannerArray objectAtIndex:i];
-            [images addObject:item.imageUrl];
-        }
+        UIView * lineView =[[UIView alloc]initWithFrame:CGRectMake(0, JFA_SCREEN_WIDTH/2.2, JFA_SCREEN_WIDTH, 10)];
+        lineView.backgroundColor = HEXCOLOR(0xeeeeee);
+        [headView addSubview:lineView];
         
         
-        ADCarouselView *carouselView = [ADCarouselView carouselViewWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, _bannerHight)];
-        carouselView.loop = YES;
-        carouselView.delegate = self;
-        carouselView.automaticallyScrollDuration = 5;
+        UIImageView * imageView2 =[[UIImageView alloc]initWithFrame:CGRectMake(0, JFA_SCREEN_WIDTH/2.2+10, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH*0.1)];
         
-        carouselView.imgs = images;
-        carouselView.placeholderImage = [UIImage imageNamed:@"zhanweifu"];
-        [headView addSubview:carouselView];
-        
-        HomeHeadView *hh =[self getXibCellWithTitle:@"HomeHeadView"];
-        hh.frame = CGRectMake(0, _bannerHight, JFA_SCREEN_WIDTH, 44);
-        [headView addSubview:hh];
+        imageView2.image = getImage(@"hotGoodsTitle_");
+        [headView addSubview:imageView2];
         
         
+        UIView * lineView2 =[[UIView alloc]initWithFrame:CGRectMake(0, JFA_SCREEN_WIDTH/2.2+10+JFA_SCREEN_WIDTH*0.1, JFA_SCREEN_WIDTH, 10)];
+        lineView2.backgroundColor = HEXCOLOR(0xeeeeee);
+        [headView addSubview:lineView2];
+
+
         return headView;
-
-    }else if ([kind isEqualToString:UICollectionElementKindSectionFooter])
-    {
-        UICollectionReusableView *foot = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footView" forIndexPath:indexPath];
-        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"FootView" owner:nil options:nil];
-        FootView *footV = [views lastObject];
-        footV.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_WIDTH/375*461);
-        footV.backgroundColor = HEXCOLOR(0xf8f8f8);
-        footV.delegate = self;
-        [foot addSubview:footV];
-        for (BannerItem *item in _bannerInfoArray) {
-            if ([item.recommendID isEqualToString:@"2"]) {
-                [footV.firstBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:item.imageUrl]];
-            }
-            if ([item.recommendID isEqualToString:@"3"]) {
-                [footV.secondBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:item.imageUrl]];
-            }
-
-            if ([item.recommendID isEqualToString:@"4"]) {
-                [footV.thirdBtn setBackgroundImageForState:UIControlStateNormal withURL:[NSURL URLWithString:item.imageUrl]];
-            }
-        }
-        
-        
-        return foot;
     }
-    
     return nil;
 }
 
@@ -270,7 +250,7 @@
 //设置item大小
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-        return CGSizeMake((JFA_SCREEN_WIDTH-20)/2, (JFA_SCREEN_WIDTH-20)/2/167*220);
+        return CGSizeMake((JFA_SCREEN_WIDTH-20)/2, (JFA_SCREEN_WIDTH-20)/2/167*220+10);
 }
 //这个是两行cell之间的间距（上下行cell的间距）
 
@@ -299,64 +279,6 @@
 
     [self.navigationController pushViewController:gs animated:YES];
     
-}
-//点击bannaer
-- (void)carouselView:(ADCarouselView *)carouselView didSelectItemAtIndex:(NSInteger)didSelectItemAtIndex
-{
-    NSLog(@"%zd",didSelectItemAtIndex);
-    
-    BannerItem * item = [_bannerArray objectAtIndex:didSelectItemAtIndex-1];
-    
-    if (item.type ==1) {
-        
-        HomePageWebViewController * web = [[HomePageWebViewController alloc]init];
-        web.title = @"文章详情";
-
-        web.hidesBottomBarWhenPushed = YES;
-        web.urlStr = item.content;
-        [self.navigationController pushViewController:web animated:YES];
-    }else{
-        GoodsDetailViewController *gs = [[GoodsDetailViewController alloc]init];
-        gs.productNo = item.content;
-        gs.hidesBottomBarWhenPushed = YES;
-        
-        [self.navigationController pushViewController:gs animated:YES];
-   
-    }
-
-    
-}
-
-#pragma mark ---footViewDelegate
--(void)didClickFootViewBtnWithTag:(NSInteger)tag
-{
-    
-    
-    for (BannerItem *item in _bannerInfoArray) {
-        if ([item.recommendID isEqualToString:[NSString stringWithFormat:@"%ld",tag-500]]) {
-            
-            if (item.type ==1) {
-                
-                HomePageWebViewController * web = [[HomePageWebViewController alloc]init];
-                web.title = @"文章详情";
-
-                web.hidesBottomBarWhenPushed = YES;
-                web.urlStr = item.content;
-                [self.navigationController pushViewController:web animated:YES];
-            }else{
-                GoodsDetailViewController *gs = [[GoodsDetailViewController alloc]init];
-                gs.productNo = item.content;
-                gs.hidesBottomBarWhenPushed = YES;
-                
-                [self.navigationController pushViewController:gs animated:YES];
-                
-            }
-            
-            
-            
-        }
-    }
-
 }
 
 - (void)didReceiveMemoryWarning {

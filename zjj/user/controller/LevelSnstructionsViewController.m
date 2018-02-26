@@ -80,12 +80,19 @@
         currentLevel = [[bigArr objectAtIndex:1] objectForKey:@"gradeName"];
         self.titleLabel.text =[NSString stringWithFormat:@"还差%d积分升级到%@", CurrentInegral,currentLevel];
 
-        NSDictionary * lastDict = [arr objectAtIndex:arr.count-bigArr.count-1];
-        int  lastIntegral = [[lastDict objectForKey:@"integral"]intValue];
-        float littleWidth =(CurrentInegral-lastIntegral)/(jf1-lastIntegral)*self.bgTiaolb.frame.size.width/arr.count;
-        
-        
-        width = (JFA_SCREEN_WIDTH-100)/arr.count*(arr.count-bigArr.count+1)+littleWidth;
+        if (arr.count-bigArr.count>=1) {
+            NSDictionary * lastDict = [arr objectAtIndex:arr.count-bigArr.count-1];
+            int  lastIntegral = [[lastDict objectForKey:@"integral"]intValue];
+            float littleWidth =(CurrentInegral-lastIntegral)/(jf1-lastIntegral)*self.bgTiaolb.frame.size.width/arr.count;
+            width = (JFA_SCREEN_WIDTH-100)/(arr.count-1)*((arr.count-1)-(bigArr.count-2))+littleWidth;
+
+        }else{
+            NSDictionary * lastDict = [arr objectAtIndex:arr.count-bigArr.count];
+            int  lastIntegral = [[lastDict objectForKey:@"integral"]intValue];
+            float littleWidth =(CurrentInegral-lastIntegral)/(jf1-lastIntegral)*self.bgTiaolb.frame.size.width/arr.count;
+            
+            width = (JFA_SCREEN_WIDTH-100)/(arr.count-1)*((arr.count-1)-(bigArr.count-2))+littleWidth;
+        }
 
     }
     
@@ -98,9 +105,6 @@
     view.backgroundColor = [UIColor whiteColor];
     [self.bgTiaolb addSubview:view];
 
-    
-    
-    
 }
 -(void)buildCurr
 {

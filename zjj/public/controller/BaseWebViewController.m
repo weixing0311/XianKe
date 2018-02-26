@@ -18,13 +18,7 @@
 #import "LoignViewController.h"
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "OrderViewController.h"
-#import "TZSDistributionViewController.h"
-#import "TZSMyDingGouViewController.h"
-#import "TZSDingGouViewController.h"
-#import "TZSOrderDetailViewController.h"
-#import "TZSDistributionDetailViewController.h"
 #import "WXAlipayController.h"
-#import "GoodsDetailViewController.h"
 #import "PaySuccessViewController.h"
 #import "IntegralOrderViewController.h"
 #import "IntegralOrderDetailViewController.h"
@@ -402,8 +396,6 @@
  */
 -(void)toReorder
 {
-    TZSDingGouViewController * td = [[TZSDingGouViewController alloc]init];
-    [self.navigationController pushViewController:td animated:YES];
 }
 -(void)toMyOrderDetailWithBody:(NSDictionary *)body
 {
@@ -414,15 +406,6 @@
     int orderType = [[body safeObjectForKey:@"orderType"]intValue];
     NSString * orderNo = [body safeObjectForKey:@"orderNo"];
     
-    if (orderType ==1) {
-        TZSOrderDetailViewController * md = [[TZSOrderDetailViewController alloc]init];
-        md.orderNo = orderNo;
-        [self.navigationController pushViewController:md animated:YES];
-    }else{
-        TZSDistributionDetailViewController * tr = [[TZSDistributionDetailViewController alloc]init];
-        tr.orderNo = orderNo;
-        [self.navigationController pushViewController:tr animated:YES];
-    }
     
     
 }
@@ -700,59 +683,7 @@
 //支付页面返回方法
 -(void)backWithPayType
 {
-    if (self.payType ==1) {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[OrderViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                return ;
-            }
-        }
-        OrderViewController * ordVC = [[OrderViewController alloc]init];
-        ordVC.hidesBottomBarWhenPushed = YES;
-        NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-        [arr removeLastObject];
-        [arr removeLastObject];
-        [arr addObject:ordVC];
-        [self.navigationController setViewControllers:arr];
-        
-    }
-    else if (self.payType ==2) {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[TZSDistributionViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                //                DLog(@"我曹草草草");
-                return ;
-            }
-        }
-        TZSDistributionViewController * disVC =[[TZSDistributionViewController alloc]init];
-        disVC.hidesBottomBarWhenPushed = YES;
-        
-        NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-        [arr removeLastObject];
-        [arr removeLastObject];
-        [arr addObject:disVC];
-        [self.navigationController setViewControllers:arr];
-    }
-    else if (self.payType ==3) {
-        for (UIViewController * controller in self.navigationController.viewControllers) {
-            
-            if ([controller isKindOfClass:[TZSMyDingGouViewController class]]) {
-                [self.navigationController popToViewController:controller animated:YES];
-                //                DLog(@"我曹草草草");
-                return ;
-            }
-        }
-        TZSMyDingGouViewController * mdVC = [[TZSMyDingGouViewController alloc]init];
-        mdVC.hidesBottomBarWhenPushed = YES;
-        
-        NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-        [arr removeLastObject];
-        [arr removeLastObject];
-        [arr addObject:mdVC];
-        [self.navigationController setViewControllers:arr];
-    }else if (self.payType ==5)
+     if (self.payType ==5)
     {
         for (UIViewController * controller in self.navigationController.viewControllers) {
             

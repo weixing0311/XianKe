@@ -349,18 +349,18 @@
                            [self getColorWithString:bmr2],@"color2",nil];
     //    肌肉
     NSDictionary * dic9 = [NSDictionary dictionaryWithObjectsAndKeys:
-                           @"肌肉(kg)",@"title",
-                            [NSString stringWithFormat:@"%.1f",item1.muscleWeight],@"value1",
-                            [NSString stringWithFormat:@"%.1f",item2.muscleWeight],@"value2",
+                           @"肌肉(%)",@"title",
+                            [NSString stringWithFormat:@"%.1f",item1.musclePercentage],@"value1",
+                            [NSString stringWithFormat:@"%.1f",item2.musclePercentage],@"value2",
                             muscle1,@"level1",
                             muscle2,@"level2",
                            [self getColorWithString:muscle1],@"color1",
                            [self getColorWithString:muscle2],@"color2",nil];
 //蛋白质
     NSDictionary * dic10 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"蛋白质(kg)",@"title",
-                           [NSString stringWithFormat:@"%.1f",item1.proteinWeight],@"value1",
-                           [NSString stringWithFormat:@"%.1f",item2.proteinWeight],@"value2",
+                            @"蛋白质(%)",@"title",
+                           [NSString stringWithFormat:@"%.1f",item1.proteinPercentage],@"value1",
+                           [NSString stringWithFormat:@"%.1f",item2.proteinPercentage],@"value2",
                            protein1,@"level1",
                            protein2,@"level2",
                             [self getColorWithString:protein1],@"color1",
@@ -377,9 +377,9 @@
     
     //骨骼肌
     NSDictionary * dic12 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"骨骼肌(kg)",@"title",
-    [NSString stringWithFormat:@"%.1f",item1.boneMuscleWeight],@"value1",
-    [NSString stringWithFormat:@"%.1f",item2.boneMuscleWeight],@"value2",
+                            @"骨骼肌(%)",@"title",
+    [NSString stringWithFormat:@"%.1f",item1.boneMusclePercentage],@"value1",
+    [NSString stringWithFormat:@"%.1f",item2.boneMusclePercentage],@"value2",
     boneMuscle1,@"level1",
     boneMuscle2,@"level2",
     [self getColorWithString:boneMuscle1],@"color1",
@@ -387,9 +387,9 @@
 
 //水分
     NSDictionary * dic13 = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"水分(kg)",@"title",
-                            [NSString stringWithFormat:@"%.1f",item1.waterWeight],@"value1",
-                            [NSString stringWithFormat:@"%.1f",item2.waterWeight],@"value2",
+                            @"水分(%)",@"title",
+                            [NSString stringWithFormat:@"%.1f",item1.waterPercentage],@"value1",
+                            [NSString stringWithFormat:@"%.1f",item2.waterPercentage],@"value2",
                             water1,@"level1",
                             water2,@"level2",
                             [[HealthModel shareInstance]getHealthColorWithStatus:IS_MODEL_WATER Level:item1.waterLevel],@"color1",

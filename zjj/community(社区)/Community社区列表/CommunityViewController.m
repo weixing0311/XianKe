@@ -32,10 +32,10 @@
 
 
 #import "JbView.h"
-
-#import "Yd7View.h"
-#import "Yd8View.h"
-#import "Yd9View.h"
+//
+//#import "Yd7View.h"
+//#import "Yd8View.h"
+//#import "Yd9View.h"
 
 
 @interface CommunityViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,PublicArticleCellDelegate,BigImageArticleCellDelegate,ArticleDetailDelegate,NewMineHomePageHeaderCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ADCarouselViewDelegate>
@@ -58,9 +58,9 @@
     int changeImageNum;
     JbView * jbv;
 #pragma mark ---guide
-    Yd7View * yd7 ;
-    Yd8View * yd8 ;
-    Yd9View * yd9 ;
+//    Yd7View * yd7 ;
+//    Yd8View * yd8 ;
+//    Yd9View * yd9 ;
 
 }
 
@@ -69,7 +69,7 @@
     [super viewWillAppear: animated];
     if (self.isMyMessagePage==YES) {
         [self.navigationController setNavigationBarHidden:NO animated:animated];
-        self.title = @"我的消息";
+        self.title = @"我的动态";
         [self setTBWhiteColor];
         self.tabBarController.tabBar.hidden = YES;
 
@@ -119,7 +119,7 @@
     self.segment.selectedSegmentIndex = 1;
     [self.tableview.mj_header beginRefreshing];
     
-    [self buildGuidePage];
+//    [self buildGuidePage];
 }
 
 -(void)setSegmentStyle
@@ -870,7 +870,12 @@
         if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
             [[UserModel shareInstance]showSuccessWithStatus:@"取消点赞成功"];
         }else{
-            [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
+            if ([[dic allKeys]containsObject:@"data"]) {
+                NSDictionary * dataDict =[dic safeObjectForKey:@"data"];
+                [self showWXProgressViewWithTitle:@"点赞成功" integral:[[dataDict safeObjectForKey:@"integral"]intValue]];
+            }else{
+                [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
+            }
         }
         [self refreshZanInfoWithCell:cell];
     } failure:^(NSError *error) {
@@ -1049,13 +1054,13 @@
     [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
     
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/userGreat/updateIsFabulous.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-        if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
-            [[UserModel shareInstance]showSuccessWithStatus:@"取消点赞成功"];
-            
-        }else{
-            [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
-            
-        }
+//        if (model.isFabulous&&[model.isFabulous isEqualToString:@"1"]) {
+//            [[UserModel shareInstance]showSuccessWithStatus:@"取消点赞成功"];
+//
+//        }else{
+//            [[UserModel shareInstance]showSuccessWithStatus:@"点赞成功"];
+//        }
+        
         [self refreshZanInfoWithBigCell:cell];
     } failure:^(NSError *error) {
         
@@ -1425,7 +1430,7 @@
                  case SSDKResponseStateSuccess:
                  {
                      [[UserModel shareInstance]dismiss];
-                     [[UserModel shareInstance]didCompleteTheTaskWithId:@"5"];
+                     [self didCompleteTheTaskWithId:@"5"];
                      
                      break;
                  }
@@ -1563,97 +1568,97 @@
 
 
 #pragma mark ---引导页
--(void)buildGuidePage
-{
-    if (self.isMyMessagePage==YES) {
-        return;
-    }
-        if ([[NSUserDefaults standardUserDefaults]objectForKey:kShowGuidePage3]) {
-            return;
-        }
-        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:kShowGuidePage3];
-    yd7 = [self getXibCellWithTitle:@"Yd7View"];
-    yd8 = [self getXibCellWithTitle:@"Yd8View"];
-    yd9 = [self getXibCellWithTitle:@"Yd9View"];
-    
-    yd7.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
-    yd8.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
-    yd9.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
-    
-    yd7.tag = 1;
-    yd8.tag = 2;
-    yd9.tag = 3;
-    
-    
-    yd7.hidden = NO;
-    yd8.hidden = YES;
-    yd9.hidden = YES;
-    
-    UIApplication *ap = [UIApplication sharedApplication];
-    
-    [ap.keyWindow addSubview:yd7];
-    [ap.keyWindow addSubview:yd8];
-    [ap.keyWindow addSubview:yd9];
-    
-    [yd7.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
-    [yd8.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
-    [yd9.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [yd7.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
-    [yd8.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
-    [yd9.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
-
-    [yd7 addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showNextsView:)]];
-    [yd8 addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showNextsView:)]];
-
-}
-
--(void)showNextsView:(UIGestureRecognizer *)gest
-{
-    if ([gest.view isEqual:yd7]) {
-        
-        yd7.hidden = YES;
-        yd8.hidden =NO;
-    }
-    else if([gest.view isEqual:yd8])
-    {
-        yd8.hidden = YES;
-        yd9.hidden =NO;
-    }
-}
-
-
-
--(void)showNextView:(UIButton *)sender
-{
-    if (sender==yd7.nextBtn) {
-        yd7.hidden = YES;
-        yd8.hidden =NO;
-    }
-    else if(sender ==yd8.nextBtn)
-    {
-        yd8.hidden = YES;
-        yd9.hidden =NO;
-    }
-    else if(sender ==yd9.nextBtn)
-    {
-        yd9.hidden = YES;
-        [yd7 removeFromSuperview];
-        [yd8 removeFromSuperview];
-        [yd9 removeFromSuperview];
-        
-    }
-}
--(void)guideOver:(UIButton *)sender
-{
-    yd7.hidden = YES;
-    yd8.hidden = YES;
-    yd9.hidden = YES;
-    [yd7 removeFromSuperview];
-    [yd8 removeFromSuperview];
-    [yd9 removeFromSuperview];
-
-}
+//-(void)buildGuidePage
+//{
+//    if (self.isMyMessagePage==YES) {
+//        return;
+//    }
+//        if ([[NSUserDefaults standardUserDefaults]objectForKey:kShowGuidePage3]) {
+//            return;
+//        }
+//        [[NSUserDefaults standardUserDefaults]setObject:@"1" forKey:kShowGuidePage3];
+//    yd7 = [self getXibCellWithTitle:@"Yd7View"];
+//    yd8 = [self getXibCellWithTitle:@"Yd8View"];
+//    yd9 = [self getXibCellWithTitle:@"Yd9View"];
+//    
+//    yd7.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
+//    yd8.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
+//    yd9.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
+//    
+//    yd7.tag = 1;
+//    yd8.tag = 2;
+//    yd9.tag = 3;
+//    
+//    
+//    yd7.hidden = NO;
+//    yd8.hidden = YES;
+//    yd9.hidden = YES;
+//    
+//    UIApplication *ap = [UIApplication sharedApplication];
+//    
+//    [ap.keyWindow addSubview:yd7];
+//    [ap.keyWindow addSubview:yd8];
+//    [ap.keyWindow addSubview:yd9];
+//    
+//    [yd7.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
+//    [yd8.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
+//    [yd9.nextBtn addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [yd7.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
+//    [yd8.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
+//    [yd9.jumpBtn addTarget:self action:@selector(guideOver:) forControlEvents:UIControlEventTouchUpInside];
+//
+//    [yd7 addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showNextsView:)]];
+//    [yd8 addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showNextsView:)]];
+//
+//}
+//
+//-(void)showNextsView:(UIGestureRecognizer *)gest
+//{
+//    if ([gest.view isEqual:yd7]) {
+//        
+//        yd7.hidden = YES;
+//        yd8.hidden =NO;
+//    }
+//    else if([gest.view isEqual:yd8])
+//    {
+//        yd8.hidden = YES;
+//        yd9.hidden =NO;
+//    }
+//}
+//
+//
+//
+//-(void)showNextView:(UIButton *)sender
+//{
+//    if (sender==yd7.nextBtn) {
+//        yd7.hidden = YES;
+//        yd8.hidden =NO;
+//    }
+//    else if(sender ==yd8.nextBtn)
+//    {
+//        yd8.hidden = YES;
+//        yd9.hidden =NO;
+//    }
+//    else if(sender ==yd9.nextBtn)
+//    {
+//        yd9.hidden = YES;
+//        [yd7 removeFromSuperview];
+//        [yd8 removeFromSuperview];
+//        [yd9 removeFromSuperview];
+//        
+//    }
+//}
+//-(void)guideOver:(UIButton *)sender
+//{
+//    yd7.hidden = YES;
+//    yd8.hidden = YES;
+//    yd9.hidden = YES;
+//    [yd7 removeFromSuperview];
+//    [yd8 removeFromSuperview];
+//    [yd9 removeFromSuperview];
+//
+//}
 
 
 @end

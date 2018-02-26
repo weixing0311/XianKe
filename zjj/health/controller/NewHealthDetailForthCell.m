@@ -16,7 +16,12 @@
 }
 -(void)setInfoWithDict:(HealthDetailsItem *)item
 {
-   float visceral = 4;
+    float visceral = 4;
+   if ([SubUserItem shareInstance].sex ==1 )
+   {
+       visceral = 6;
+   }
+   
    double fatPercentage = item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2;
     
     float target1 = item.standardWeight-item.weight>0?0:item.standardWeight-item.weight;

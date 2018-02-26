@@ -410,7 +410,7 @@
                  [[UserModel shareInstance]dismiss];
                  //                 [[UserModel shareInstance] showSuccessWithStatus:@"分享成功"];
                  
-                [[UserModel shareInstance]didCompleteTheTaskWithId:@"8"];
+                [self didCompleteTheTaskWithId:@"8"];
                  break;
              }
              case SSDKResponseStateFail:

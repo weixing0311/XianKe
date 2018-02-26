@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YFWViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tws_" translatesAutoresizingMaskIntoConstraints="NO" id="ano-KD-nov">
+                    <rect key="frame" x="0.0" y="70" width="375" height="174"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ano-KD-nov" secondAttribute="height" multiplier="125:58" id="YGo-JC-LgY"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mFl-XH-6hM">
+                    <rect key="frame" x="20" y="517" width="335" height="50"/>
+                    <color key="backgroundColor" red="0.085991753472222224" green="0.70315212673611116" blue="0.17635091145833334" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="2nt-WX-PpB"/>
+                    </constraints>
+                    <state key="normal" title="前往appStore下载">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="pushAppStrore:" destination="-1" eventType="touchUpInside" id="hgC-La-zFS"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="尊敬的用户您好，为了更好的为您服务，我们已将云服务迁移到另一个地方，请您移步下载，如果因为云服务的迁移而对您造成什么不便，希望您能谅解，我们的初衷永远是希望您能获得更好的使用体验，谢谢您的理解与支持。纤客不再支持云服务功能！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xz-RW-ETu">
+                    <rect key="frame" x="20" y="284" width="335" height="122"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mFl-XH-6hM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="1Fl-KQ-Tat"/>
+                <constraint firstItem="ano-KD-nov" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="70" id="4iA-eG-LVi"/>
+                <constraint firstAttribute="trailing" secondItem="8xz-RW-ETu" secondAttribute="trailing" constant="20" id="BMO-eg-tpU"/>
+                <constraint firstAttribute="bottom" secondItem="mFl-XH-6hM" secondAttribute="bottom" constant="100" id="J6e-G2-Lgz"/>
+                <constraint firstAttribute="trailing" secondItem="mFl-XH-6hM" secondAttribute="trailing" constant="20" id="MWY-Vy-XSH"/>
+                <constraint firstItem="8xz-RW-ETu" firstAttribute="top" secondItem="ano-KD-nov" secondAttribute="bottom" constant="40" id="O7l-Vs-AdF"/>
+                <constraint firstAttribute="trailing" secondItem="ano-KD-nov" secondAttribute="trailing" id="T4p-cr-dFA"/>
+                <constraint firstItem="ano-KD-nov" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZUf-Dy-v3Q"/>
+                <constraint firstItem="8xz-RW-ETu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ocB-UD-ZuF"/>
+            </constraints>
+            <point key="canvasLocation" x="35.5" y="54.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tws_" width="310" height="138"/>
+    </resources>
+</document>

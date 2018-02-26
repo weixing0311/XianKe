@@ -150,25 +150,11 @@
             [[UserModel shareInstance]showSuccessWithStatus:@"发表成功"];
             DLog(@"dic---%@",dic);
             [[NSNotificationCenter defaultCenter]postNotificationName:@"SENDARTICLESUCCESS" object:nil];
-            [self getIntegral];
+            [self  didCompleteTheTaskWithId:_shareType];
             [self.navigationController popViewControllerAnimated:YES];
             
         } failure:^(NSError *error) {
             DLog(@"error--%@",error);
-            
-        }];
-    }
-}
-///完成获取积分任务--- 分享主页 分享健康报告
--(void)getIntegral
-{
-    if (self.shareType&&self.shareType.length>0) {
-        NSMutableDictionary * params = [NSMutableDictionary dictionary];
-        [params setObject:_shareType forKey:@"taskId"];
-        [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-        
-        self.currentTasks = [[BaseSservice sharedManager]post1:@"app/integral/growthsystem/gainPoints.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-        } failure:^(NSError *error) {
             
         }];
     }

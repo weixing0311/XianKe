@@ -7,7 +7,6 @@
 //
 
 #import "ShopTestViewController.h"
-#import "BodyFatDivisionAgreementViewController.h"
 @interface ShopTestViewController ()
 
 @end

@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *notifationCountLb;
+@property (weak, nonatomic) IBOutlet UILabel *secondLb;
 
 @end

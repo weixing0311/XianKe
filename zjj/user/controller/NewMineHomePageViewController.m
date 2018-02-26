@@ -196,7 +196,8 @@ BigImageArticleCellDelegate
     else if(indexPath.section ==3)
     {
         ReducedLineModel * model = _reducedFatLineArray[indexPath.row];
-        return model.height>200?model.height:200;
+        
+        return model.height>(JFA_SCREEN_WIDTH/2-60)*1.5?model.height:(JFA_SCREEN_WIDTH/2-60)*1.5+10;
     }
     else if(indexPath.section ==4)
     {
@@ -1041,7 +1042,7 @@ BigImageArticleCellDelegate
                  {
                      [[UserModel shareInstance]dismiss];
                      //                 [[UserModel shareInstance] showSuccessWithStatus:@"分享成功"];
-                     [[UserModel shareInstance]didCompleteTheTaskWithId:@"5"];
+                     [self didCompleteTheTaskWithId:@"5"];
                      break;
                  }
                  case SSDKResponseStateFail:
@@ -1273,7 +1274,7 @@ BigImageArticleCellDelegate
 #ifdef DEBUG
                    [[UserModel shareInstance] showSuccessWithStatus:@"分享成功"];
 #endif
-                 [[UserModel shareInstance]didCompleteTheTaskWithId:@"7"];
+                 [self didCompleteTheTaskWithId:@"7"];
                      break;
                  }
                  case SSDKResponseStateFail:
@@ -1301,18 +1302,6 @@ BigImageArticleCellDelegate
     } failure:^(NSError *error) {
         
     }];
-}
-///完成获取积分任务--- 分享主页 分享健康报告
--(void)getIntegral
-{
-        NSMutableDictionary * params = [NSMutableDictionary dictionary];
-        [params setObject:@"7" forKey:@"taskId"];
-        [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-        
-        self.currentTasks = [[BaseSservice sharedManager]post1:@"app/integral/growthsystem/gainPoints.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-        } failure:^(NSError *error) {
-            
-        }];
 }
 
 

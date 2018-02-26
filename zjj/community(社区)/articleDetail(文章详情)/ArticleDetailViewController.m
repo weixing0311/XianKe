@@ -198,8 +198,12 @@
     self.currentTasks = [[BaseSservice sharedManager]post1:@"app/community/articlecomment/saveArticlecomment.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         [commentView.commentTf resignFirstResponder];
         commentView.commentTf.text = @"";
-        [[UserModel shareInstance]showSuccessWithStatus:@"发表成功"];
-        
+        if ([[dic allKeys]containsObject:@"data"]) {
+            NSDictionary * dataDict =[dic safeObjectForKey:@"data"];
+            [self showWXProgressViewWithTitle:@"评论成功" integral:[[dataDict safeObjectForKey:@"integral"]intValue]];
+        }else{
+            [[UserModel shareInstance]showSuccessWithStatus:@"发表成功"];
+        }
         
         [self getCommentList];
         if (self.delegate &&[self.delegate respondsToSelector:@selector(refreshCommentWithModel:)]) {

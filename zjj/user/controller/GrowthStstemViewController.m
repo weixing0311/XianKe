@@ -12,10 +12,16 @@
 #import "GrowthCell.h"
 #import "LevelSnstructionsViewController.h"
 #import "IntegralSignInView.h"
+#import "IntegralShopViewController.h"
 @interface GrowthStstemViewController ()<UITableViewDelegate,UITableViewDataSource,growthHeaderCellDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (nonatomic,strong)NSArray * dataArray;
 @property (nonatomic,strong)NSDictionary * infoDict;
+
+@property (weak, nonatomic) IBOutlet UILabel *integrallb;
+
+@property (weak, nonatomic) IBOutlet UIView *qdSuccessView;
+
 @end
 
 @implementation GrowthStstemViewController
@@ -25,7 +31,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.title = @"成长积分";
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+
+    self.title = @"成长体系";
     [self setTBWhiteColor];
 
 }
@@ -43,9 +51,10 @@
     
     [self getInfo];
     
+    _qdSuccessView.hidden =!self.isShowQDProgress;
+    
     // Do any additional setup after loading the view from its nib.
 }
-
 -(void)getInfo
 {
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
@@ -232,6 +241,15 @@
     lev.infoDict =_infoDict;
     [self.navigationController pushViewController:lev animated:YES];
 }
+- (IBAction)enterIntegralPage:(id)sender {
+    IntegralShopViewController * integral = [[IntegralShopViewController alloc]init];
+    [self.navigationController pushViewController:integral animated:YES];
+}
+
+- (IBAction)closeProgressView:(id)sender {
+    _qdSuccessView.hidden = YES;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

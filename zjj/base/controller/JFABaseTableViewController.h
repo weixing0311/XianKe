@@ -12,6 +12,7 @@
 #import "JFANetWorkServiceItem.h"
 #import "AppDelegate.h"
 #import "EmptyView.h"
+#import "WXProgressView.h"
 
 @interface JFABaseTableViewController : UIViewController<subNetWorkDelegate>
 
@@ -21,6 +22,8 @@
 @property(nonatomic,strong)JFASubNetWorkErrorView* networkErrorView;
 @property (nonatomic,strong)NSURLSessionTask * currentTasks;
 @property (nonatomic,strong) EmptyView * emptyView;
+@property (nonatomic,strong) WXProgressView * wxprsView;
+
 -(void)refreshForNetworkError;
 -(UIImage*)backImage;
 - (void)back;
@@ -67,4 +70,8 @@
 
 -(void)hiddenEmptyView;
 -(void)refreshEmptyView;
+
+-(void)showWXProgressViewWithTitle:(NSString *)title integral:(int)integral;
+///上传完成任务接口
+-(void)didCompleteTheTaskWithId:(NSString *)taskId;
 @end

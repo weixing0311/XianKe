@@ -10,9 +10,7 @@
 #import "TabbarViewController.h"
 #import "ResignAgumentViewController.h"
 #import "ADDChengUserViewController.h"
-#import "ForgetPasswordViewController.h"
 #import "JPUSHService.h"
-#import "ResignViewController.h"
 @interface LoignViewController ()
 
 @end
@@ -36,10 +34,6 @@
     [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenKeyBoard)]];
     
     
-    
-    self.forgetpsBtn.hidden = YES;
-    
-    
     self.mobileTf.delegate = self;
     self.mobileTf.returnKeyType = UIReturnKeyGo;
     self.mobileTf.clearButtonMode=UITextFieldViewModeAlways;
@@ -52,148 +46,37 @@
     self.verTF.returnKeyType = UIReturnKeyGo;
     [self.verTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
-    self.loignMobileTf.delegate = self;
-    self.loignMobileTf.clearButtonMode=UITextFieldViewModeAlways;
-    self.loignMobileTf.keyboardType = UIKeyboardTypeNumberPad;
-    [self.loignMobileTf addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    self.verbtn.layer.borderColor = HEXCOLOR(0x999999).CGColor;
+    self.verbtn.layer.borderWidth = 1;
+    [self.verbtn setTitleColor:HEXCOLOR(0x999999) forState:UIControlStateNormal];
 
-    self.passWordTf.delegate = self;
-    self.passWordTf.clearButtonMode=UITextFieldViewModeAlways;
-    self.passWordTf.keyboardType = UIKeyboardTypeDefault;
-    self.passWordTf.returnKeyType = UIReturnKeyDone;
-    self.passWordTf.secureTextEntry = YES;
-    
-    
-    self.verLoignBtn.selected = NO;
-    self.psLoignBtn.selected = YES;
-    self.passWordView.hidden = NO;
-    self.verView.hidden = YES;
-    
-    // Do any additional setup after loading the view from its nib.
-    
-    
-    
+
     
 }
+-(void)changVerBtnColorWithType:(int)type
+{
+    if (type==1&&self.mobileTf.text.length==11) {
+        self.verbtn.layer.borderColor = HEXCOLOR(0x44d700).CGColor;
+        [self.verbtn setTitleColor:HEXCOLOR(0x44d700) forState:UIControlStateNormal];
 
+    }else{
+        self.verbtn.layer.borderColor = HEXCOLOR(0xbfbfbf).CGColor;
+        [self.verbtn setTitleColor:HEXCOLOR(0xbfbfbf) forState:UIControlStateNormal];
+
+    }
+}
 
 
 
 -(void)hiddenKeyBoard
 {
+//    [self changVerBtnColorWithType:1];
     [self.mobileTf resignFirstResponder];
     [self.verTF resignFirstResponder];
-    [self.loignMobileTf resignFirstResponder];
-    [self.passWordTf resignFirstResponder];
 //    [self bgViewDown];
 }
 
-- (IBAction)pageChange:(UIButton *)sender {
-    
-    if (sender ==self.verLoignBtn) {
-        if (self.verLoignBtn.selected ==YES) {
-            return;
-        }else{
-            self.verView.hidden =NO;
-            self.passWordView.hidden = YES;
-            self.forgetpsBtn.hidden =YES;
 
-            [self.mobileTf becomeFirstResponder];
-            self.verLoignBtn.selected = YES;
-            self.psLoignBtn.selected = NO;
-        }
-    }else{
-        if (self.psLoignBtn.selected ==YES) {
-            return;
-        }else{
-            self.verView.hidden =YES;
-            self.passWordView.hidden = NO;
-            self.forgetpsBtn.hidden =NO;
-            
-            [self.loignMobileTf becomeFirstResponder];
-            self.verLoignBtn.selected = NO;
-            self.psLoignBtn.selected = YES;
-   
-    }
-    }
-    
-    
-    
-}
-
--(void)loIgnWithPassword
-{
-    [self bgViewDown];
-    
-    if ([self.loignMobileTf.text isEqualToString:@""]||[self.loignMobileTf.text isEqualToString:@" "]||!self.loignMobileTf.text) {
-        [[UserModel shareInstance] showInfoWithStatus:@"请输入手机号"];
-        return;
-    }
-    if ([self.passWordTf.text isEqualToString:@""]||[self.passWordTf.text isEqualToString:@" "]||!self.passWordTf.text) {
-        [[UserModel shareInstance] showInfoWithStatus:@"请输入验证码"];
-        
-        return;
-    }
-    
-    
-    BOOL isPassword = [self.passWordTf.text checkPassWord];
-    
-    if (isPassword !=YES) {
-        [[UserModel shareInstance]showInfoWithStatus:@"请输入正确格式密码"];
-        return;
-    }
-    
-    
-    
-    
-    NSMutableDictionary * param = [NSMutableDictionary dictionary];
-    
-    [param safeSetObject:[NSString encryptString:self.loignMobileTf.text] forKey:@"mobilePhone"];
-    [param safeSetObject:[NSString encryptString:self.passWordTf.text] forKey:@"password"];
-        
-    [SVProgressHUD showWithStatus:@"登录中..."];
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/user/loginPwd.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
-        
-        [SVProgressHUD dismiss];
-        //设置Jpush---别名
-        [JPUSHService setTags:nil alias:[UserModel shareInstance].userId fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
-            DLog(@"设置jpush用户id为%@--是否成功-%d",[UserModel shareInstance].userId,iResCode);
-        }];
-
-        DLog(@"昵称--%@",[[dic objectForKey:@"data"] objectForKey:@"nickName"]);
-        [[UserModel shareInstance] showSuccessWithStatus:@"登录成功"];
-        [[UserModel shareInstance]setInfoWithDic:[dic objectForKey:@"data"]];
-        [[NSUserDefaults standardUserDefaults]setObject:[[dic objectForKey:@"data"]objectForKey:@"userId"] forKey:kMyloignInfo];
-        
-        
-        
-        if ([UserModel shareInstance].nickName.length>0) {
-            
-            if ([[UserModel shareInstance].userType isEqualToString:@"2"]) {
-                [[UserModel shareInstance]getNotiadvertising];
-            }
-
-            TabbarViewController *tab = [[TabbarViewController alloc]init];
-            [UserModel shareInstance].tabbarStyle = @"health";
-            self.view.window.rootViewController = tab;
-            
-            
-        }else{
-            ADDChengUserViewController *cg =[[ADDChengUserViewController alloc]init];
-            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:cg];
-            cg.isResignUser =YES;
-            [self presentViewController:nav animated:YES completion:nil];
-        }
-
-    } failure:^(NSError *error) {
-//        [SVProgressHUD dismiss];
-//        [[UserModel shareInstance] showErrorWithStatus:@"登录失败"];
-        [_timer invalidate];
-        [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-        self.verbtn.enabled = YES;
-
-    }];
-}
 -(void)loignWithVer
 {
     [self bgViewDown];
@@ -220,7 +103,7 @@
         
         
         [_timer invalidate];
-        [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.verbtn setTitle:@"验证码" forState:UIControlStateNormal];
         self.verbtn.enabled = YES;
         
         
@@ -249,7 +132,7 @@
         
 //        [[UserModel shareInstance] showErrorWithStatus:@"登录失败"];
         [_timer invalidate];
-        [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.verbtn setTitle:@"验证码" forState:UIControlStateNormal];
         self.verbtn.enabled = YES;
         
     }];
@@ -259,34 +142,23 @@
 - (IBAction)didLoign:(id)sender {
     
     DLog(@"点击登录");
-    
-    if (self.verLoignBtn.selected ==YES) {
-        [self loignWithVer];
-    }else{
-        [self loIgnWithPassword];
-    }
-    
+    [self loignWithVer];
 }
 -(void)clearTextField
 {
     self.mobileTf.text = @"";
     self.verTF.text =@"";
-    self.loignMobileTf.text = @"";
-    self.passWordTf.text = @"";
-}
-- (IBAction)forgetPass:(id)sender {
-    
-    ForgetPasswordViewController * fo = [[ForgetPasswordViewController alloc]init];
-//    fo.modalTransitionStyle = UIModalTransitionStylePartialCurl;
-
-    [self presentViewController:fo animated:YES completion:nil];
-    
 }
 
 
 
 - (IBAction)getVer:(UIButton *)sender {
-    timeNumber = 59;
+    if (self.mobileTf.text.length!=11) {
+        [[UserModel shareInstance]showInfoWithStatus:@"请输入手机号"];
+        return;
+    }
+    [self changVerBtnColorWithType:2];
+    timeNumber = 119;
     _timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(refreshTime) userInfo:nil repeats:YES];
     self.verbtn.enabled = NO;
     
@@ -302,11 +174,14 @@
         if (![status isEqualToString:@"success"]) {
             msg =[dic objectForKey:@"message"];
             [_timer invalidate];
-            [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [self.verbtn setTitle:@"验证码" forState:UIControlStateNormal];
             self.verbtn.enabled = YES;
+            [self changVerBtnColorWithType:1];
 
         }else{
             msg = @"已发送";
+            [self changVerBtnColorWithType:2];
+
         }
         DLog(@"%@",msg);
         [[UserModel shareInstance] showSuccessWithStatus:msg];
@@ -315,7 +190,9 @@
     } failure:^(NSError * error) {
         NSLog(@"faile--%@",error);
         [_timer invalidate];
-        [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.verbtn setTitle:@"验证码" forState:UIControlStateNormal];
+        [self changVerBtnColorWithType:1];
+
         self.verbtn.enabled = YES;
 
         NSDictionary *dic = error.userInfo;
@@ -333,19 +210,19 @@
 
     }];
 
-    DLog(@"点击获取验证码");
+    DLog(@"获取验证码");
 }
 
 -(void)refreshTime
 {
     if (timeNumber ==0) {
         [_timer invalidate];
-        [self.verbtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+        [self.verbtn setTitle:@"验证码" forState:UIControlStateNormal];
         self.verbtn.enabled = YES;
         return;
     }
-    NSLog(@"%d",timeNumber);
-    [self.verbtn setTitle:[NSString stringWithFormat: @"%ld秒后可重新获取",(long)timeNumber] forState:UIControlStateNormal];
+    NSLog(@"%ld",(long)timeNumber);
+    [self.verbtn setTitle:[NSString stringWithFormat: @"%ld",(long)timeNumber] forState:UIControlStateNormal];
     timeNumber --;
 }
 - (IBAction)showResignAugement:(id)sender {
@@ -376,11 +253,6 @@
     isupView = YES;
     [self.mobileTf resignFirstResponder];
     [self.verTF resignFirstResponder];
-    [self.loignMobileTf resignFirstResponder];
-    [self.passWordTf resignFirstResponder];
-    [UIView animateWithDuration:0.5 animations:^{
-        self.bgview.contentOffset = CGPointMake(0, 0);
-    }];
 
 }
 -(void)textFieldDidChange:(UITextField *)textField
@@ -396,13 +268,9 @@
             textField.text = [textField.text substringToIndex:11];
 
             [self.mobileTf resignFirstResponder];
-        }
-    }
-    if (textField ==self.loignMobileTf) {
-        if (self.loignMobileTf.text.length>=11) {
-            textField.text = [textField.text substringToIndex:11];
+            [self changVerBtnColorWithType:1];
+
             
-            [self.loignMobileTf resignFirstResponder];
         }
     }
 }
@@ -433,7 +301,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     
-    if (textField ==self.mobileTf||textField ==self.loignMobileTf||textField ==self.verTF) {
+    if (textField ==self.mobileTf||textField ==self.verTF) {
 //        if (textField.text.length==11) {
 //            return NO;
 //        }
@@ -451,10 +319,6 @@
 }
 
 
-- (IBAction)didResign:(id)sender {
-    ResignViewController * rl = [[ResignViewController alloc]init];
-    [self presentViewController:rl animated:YES completion:nil];
-}
 
 
 - (void)didReceiveMemoryWarning {

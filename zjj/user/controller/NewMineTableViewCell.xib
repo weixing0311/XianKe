@@ -52,19 +52,28 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIe-tt-3gX">
+                        <rect key="frame" x="310" y="22.5" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="DOk-W8-pqB" firstAttribute="leading" secondItem="7Tg-7w-f3f" secondAttribute="trailing" constant="15" id="7P0-fw-Cx3"/>
                     <constraint firstItem="opD-Hv-Pta" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IrS-oh-zzs"/>
                     <constraint firstItem="7Tg-7w-f3f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="RIX-Qg-0WA"/>
                     <constraint firstItem="DOk-W8-pqB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SST-gB-4Xg"/>
+                    <constraint firstAttribute="trailing" secondItem="jIe-tt-3gX" secondAttribute="trailing" constant="10" id="TCM-va-8nB"/>
                     <constraint firstAttribute="trailing" secondItem="opD-Hv-Pta" secondAttribute="trailing" constant="25" id="Ydg-rb-6qN"/>
+                    <constraint firstItem="jIe-tt-3gX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sLp-YS-ySj"/>
                     <constraint firstItem="7Tg-7w-f3f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="t6U-wv-g7r"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="headImageView" destination="7Tg-7w-f3f" id="eWV-JF-HdI"/>
                 <outlet property="notifationCountLb" destination="opD-Hv-Pta" id="RAh-PY-ZLW"/>
+                <outlet property="secondLb" destination="jIe-tt-3gX" id="pn1-mf-QBm"/>
                 <outlet property="titleLabel" destination="DOk-W8-pqB" id="7Zx-YP-Odq"/>
             </connections>
         </tableViewCell>

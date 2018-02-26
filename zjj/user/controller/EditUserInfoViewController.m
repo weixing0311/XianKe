@@ -67,7 +67,25 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     
     [self setPickView];
     [self setDatePickerView];
+    
+    [self buildTabFootView];
     // Do any additional setup after loading the view from its nib.
+}
+-(void)buildTabFootView
+{
+    UIView * footView =[[UIView  alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, 65)];
+    footView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton * button =[[UIButton alloc]initWithFrame:CGRectMake(30, 10, JFA_SCREEN_WIDTH-60, 45)];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor redColor];
+    [button setTitle:@"退出登录" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(loignOut:) forControlEvents:UIControlEventTouchUpInside];
+    button.layer.cornerRadius = 5;
+    button.layer.masksToBounds = YES;
+    [footView addSubview:button];
+    
+    self.tableview.tableFooterView = footView;
 }
 -(void)setPickView
 {
@@ -105,7 +123,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        [self.upDataDict safeSetObject:@(pickRow+80) forKey:@"heigth"];
+        [self.upDataDict safeSetObject:@(pickRow+120) forKey:@"heigth"];
     }
     haveChangeInfo = YES;
 
@@ -272,7 +290,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return 9;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -297,6 +315,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
         if (!cell) {
             cell = [self getXibCellWithTitle:identifier];
         }
+        
         [cell.headImageView getImageWithUrl:[UserModel shareInstance].headUrl getImageFinish:^(UIImage *image, NSError *error) {
             if (error) {
                 DLog(@"error--%@",error);
@@ -333,7 +352,10 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
         {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
-        cell.textLabel.textColor = HEXCOLOR(0x666666);
+        cell.textLabel.textColor = HEXCOLOR(0x999999);
+        cell.detailTextLabel.textColor = HEXCOLOR(0x666666);
+        cell.textLabel.font =[UIFont systemFontOfSize:14];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
         switch (indexPath.row) {
             case 1:
                 cell.textLabel.text = @"昵称";
@@ -357,14 +379,10 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[_upDataDict safeObjectForKey:@"heigth"]];
                 break;
             case 7:
-                cell.textLabel.text = @"修改密码";
-                cell.detailTextLabel.text =@"";
-                break;
-            case 8:
                 cell.textLabel.text = @"清空缓存";
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",[self getCecheSize]];
                 break;
-            case 9:
+            case 8:
                 cell.textLabel.text = @"关于我们";
                 cell.detailTextLabel.text = @"";
                 break;
@@ -413,12 +431,6 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if (indexPath.row ==7)
     {
-        ChangePasswordViewController * cb = [[ChangePasswordViewController alloc]init];
-        [self.navigationController pushViewController:cb animated:YES];
-
-    }
-    else if (indexPath.row ==8)
-    {
         
         UIAlertController * al = [UIAlertController alertControllerWithTitle:@"是否清理缓存？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
         [al addAction: [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -432,7 +444,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
         [al addAction: [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]] ;
         [self presentViewController:al animated:YES completion:nil];
     }
-    else if (indexPath.row ==9)
+    else if (indexPath.row ==8)
     {
         AboutUsViewController * ab= [[AboutUsViewController alloc]init];
         [self.navigationController pushViewController:ab animated:YES];
@@ -495,14 +507,9 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
             } failure:^(NSError *error) {
                 
             }];
-
         }
-
-
     }]];
-    
     [al addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
-    
     [self presentViewController:al animated:YES completion:nil];
 }
 
@@ -680,7 +687,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        return 200;
+        return 81;
     }
     else{
         return 0;
@@ -703,7 +710,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
     }
     else if(self.hiddentf.tag==5)
     {
-        return [NSString  stringWithFormat:@"%ld",row+80];
+        return [NSString  stringWithFormat:@"%ld",row+120];
     }
     else{
         return nil;
@@ -722,7 +729,7 @@ int64_t delayInSeconds = 2.0;      // 延迟的时间
 {
     nickName = [nickName stringByReplacingOccurrencesOfString:@" " withString:@""];
     //    $("#inputNum").val(val.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,''));
-    NSString * NICK_NUM = @"[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]+";
+    NSString * NICK_NUM = @"[a-zA-Z0-9\u4e00-\u9fa5]+";
     
     NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", NICK_NUM];
     BOOL isMatch = [pred evaluateWithObject:nickName];

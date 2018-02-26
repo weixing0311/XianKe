@@ -25,66 +25,66 @@ static HealthDetailsItem *item;
     self . userId                = [[dict safeObjectForKey:@"userId"]intValue];
     self . subUserId             = [[dict safeObjectForKey:@"subUserId"]intValue];
     self . createTime            = [ dict safeObjectForKey:@"createTime"];
-    self . score                 = [[dict safeObjectForKey:@"score"]floatValue];
+    self . score                 = [[dict safeObjectForKey:@"score"]doubleValue];
     
-    self . lastWeight            = [[dict safeObjectForKey:@"lastWeight"]floatValue];
+    self . lastWeight            = [[dict safeObjectForKey:@"lastWeight"]doubleValue];
     
     
     
-    self . weight                = [[dict safeObjectForKey:@"weight"]floatValue];
+    self . weight                = [[dict safeObjectForKey:@"weight"]doubleValue];
     self . weightLevel           = [[dict safeObjectForKey:@"weightLevel"]intValue];
-    self . bmi                   = [[dict safeObjectForKey:@"bmi"]floatValue];
+    self . bmi                   = [[dict safeObjectForKey:@"bmi"]doubleValue];
     self . bmiLevel              = [[dict safeObjectForKey:@"bmiLevel"]intValue];
     self . mVisceralFat          = [[dict safeObjectForKey:@"mVisceralFat"]intValue];
-    self . visceralFatPercentage = [[dict safeObjectForKey:@"visceralFatPercentage"]floatValue];
+    self . visceralFatPercentage = [[dict safeObjectForKey:@"visceralFatPercentage"]doubleValue];
     
     
-    self . visceralFatPercentageLevel = [[dict safeObjectForKey:@"visceralFatPercentageLevel"]floatValue];
-    self . bmr                   = [[dict safeObjectForKey:@"bmr"]floatValue];
-    self . bmrMin                = [[dict safeObjectForKey:@"bmrMin"]floatValue];
-    self . bmrMax                = [[dict safeObjectForKey:@"bmrMax"]floatValue];
+    self . visceralFatPercentageLevel = [[dict safeObjectForKey:@"visceralFatPercentageLevel"]doubleValue];
+    self . bmr                   = [[dict safeObjectForKey:@"bmr"]doubleValue];
+    self . bmrMin                = [[dict safeObjectForKey:@"bmrMin"]doubleValue];
+    self . bmrMax                = [[dict safeObjectForKey:@"bmrMax"]doubleValue];
     self.bmrLevel                = [[dict safeObjectForKey:@"bmrLevel"]intValue];
-    self . bodyAge               = [[dict safeObjectForKey:@"bodyAge"]floatValue];
+    self . bodyAge               = [[dict safeObjectForKey:@"bodyAge"]doubleValue];
     self . bodyLevel             = [[dict safeObjectForKey:@"bodyLevel"]intValue];
     
     
     
-    self . mFat                  = [[dict safeObjectForKey:@"mFat"]floatValue];
-    self . fatWeight             = [[dict safeObjectForKey:@"fatWeight"]floatValue];
-    self . fatWeightMax          = [[dict safeObjectForKey:@"fatWeightMax"]floatValue];
-    self . fatWeightMin          = [[dict safeObjectForKey:@"fatWeightMin"]floatValue];
+    self . mFat                  = [[dict safeObjectForKey:@"mFat"]doubleValue];
+    self . fatWeight             = [[dict safeObjectForKey:@"fatWeight"]doubleValue];
+    self . fatWeightMax          = [[dict safeObjectForKey:@"fatWeightMax"]doubleValue];
+    self . fatWeightMin          = [[dict safeObjectForKey:@"fatWeightMin"]doubleValue];
     self . fatWeightLevel        = [[dict safeObjectForKey:@"fatWeightLevel"]intValue];
     
     
-    self . mWater                = [[dict safeObjectForKey:@"mWater"]floatValue];
-    self . waterWeight           = [[dict safeObjectForKey:@"waterWeight"]floatValue];
-    self . waterWeightMax        = [[dict safeObjectForKey:@"waterWeightMax"]floatValue];
-    self . waterWeightMin        = [[dict safeObjectForKey:@"waterWeightMin"]floatValue];
+    self . mWater                = [[dict safeObjectForKey:@"mWater"]doubleValue];
+    self . waterWeight           = [[dict safeObjectForKey:@"waterWeight"]doubleValue];
+    self . waterWeightMax        = [[dict safeObjectForKey:@"waterWeightMax"]doubleValue];
+    self . waterWeightMin        = [[dict safeObjectForKey:@"waterWeightMin"]doubleValue];
     self . waterLevel            = [[dict safeObjectForKey:@"waterLevel"]intValue];
  
     
-    self . proteinWeight         = [[dict safeObjectForKey:@"proteinWeight"]floatValue];
-    self . proteinWeightMax      = [[dict safeObjectForKey:@"proteinWeightMax"]floatValue];
-    self . proteinWeightMin      = [[dict safeObjectForKey:@"proteinWeightMin"]floatValue];
+    self . proteinWeight         = [[dict safeObjectForKey:@"proteinWeight"]doubleValue];
+    self . proteinWeightMax      = [[dict safeObjectForKey:@"proteinWeightMax"]doubleValue];
+    self . proteinWeightMin      = [[dict safeObjectForKey:@"proteinWeightMin"]doubleValue];
     self . proteinLevel          = [[dict safeObjectForKey:@"proteinLevel"]intValue];
   
     
-    self . mBone                 = [[dict safeObjectForKey:@"mBone"]floatValue];
-    self . boneWeight            = [[dict safeObjectForKey:@"boneWeight"]floatValue];
-    self . boneWeightMax         = [[dict safeObjectForKey:@"boneWeightMax"]floatValue];
-    self . boneWeightMin         = [[dict safeObjectForKey:@"boneWeightMin"]floatValue];
+    self . mBone                 = [[dict safeObjectForKey:@"mBone"]doubleValue];
+    self . boneWeight            = [[dict safeObjectForKey:@"boneWeight"]doubleValue];
+    self . boneWeightMax         = [[dict safeObjectForKey:@"boneWeightMax"]doubleValue];
+    self . boneWeightMin         = [[dict safeObjectForKey:@"boneWeightMin"]doubleValue];
     self . boneLevel             = [[dict safeObjectForKey:@"boneLevel"]intValue];
  
     
-    self . mMuscle               = [[dict safeObjectForKey:@"mMuscle"]floatValue];
-    self . muscleWeight          = [[dict safeObjectForKey:@"muscleWeight"]floatValue];
-    self . muscleWeightMax       = [[dict safeObjectForKey:@"muscleWeightMax"]floatValue];
-    self . muscleWeightMin       = [[dict safeObjectForKey:@"muscleWeightMin"]floatValue];
+    self . mMuscle               = [[dict safeObjectForKey:@"mMuscle"]doubleValue];
+    self . muscleWeight          = [[dict safeObjectForKey:@"muscleWeight"]doubleValue];
+    self . muscleWeightMax       = [[dict safeObjectForKey:@"muscleWeightMax"]doubleValue];
+    self . muscleWeightMin       = [[dict safeObjectForKey:@"muscleWeightMin"]doubleValue];
     self . muscleLevel           = [[dict safeObjectForKey:@"muscleLevel"]intValue];
     
 
     self . mCalorie              = [[dict safeObjectForKey:@"mCalorie"]intValue];
-    self . fatPercentage         = [[dict safeObjectForKey:@"fatPercentage"]floatValue]*100;
+    self . fatPercentage         = [[dict safeObjectForKey:@"fatPercentage"]doubleValue]*100;
     self . fatPercentageMax      = [[dict safeObjectForKey:@"fatPercentageMax"]doubleValue]*100;
     self . fatPercentageMin      = [[dict safeObjectForKey:@"fatPercentageMin"]doubleValue]*100;
     self . fatPercentageLevel    = [[dict safeObjectForKey:@"fatPercentageLevel"]intValue];
@@ -92,15 +92,15 @@ static HealthDetailsItem *item;
 
     
     self . boneMuscleLevel       = [[dict safeObjectForKey:@"boneMuscleLevel"]intValue];
-    self . boneMuscleWeight      = [[dict safeObjectForKey:@"boneMuscleWeight"]floatValue];
-    self . boneMuscleWeightMax   = [[dict safeObjectForKey:@"boneMuscleWeightMax"]floatValue];
-    self . boneMuscleWeightMin   = [[dict safeObjectForKey:@"boneMuscleWeightMin"]floatValue];
+    self . boneMuscleWeight      = [[dict safeObjectForKey:@"boneMuscleWeight"]doubleValue];
+    self . boneMuscleWeightMax   = [[dict safeObjectForKey:@"boneMuscleWeightMax"]doubleValue];
+    self . boneMuscleWeightMin   = [[dict safeObjectForKey:@"boneMuscleWeightMin"]doubleValue];
     self . boneLevel             = [[dict safeObjectForKey:@"boneLevel"]intValue];
     
-    self . standardWeight          = [[dict safeObjectForKey:@"standardWeight"]floatValue];
-    self . weightControl           = [[dict safeObjectForKey:@"weightControl"]floatValue];
-    self . lbm                     = [[dict safeObjectForKey:@"lbm"]floatValue];
-    self . fatControl              = [[dict safeObjectForKey:@"fatControl"]floatValue];
+    self . standardWeight          = [[dict safeObjectForKey:@"standardWeight"]doubleValue];
+    self . weightControl           = [[dict safeObjectForKey:@"weightControl"]doubleValue];
+    self . lbm                     = [[dict safeObjectForKey:@"lbm"]doubleValue];
+    self . fatControl              = [[dict safeObjectForKey:@"fatControl"]doubleValue];
 
     
     self . normal                = [[dict safeObjectForKey:@"normal"]intValue];
@@ -111,9 +111,23 @@ static HealthDetailsItem *item;
     self . age                     = [[dict safeObjectForKey:@"age"]intValue];
 
     self . ranking                 = [[dict safeObjectForKey:@"ranking"]intValue];
-    self . percent                 = [[dict safeObjectForKey:@"percent"]floatValue];
-    self . myScore                 = [[dict safeObjectForKey:@"score"]floatValue];
+    self . percent                 = [[dict safeObjectForKey:@"percent"]doubleValue];
+    self . myScore                 = [[dict safeObjectForKey:@"score"]doubleValue];
     
+    
+    self.musclePercentage           = self.muscleWeight*100/self.weight;
+    self.proteinPercentage          = self.proteinWeight*100/self.weight;
+    self.boneMusclePercentage       = self.boneMuscleWeight*100/self.weight;
+    self.waterPercentage            = self.waterWeight*100/self.weight;
+//    self.boneMuscleWeightMaxp       = self.boneMuscleWeightMax *100/self.standardWeight;
+//    self.boneMuscleWeightMinP       = self.boneMuscleWeightMin *100/self.standardWeight;
+//    self.muscleWeightMaxP           = self.muscleWeightMax     *100/self.standardWeight;
+//    self.muscleWeightMinP           = self.muscleWeightMin     *100/self.standardWeight;
+//    self.proteinWeightMaxP          = self.proteinWeightMax    *100/self.standardWeight;
+//    self.proteinWeightMinP          = self.proteinWeightMin    *100/self.standardWeight;
+//    self.waterWeightMaxP            = self.waterWeightMax      *100/self.standardWeight;
+//    self.waterWeightMinP            = self.waterWeightMin      *100/self.standardWeight;
+
 }
 
 

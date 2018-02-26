@@ -13,6 +13,7 @@
 #import "UpDateOrderCell.h"
 #import "PublicCell.h"
 #import "IntegralOrderViewController.h"
+#import "PaySuccessViewController.h"
 @interface IntegralOrderUpdateViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
@@ -89,7 +90,7 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObject:[UserModel shareInstance].userId forKey:@"userId"];
     
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/orderList/getDefaultAddress.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/order/getDefaultAddress.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
         DLog(@"success --%@",dic);
         [addressDict setDictionary:[dic objectForKey:@"data"]];
         [self.tableview reloadData];
@@ -116,7 +117,7 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     [param setObject:[self getWarehousingUpdateInfo] forKey:@"products"];
     [param setObject:proviceId forKey:@"proviceId"];
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/warehouseno/getWarehouseNo.do" HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/orderList/getWarehouseNo.do " HiddenProgress:NO paramters:param success:^(NSDictionary *dic) {
         NSDictionary * dict = [dic safeObjectForKey:@"data"];
         warehouseNo = [dict safeObjectForKey:@"warehouseNo"];
     } failure:^(NSError *error) {
@@ -318,27 +319,34 @@
         NSDictionary * dataDic = [dic safeObjectForKey:@"data"];
         float price = [[dataDic safeObjectForKey:@"payableAmount"]floatValue];
         if (price==0) {
-            IntegralOrderViewController * ordVC = [[IntegralOrderViewController alloc]init];
-            ordVC.hidesBottomBarWhenPushed = YES;
-            NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
-            [arr removeLastObject];
-            [arr addObject:ordVC];
-            [self.navigationController setViewControllers:arr];
-
+            
+            
+            PaySuccessViewController * succ = [[PaySuccessViewController alloc]init];
+            succ.orderType = 5;
+            succ.paySuccess = YES;
+            [self.navigationController pushViewController:succ animated:YES];
+            
+            //            IntegralOrderViewController * ordVC = [[IntegralOrderViewController alloc]init];
+            //            ordVC.hidesBottomBarWhenPushed = YES;
+            //            NSMutableArray * arr = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+            //            [arr removeLastObject];
+            //            [arr addObject:ordVC];
+            //            [self.navigationController setViewControllers:arr];
+            
             
         }else{
-        BaseWebViewController *web = [[BaseWebViewController alloc]init];
-        web.urlStr = @"app/checkstand.html";
-        web.payableAmount = [dataDict safeObjectForKey:@"payableAmount"];
-        //payType 1 消费者订购 2 配送订购 3 服务订购 4 充值 5积分购买
-        web.payType =5;
-        web.opt =1;
-        web.integral = @"1";
-        web.orderNo = [dataDict safeObjectForKey:@"orderNo"];
-        web.title  =@"收银台";
-        [self.navigationController pushViewController:web animated:YES];
+            BaseWebViewController *web = [[BaseWebViewController alloc]init];
+            web.urlStr = @"app/checkstand.html";
+            web.payableAmount = [dataDict safeObjectForKey:@"payableAmount"];
+            //payType 1 消费者订购 2 配送订购 3 服务订购 4 充值 5积分购买
+            web.payType =5;
+            web.opt =1;
+            web.integral = @"1";
+            web.orderNo = [dataDict safeObjectForKey:@"orderNo"];
+            web.title  =@"收银台";
+            [self.navigationController pushViewController:web animated:YES];
         }
-        
+
         
     } failure:^(NSError *error) {
         //        [[UserModel shareInstance]showErrorWithStatus:@"提交失败"];

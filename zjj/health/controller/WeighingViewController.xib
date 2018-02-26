@@ -143,7 +143,7 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlU-6Y-cdR">
                     <rect key="frame" x="0.0" y="62" width="375" height="605"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未能成功连接脂将军，请重新连接它。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srx-GA-zre">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未能成功连接体脂称，请重新连接它。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srx-GA-zre">
                             <rect key="frame" x="112.5" y="277.5" width="150" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="1Jn-xw-caq"/>

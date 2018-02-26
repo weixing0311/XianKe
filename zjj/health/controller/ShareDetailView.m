@@ -191,11 +191,11 @@
     
     self.value3lb.text = [NSString stringWithFormat:@"%.1f",item.visceralFatPercentage];
     self.status3lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_VISCERALFAT item:item];
-    self.value4lb.text = [NSString stringWithFormat:@"%.1fkg",item.muscleWeight];
+    self.value4lb.text = [NSString stringWithFormat:@"%.1f%%",item.musclePercentage];
     self.status4lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_MUSCLE item:item];
     
     
-    self.value5lb.text = [NSString stringWithFormat:@"%.1fkg",item.proteinWeight];
+    self.value5lb.text = [NSString stringWithFormat:@"%.1f%%",item.proteinPercentage];
     self.status5lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_PROTEIN item:item];
     
     self.value6lb.text = [NSString stringWithFormat:@"%.1fkg",item.boneWeight];
@@ -203,30 +203,45 @@
     
     self.value7lb.text = [NSString stringWithFormat:@"%.1f",item.bmi];
     self.status7lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BMI item:item];
-    self.value8lb.text = [NSString stringWithFormat:@"%.1fkg",item.boneMuscleWeight];
+    self.value8lb.text = [NSString stringWithFormat:@"%.1f%%",item.boneMusclePercentage];
     self.status8lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_BONEMUSCLE item:item];
     
     
-    self.value9lb.text = [NSString stringWithFormat:@"%.1fkg",item.waterWeight];
+    self.value9lb.text = [NSString stringWithFormat:@"%.1f%%",item.waterPercentage];
     self.status9lb.text = [self getHealthDetailTextWithStatus:IS_MODEL_WATER item:item];
 
         
         
     
     self.status1lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FATPERCENT Level:item.fatPercentageLevel];
+    
     self.status2lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_FAT Level:item.fatWeightLevel];
+    
     self.status3lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_VISCERALFAT Level: item.visceralFatPercentageLevel];
+    
     self.status4lb.backgroundColor = [self getColorWithString:self.status4lb.text];
+    
     self.status5lb.backgroundColor = [self getColorWithString:self.status5lb.text];
+    
     self.status6lb.backgroundColor = [self getColorWithString:self.status6lb.text];
-    self.status7lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level: item.bmiLevel+1];
+    
+    self.status7lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_BMI Level: item.bmiLevel];
+    
     self.status8lb.backgroundColor = [self getColorWithString:self.status8lb.text];
+    
     self.status9lb.backgroundColor = [[HealthModel shareInstance] getHealthColorWithStatus:IS_MODEL_WATER Level: item.waterLevel];
 
     
     
     
     float visceral = 4;
+    if ([SubUserItem shareInstance].sex ==1 )
+    {
+        visceral = 6;
+    }else{
+        visceral = 4;
+    }
+
     double fatPercentage = item.fatPercentageMin+(item.fatPercentageMax-item.fatPercentageMin)/2;
 
     
@@ -310,55 +325,55 @@
         switch (item.weightLevel) {
             case 1:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，提醒您补充营养也要把握好尺度，不要被肥胖趁虚而入奥。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，fabs您补充营养也要把握好尺度，不要被肥胖趁虚而入奥。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，建议您保证三餐必须的营养摄入，不要为了身材而不顾健康奥。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，建议fabs证三餐必须的营养摄入，不要为了身材而不顾健康奥。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
             case 2:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%1.fkg，建议您注意饮食，不要被肥胖趁虚而入奥。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，fabs上升%1.fkg，建议您注意饮食，不要被肥胖趁虚而入奥。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，建议您保证三餐必须的营养摄入，不要为了身材而不顾健康奥。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，建议fabs证三餐必须的营养摄入，不要为了身材而不顾健康奥。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
             case 3:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注意饮食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注fabs食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体fabs降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
             case 4:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注意饮食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注fabs食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体fabs降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
             case 5:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注意饮食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注fabs食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体fabs降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
             case 6:
                 if (item.weight-item.lastWeight>0) {
-                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注意饮食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体重上升%.1fkg，建议您注fabs食，每餐少油少盐，并进行适当运动以减轻身体负担。",fabs(item.weight-item.lastWeight)];
                     
                 }else{
-                    return [NSString stringWithFormat:@"与首次相比，体重下降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabsf(item.weight-item.lastWeight)];
+                    return [NSString stringWithFormat:@"与首次相比，体fabs降%.1fkg，继续加油，坚持下去你就会收获更好的自己。",fabs(item.weight-item.lastWeight)];
                     
                 }
                 break;
@@ -539,7 +554,7 @@
 -(UIColor *)getColorWithString:(NSString *)string
 {
     
-    if ([string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]) {
+    if ([string isEqualToString:@"低"]||[string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]) {
         return warningColor;
     }
     else if ([string isEqualToString:@"正常"])

@@ -24,11 +24,11 @@ static ShareHealthItem *item;
     self.DataId =[[dict safeObjectForKey:@"DataId"]intValue];//评测数据id
     self.userId =[[dict safeObjectForKey:@"userId"]intValue];//
     self.subUserId =[[dict safeObjectForKey:@"subUserId"]intValue];//
-    self.score =[[dict safeObjectForKey:@"score"]floatValue]; //健康得分
-    self.weight =[[dict safeObjectForKey:@"weight"]floatValue];// 体重
-    self.bmr =[[dict safeObjectForKey:@"bmr"]floatValue];// 基础代谢率
+    self.score =[[dict safeObjectForKey:@"score"]doubleValue]; //健康得分
+    self.weight =[[dict safeObjectForKey:@"weight"]doubleValue];// 体重
+    self.bmr =[[dict safeObjectForKey:@"bmr"]doubleValue];// 基础代谢率
     self.bodyAge =[[dict safeObjectForKey:@"bodyAge"]intValue];// 身体年龄
-    self.bmi =[[dict safeObjectForKey:@"bmi"]floatValue];// 体质指数
+    self.bmi =[[dict safeObjectForKey:@"bmi"]doubleValue];// 体质指数
     self.warn =[[dict safeObjectForKey:@"warn"]intValue];//
     self.normal =[[dict safeObjectForKey:@"normal"]intValue];//
     self.serious =[[dict safeObjectForKey:@"serious"]intValue];//
@@ -37,56 +37,63 @@ static ShareHealthItem *item;
     
     self.visceralFatPercentageLevel =[[dict safeObjectForKey:@"visceralFatPercentageLevel"]intValue];//内脂判定标准
     self.mVisceralFat = [[dict safeObjectForKey:@"mVisceralFat"]intValue];// 内脏脂肪
-    self.visceralFatPercentage =[[dict safeObjectForKey:@"visceralFatPercentage"]floatValue];//内脏脂肪指数
+    self.visceralFatPercentage =[[dict safeObjectForKey:@"visceralFatPercentage"]doubleValue];//内脏脂肪指数
     
-    self.mFat =[[dict safeObjectForKey:@"mFat"]floatValue];// 体脂
+    self.mFat =[[dict safeObjectForKey:@"mFat"]doubleValue];// 体脂
     self.fatWeightLevel =[[dict safeObjectForKey:@"fatWeightLevel"]intValue];//脂肪重判定标准
-    self.fatWeight =[[dict safeObjectForKey:@"fatWeight"]floatValue];//脂肪重
-    self.fatWeightMax =[[dict safeObjectForKey:@"fatWeightMax"]floatValue];// 脂肪重正常范围上限
-    self.fatWeightMin =[[dict safeObjectForKey:@"fatWeightMin"]floatValue];// 脂肪重正常范围下限
+    self.fatWeight =[[dict safeObjectForKey:@"fatWeight"]doubleValue];//脂肪重
+    self.fatWeightMax =[[dict safeObjectForKey:@"fatWeightMax"]doubleValue];// 脂肪重正常范围上限
+    self.fatWeightMin =[[dict safeObjectForKey:@"fatWeightMin"]doubleValue];// 脂肪重正常范围下限
     
-    self.fatPercentage =[[dict safeObjectForKey:@"fatPercentage"]floatValue];// 体脂百分比
-    self.fatPercentageMax =[[dict safeObjectForKey:@"fatPercentageMax"]floatValue];// 体脂指数正常范围上限
-    self.fatPercentageMin =[[dict safeObjectForKey:@"fatPercentageMin"]floatValue];// 体脂指数正常范围下限
+    self.fatPercentage =[[dict safeObjectForKey:@"fatPercentage"]doubleValue];// 体脂百分比
+    self.fatPercentageMax =[[dict safeObjectForKey:@"fatPercentageMax"]doubleValue];// 体脂指数正常范围上限
+    self.fatPercentageMin =[[dict safeObjectForKey:@"fatPercentageMin"]doubleValue];// 体脂指数正常范围下限
     
     
     self.weightLevel =[[dict safeObjectForKey:@"weightLevel"]intValue];//体重判定标准
     self.bodyLevel =[[dict safeObjectForKey:@"bodyLevel"]intValue];//体型判定标准
     self.fatPercentageLevel =[[dict safeObjectForKey:@"fatPercentageLevel"]intValue];//体脂百分比判定标准
     
-    self.mMuscle =[[dict safeObjectForKey:@"mMuscle"]floatValue];// 肌肉
-    self.muscleWeight =[[dict safeObjectForKey:@"muscleWeight"]floatValue];// 肌肉重量
+    self.mMuscle =[[dict safeObjectForKey:@"mMuscle"]doubleValue];// 肌肉
+    self.muscleWeight =[[dict safeObjectForKey:@"muscleWeight"]doubleValue];// 肌肉重量
     self.muscleLevel =[[dict safeObjectForKey:@"muscleLevel"]intValue];//肌肉判定标准
-    self.muscleWeightMax =[[dict safeObjectForKey:@"muscleWeightMax"]floatValue];// 肌肉最大重量
-    self.muscleWeightMin =[[dict safeObjectForKey:@"muscleWeightMin"]floatValue];// 肌肉最小重量
+    self.muscleWeightMax =[[dict safeObjectForKey:@"muscleWeightMax"]doubleValue];// 肌肉最大重量
+    self.muscleWeightMin =[[dict safeObjectForKey:@"muscleWeightMin"]doubleValue];// 肌肉最小重量
     
-    self.mBone =[[dict safeObjectForKey:@"mBone"]floatValue];// 骨骼肌
-    self.boneMuscleWeight =[[dict safeObjectForKey:@"boneMuscleWeight"]floatValue];// 骨骼肌
+    self.mBone =[[dict safeObjectForKey:@"mBone"]doubleValue];// 骨骼肌
+    self.boneMuscleWeight =[[dict safeObjectForKey:@"boneMuscleWeight"]doubleValue];// 骨骼肌
     self.boneMuscleLevel =[[dict safeObjectForKey:@"boneMuscleLevel"]intValue];//骨骼肌判定标准
-    self.boneMuscleWeightMax =[[dict safeObjectForKey:@"boneMuscleWeightMax"]floatValue];// 骨骼肌正常范围上限
-    self.boneMuscleWeightMin =[[dict safeObjectForKey:@"boneMuscleWeightMin"]floatValue];// 骨骼肌正常范围下限
+    self.boneMuscleWeightMax =[[dict safeObjectForKey:@"boneMuscleWeightMax"]doubleValue];// 骨骼肌正常范围上限
+    self.boneMuscleWeightMin =[[dict safeObjectForKey:@"boneMuscleWeightMin"]doubleValue];// 骨骼肌正常范围下限
     
-    self.waterWeight =[[dict safeObjectForKey:@"waterWeight"]floatValue];// 细胞总水
-    self.waterWeightMax =[[dict safeObjectForKey:@"waterWeightMax"]floatValue];// 细胞总水正常范围上限
-    self.waterWeightMin =[[dict safeObjectForKey:@"waterWeightMin"]floatValue];// 细胞总水正常范围下限
-    self.mWater =[[dict safeObjectForKey:@"mWater"]floatValue];// 水分
-    self.waterPercentage =[[dict safeObjectForKey:@"waterPercentage"]floatValue];// 水分率
+    self.waterWeight =[[dict safeObjectForKey:@"waterWeight"]doubleValue];// 细胞总水
+    self.waterWeightMax =[[dict safeObjectForKey:@"waterWeightMax"]doubleValue];// 细胞总水正常范围上限
+    self.waterWeightMin =[[dict safeObjectForKey:@"waterWeightMin"]doubleValue];// 细胞总水正常范围下限
+    self.mWater =[[dict safeObjectForKey:@"mWater"]doubleValue];// 水分
+    self.waterPercentage =[[dict safeObjectForKey:@"waterPercentage"]doubleValue];// 水分率
     self.waterLevel =[[dict safeObjectForKey:@"waterLevel"]intValue];//水分判定标准
     
-    self.proteinWeight =[[dict safeObjectForKey:@"proteinWeight"]floatValue];// 蛋白质重量
-    self.proteinWeightMax =[[dict safeObjectForKey:@"proteinWeightMax"]floatValue];// 蛋白质最大重量
-    self.proteinWeightMin =[[dict safeObjectForKey:@"proteinWeightMin"]floatValue];// 蛋白质最小重量
+    self.proteinWeight =[[dict safeObjectForKey:@"proteinWeight"]doubleValue];// 蛋白质重量
+    self.proteinWeightMax =[[dict safeObjectForKey:@"proteinWeightMax"]doubleValue];// 蛋白质最大重量
+    self.proteinWeightMin =[[dict safeObjectForKey:@"proteinWeightMin"]doubleValue];// 蛋白质最小重量
     self.proteinLevel =[[dict safeObjectForKey:@"proteinLevel"]intValue];//蛋白质判定标准
     
-    self.boneWeight =[[dict safeObjectForKey:@"boneWeight"]floatValue];// 骨质重
+    self.boneWeight =[[dict safeObjectForKey:@"boneWeight"]doubleValue];// 骨质重
     self.boneLevel =[[dict safeObjectForKey:@"boneLevel"]intValue];//骨重判定标准
-    self.boneWeightMax =[[dict safeObjectForKey:@"boneWeightMax"]floatValue];// 骨质重正常范围上限
-    self.boneWeightMin =[[dict safeObjectForKey:@"boneWeightMin"]floatValue];// 骨质重正常范围下限
+    self.boneWeightMax =[[dict safeObjectForKey:@"boneWeightMax"]doubleValue];// 骨质重正常范围上限
+    self.boneWeightMin =[[dict safeObjectForKey:@"boneWeightMin"]doubleValue];// 骨质重正常范围下限
     
     
     
     self.createTime =[[dict safeObjectForKey:@"createTime"] dateyyyymmddhhmmss ];//检测时间
-    self.mCalorie = [[dict safeObjectForKey:@"mCalorie"]floatValue];// 脂肪量
+    self.mCalorie = [[dict safeObjectForKey:@"mCalorie"]doubleValue];// 脂肪量
+
+    
+    
+    self.musclePercentage           = self.muscleWeight*100/self.weight;
+    self.proteinPercentage          = self.proteinWeight*100/self.weight;
+    self.boneMusclePercentage       = self.boneMuscleWeight*100/self.weight;
+    self.waterPercentage            = self.waterWeight*100/self.weight;
 
 }
 

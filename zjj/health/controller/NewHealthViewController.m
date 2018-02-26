@@ -21,6 +21,7 @@
 #import "HistoryTotalViewController.h"
 #import "NewHealthCell.h"
 #import "HealthMainCell.h"
+#import "GrowthStstemViewController.h"
 @interface NewHealthViewController ()<userListDelegate,weightingDelegate,UITableViewDelegate,UITableViewDataSource,newHealthCellDelegate>
 @property (nonatomic,strong)UIView * userBackView;
 @property (nonatomic,strong)UserListView * userListView;
@@ -35,6 +36,8 @@
     NSMutableArray * headerArr;
     BOOL isrefresh;
     BOOL enterDetailPage;///称重完成后进去详情页面
+    UIView * bgView;
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -50,6 +53,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushIntegralPage) name:@"QDSuccess" object:nil];
+
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     headerArr = [NSMutableArray array];
     self.tableview.delegate = self;
@@ -71,7 +76,8 @@
     //删除评测数据返回后刷新
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshPcInfo) name:@"deletePCINFO" object:nil];
     [self getHeaderInfo];
-    
+//    [self buildProgressView];
+
     // Do any additional setup after loading the view from its nib.
 }
 -(void)headerRereshing
@@ -285,6 +291,47 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)buildProgressView
+{
+    bgView =[[UIView alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT)];
+    bgView.backgroundColor = RGBACOLOR(0, 0, 0, 0.5);
+    
+    UIButton * button =[[UIButton alloc]initWithFrame:CGRectMake(30, 100, JFA_SCREEN_WIDTH-60,(JFA_SCREEN_WIDTH-60)/0.875)];
+    [button setBackgroundImage:getImage(@"noti_down_app_") forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(didDownLoadApp) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:button];
+    
+    UIButton * closeBtn =[[UIButton alloc]initWithFrame:CGRectMake(JFA_SCREEN_WIDTH/2-25, (JFA_SCREEN_WIDTH-60)/0.875+120, 50,50)];
+    [closeBtn setImage: getImage(@"close_whte_") forState:UIControlStateNormal];
+    [closeBtn addTarget:self action:@selector(hiddenMe) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:closeBtn];
+    
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    
+    [window addSubview:bgView];
+    
+}
+
+-(void)didDownLoadApp
+{
+    bgView.hidden = YES;
+    [bgView removeFromSuperview];
+    
+    [[UIApplication sharedApplication ] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1335471147"]];
+    
+}
+-(void)hiddenMe
+{
+    bgView.hidden = YES;
+    [bgView removeFromSuperview];
+}
+-(void)pushIntegralPage
+{
+    GrowthStstemViewController * growth = [[GrowthStstemViewController alloc]init];
+    growth.isShowQDProgress = YES;
+    growth.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:growth animated:YES];
 }
 
 /*
