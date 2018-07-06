@@ -92,8 +92,8 @@
 
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
     [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-    [params setObject:[NSString encryptString: self.mobiletf.text] forKey:@"phone"];
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/evaluatUser/bindingCoach.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
+    [params setObject:self.mobiletf.text forKey:@"phone"];
+    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/user/bindingCoach.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         self.addView .hidden = YES;
         DLog(@"dic --%@",dic);
         [UserModel shareInstance].superiorDict = [dic safeObjectForKey:@"data"];

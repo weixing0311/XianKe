@@ -11,6 +11,5 @@
 @interface NewMy2Cell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titlelb;
-@property (weak, nonatomic) IBOutlet UILabel *notifationCountLb;
 
 @end

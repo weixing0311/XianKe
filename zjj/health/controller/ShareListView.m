@@ -205,7 +205,7 @@
     if ([string isEqualToString:@"偏低"]||[string isEqualToString:@"偏高"]||[string isEqualToString:@"超标"]||[string isEqualToString:@"低"]) {
         return warningColor;
     }
-    else if ([string isEqualToString:@"正常"])
+    else if ([string isEqualToString:@"正常"]||[string isEqualToString:@"标准"])
     {
         return normalColor;
     }else{

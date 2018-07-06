@@ -82,8 +82,9 @@ typedef enum {
 
 @property (nonatomic,assign) int                userDays;//注册时长
 @property (nonatomic,assign) double              subtractWeight;//已减脂重量
+@property (nonatomic,assign) double              targetWeight;//目标体重
 
-
+@property (nonatomic,assign) double              score;
 
 
 -(double)getFatWeightPoorWithItem:(HealthItem*)item;

@@ -920,7 +920,7 @@
 
 -(void)didShowBigImageWithCell:(PublicArticleCell*)cell index:(NSInteger)index
 {
-    [self showBigImageViewWithIndex:cell.tag page:index];
+    [self showBigImageViewWithIndex:cell.tag page:index ];
 
 }
 -(void)didJBWithCell:(PublicArticleCell *)cell
@@ -1098,7 +1098,7 @@
 }
 -(void)didShowBigImageWithBigCell:(CommunityCell*)cell index:(NSInteger)index
 {
-    [self showBigImageViewWithIndex:cell.tag page:index];
+    [self showBigImageViewWithIndex:cell.tag page:index ];
 }
 -(void)didJBWithBigCell:(CommunityCell *)cell
 {
@@ -1128,12 +1128,16 @@
 
 -(void)showBigImageViewWithIndex:(NSInteger)index page:(int)page
 {
-    CommunityModel * item = [_dataArray objectAtIndex:index];
-    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
-    fc.images = [NSMutableArray arrayWithArray:item.pictures];
-    fc.page = page;
     
-    [self presentViewController:fc animated:YES completion:nil];
+    
+    CommunityModel * item = [_dataArray objectAtIndex:index];
+    [self showBigImageWithArray:[NSMutableArray arrayWithArray:item.pictures] imageView:nil index:page];
+
+//    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
+//    fc.images = [NSMutableArray arrayWithArray:item.pictures];
+//    fc.page = page;
+//
+//    [self presentViewController:fc animated:YES completion:nil];
 
 }
 -(void)didJbWithIndex:(NSInteger)index

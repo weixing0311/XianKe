@@ -12,7 +12,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.backgroundColor = RGBACOLOR(255/225.0f, 255/225.0f, 255/225.0f, .3);
+//    self.backgroundColor = RGBACOLOR(255/225.0f, 255/225.0f, 255/225.0f, .5);
 
     
     
@@ -22,8 +22,21 @@
 }
 -(void)setImageWithUrl:(NSString * )imageUrl
 {
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@"default"]];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:getImage(@"default") completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if (!error) {
+            self.imageView.image = image;
+        }
+    }];
+    
+    
+//    [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
+    self.imageView.backgroundColor = HEXCOLOR(0x000000);
 
+}
+- (IBAction)showUrlPage:(id)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"kShowAdcPage" object:nil userInfo:self.infoDict];
+    [self didCloseView:nil];
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.

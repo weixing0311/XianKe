@@ -24,8 +24,6 @@
 {
     NSMutableDictionary * addressDict;
     NSString * warehouseNo;//仓储编号
-
-
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -233,9 +231,7 @@
                 }else{
                     cell.detailTextLabel.text =[NSString stringWithFormat:@"%.2f元",[priceStr floatValue]*_goodsCount];
                 }
-                
             }
-
         }
         else if (indexPath.row ==1)
         {

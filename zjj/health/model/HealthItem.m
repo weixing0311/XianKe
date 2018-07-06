@@ -55,8 +55,8 @@
     self.subtractWeight             = [[dict safeObjectForKey:@"subtractWeight"]doubleValue];
     self.userDays                   = [[dict safeObjectForKey:@"userDays"]intValue];
     
-    
-    
+    self.targetWeight               =[[dict safeObjectForKey:@"targetWeight"]doubleValue];
+    self.score                      =[[dict safeObjectForKey:@"score"]doubleValue];
 }
 
 

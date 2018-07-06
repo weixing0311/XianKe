@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderViewController">
             <connections>
+                <outlet property="orderEmptyView" destination="BQJ-oF-h7u" id="VvG-aV-aLe"/>
                 <outlet property="segment" destination="wrT-PJ-vFw" id="4xu-xc-uv8"/>
                 <outlet property="tableview" destination="TPS-XG-EXu" id="MEQ-xj-sUo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -29,6 +31,36 @@
                     <rect key="frame" x="0.0" y="106" width="375" height="561"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQJ-oF-h7u">
+                    <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="isEmpty.png" translatesAutoresizingMaskIntoConstraints="NO" id="h4c-Nc-RUo">
+                            <rect key="frame" x="147.5" y="204.5" width="90" height="94"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="90" id="CsN-k2-4cC"/>
+                                <constraint firstAttribute="width" secondItem="h4c-Nc-RUo" secondAttribute="height" multiplier="30.5:32" id="OOl-bQ-1DS"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无订单" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlu-ya-ehN">
+                            <rect key="frame" x="20" y="318" width="335" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="jZB-nw-B4B"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="h4c-Nc-RUo" firstAttribute="centerX" secondItem="BQJ-oF-h7u" secondAttribute="centerX" constant="5" id="C5P-Eu-KGb"/>
+                        <constraint firstItem="tlu-ya-ehN" firstAttribute="top" secondItem="h4c-Nc-RUo" secondAttribute="bottom" constant="20" id="Z4p-I1-Qff"/>
+                        <constraint firstAttribute="trailing" secondItem="tlu-ya-ehN" secondAttribute="trailing" constant="20" id="m34-Kb-aeB"/>
+                        <constraint firstItem="h4c-Nc-RUo" firstAttribute="centerY" secondItem="BQJ-oF-h7u" secondAttribute="centerY" constant="-30" id="pae-fz-WuN"/>
+                        <constraint firstItem="tlu-ya-ehN" firstAttribute="centerX" secondItem="BQJ-oF-h7u" secondAttribute="centerX" id="qLs-w7-9Im"/>
+                        <constraint firstItem="tlu-ya-ehN" firstAttribute="leading" secondItem="BQJ-oF-h7u" secondAttribute="leading" constant="20" id="wOi-yP-jJQ"/>
+                    </constraints>
+                </view>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="wrT-PJ-vFw">
                     <rect key="frame" x="0.0" y="64" width="375" height="41"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,15 +86,22 @@
                 <constraint firstAttribute="bottom" secondItem="TPS-XG-EXu" secondAttribute="bottom" id="4Za-rx-ody"/>
                 <constraint firstAttribute="bottom" secondItem="pEQ-Zr-cad" secondAttribute="bottom" id="5gg-dv-X5n"/>
                 <constraint firstAttribute="trailing" secondItem="wrT-PJ-vFw" secondAttribute="trailing" id="A1W-oP-IbP"/>
+                <constraint firstAttribute="trailing" secondItem="BQJ-oF-h7u" secondAttribute="trailing" id="AIU-HR-sCO"/>
                 <constraint firstItem="TPS-XG-EXu" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Md1-dL-yEL"/>
                 <constraint firstItem="TPS-XG-EXu" firstAttribute="top" secondItem="wrT-PJ-vFw" secondAttribute="bottom" constant="2" id="Yy1-6f-DPu"/>
                 <constraint firstItem="wrT-PJ-vFw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="bFn-TK-cMn"/>
+                <constraint firstItem="BQJ-oF-h7u" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bsx-gP-rU5"/>
                 <constraint firstItem="pEQ-Zr-cad" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="g8E-SD-7Wo"/>
                 <constraint firstAttribute="trailing" secondItem="pEQ-Zr-cad" secondAttribute="trailing" id="guc-2e-4to"/>
+                <constraint firstItem="BQJ-oF-h7u" firstAttribute="top" secondItem="wrT-PJ-vFw" secondAttribute="bottom" id="l00-lw-8L3"/>
+                <constraint firstAttribute="bottom" secondItem="BQJ-oF-h7u" secondAttribute="bottom" id="mt0-mi-Q0q"/>
                 <constraint firstItem="wrT-PJ-vFw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o8N-HU-m6q"/>
                 <constraint firstAttribute="trailing" secondItem="TPS-XG-EXu" secondAttribute="trailing" id="syS-xX-Vmb"/>
             </constraints>
             <point key="canvasLocation" x="35.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="isEmpty.png" width="61" height="64"/>
+    </resources>
 </document>

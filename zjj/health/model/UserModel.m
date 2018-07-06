@@ -111,6 +111,7 @@ static UserModel *model;
     [dict safeSetObject: @(self.age )        forKey:@"age"];
     [dict safeSetObject:self.qrcodeImageData forKey:@"qrcodeImageData"];
     [dict safeSetObject:self.qrcodeImageUrl forKey:@"qrcodeImageUrl"];
+    [dict safeSetObject:self.backgroundUrl forKey:@"backgroundUrl"];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [path stringByAppendingPathComponent:@"UserInfo.plist"];
     [dict writeToFile:filePath atomically:YES];
@@ -146,7 +147,7 @@ static UserModel *model;
     }
     self.qrcodeImageData = [dict safeObjectForKey:@"qrcodeImageData"];
     self.qrcodeImageUrl = [dict safeObjectForKey:@"qrcodeImageUrl"];
-    
+    self.backgroundUrl = [dict safeObjectForKey:@"backgroundUrl"];
     
     [[SubUserItem shareInstance]setInfoWithHealthId:self.subId];
 }
@@ -278,6 +279,7 @@ static UserModel *model;
     self.tourismIntegral =[dict safeObjectForKey:@"tourismIntegral"];
     self.qrcodeImageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:self.qrcodeImageUrl]];
     self.superiorDict  = [dict safeObjectForKey:@"parent"];
+    self.backgroundUrl = [dict safeObjectForKey:@"backgroundUrl"];
     [self writeToDoc];
 }
 
@@ -415,7 +417,6 @@ static UserModel *model;
     int  bundleVersion =[[infoDictionary objectForKey:@"CFBundleVersion"]intValue];
     
     [[BaseSservice sharedManager]post1:@"app/isForce/judgeVersion.do" HiddenProgress:NO paramters:nil success:^(NSDictionary *dic) {
-        
         DLog(@"dic --%@",dic);
         NSDictionary * dataDic = [dic safeObjectForKey:@"data"];
        self.updateMessage =[dataDic safeObjectForKey:@"message" ];

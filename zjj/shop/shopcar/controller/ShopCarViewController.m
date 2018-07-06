@@ -25,9 +25,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+
     [self getCarInfo];
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNbColor];

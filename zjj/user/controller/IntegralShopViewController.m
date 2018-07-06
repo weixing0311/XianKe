@@ -28,7 +28,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self getJiFen];
     [self setTBWhiteColor];
-
 }
 
 - (void)viewDidLoad {
@@ -140,20 +139,22 @@
     cell.backgroundColor = [UIColor whiteColor];
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"picture"]] placeholderImage:getImage(@"")];
     cell.titlelb .text = [dict safeObjectForKey:@"viceTitle"];
+    
     NSString * gradeStr =[dict safeObjectForKey:@"grade"];
+    
     if ( [gradeStr isEqualToString:@"0"]||!gradeStr) {
-        cell.secondlb .text = @"无限制";
+        cell.timelb .text = @"无限制";
     }else{
-    cell.secondlb.text = [NSString stringWithFormat:@"%@级以上",[dict safeObjectForKey:@"grade"]];
+    cell.timelb.text = [NSString stringWithFormat:@"%@级以上",[dict safeObjectForKey:@"grade"]];
     }
     
     NSString * restrictionNum = [dict  safeObjectForKey:@"restrictionTimes"];
     
     if ([restrictionNum isEqualToString:@"0"]) {
-        cell.timelb.text = @"";
+        cell.secondlb.text = @"";
     }else{
-        cell.timelb.text = [NSString  stringWithFormat:@"限购%d次",[restrictionNum intValue]];
-        cell.timelb.hidden = NO;
+        cell.secondlb.text = [NSString  stringWithFormat:@"限购%d次",[restrictionNum intValue]];
+        cell.secondlb.hidden = NO;
     }
     
     NSString * priceStr = [dict safeObjectForKey:@"productPrice"];

@@ -17,26 +17,54 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    CGFloat lengths[] = {5,5,5,5};
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();//获取上下文
+//    CGFloat lengths[] = {5,5,5,5};
+//
+//    CGContextRef ctx = UIGraphicsGetCurrentContext();//获取上下文
+//    CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.width/2);  //设置圆心位置
+//    CGFloat radius = self.bounds.size.width/2-25;  //设置半径
+//    CGFloat startA =  M_PI_4*5.7/2;  //圆起点位置
+//    CGFloat endA = M_PI_4*5.7/2 + M_PI * 2*0.8 ;  //圆终点位置
+//    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startA endAngle:endA clockwise:YES];
+//    CGContextSetLineWidth(ctx, 13); //设置线条宽度
+//    [RGBACOLOR(0, 0, 0, 0.5) setStroke]; //设置描边颜色
+////    CGContextSetLineDash(ctx, 0, lengths, 4); //设置线条为 虚线；
+//    CGContextAddPath(ctx, path.CGPath); //把路径添加到上下文
+//    CGContextStrokePath(ctx);  //渲染
+
     CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.width/2);  //设置圆心位置
     CGFloat radius = self.bounds.size.width/2-25;  //设置半径
     CGFloat startA =  M_PI_4*5.7/2;  //圆起点位置
     CGFloat endA = M_PI_4*5.7/2 + M_PI * 2*0.8 ;  //圆终点位置
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startA endAngle:endA clockwise:YES];
-    CGContextSetLineWidth(ctx, 13); //设置线条宽度
-    [[UIColor grayColor] setStroke]; //设置描边颜色
-    CGContextSetLineDash(ctx, 0, lengths, 4); //设置线条为 虚线；
-    CGContextAddPath(ctx, path.CGPath); //把路径添加到上下文
-    CGContextStrokePath(ctx);  //渲染
+    
+    //获取环形路径（画一个圆形，填充色透明，设置线框宽度为13，这样就获得了一个环形）
+    //创建一个track shape layer
+    CAShapeLayer* bgLayer = [CAShapeLayer layer];
+    bgLayer.frame = CGRectMake(0, 0, self.bounds.size.width-40, self.bounds.size.width-40);
+//    bgLayer.lineCap = kCALineCapRound;//指定线的边缘是圆的
+    bgLayer.lineDashPattern = @[@5, @5];
 
+    ///填充色为无色
+    bgLayer.fillColor = [[UIColor clearColor] CGColor];
+    ///指定path的渲染颜色,这里可以设置任意不透明颜色
+    bgLayer.strokeColor = [[UIColor blackColor] CGColor];
+    //背景颜色的透明度
+    bgLayer.opacity = 0.5;
+    //线的宽度
+    bgLayer.lineWidth = 13;
+    UIBezierPath *path3 = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:startA endAngle:endA clockwise:YES];//上面说明过了用来构建圆形
+    bgLayer.path =[path3 CGPath]; //把path传递給layer，然后layer会处理相应的渲染，整个逻辑和CoreGraph是一致的。
+    [self.layer addSublayer:bgLayer];
+
+    
+    
+    
+    
     [self refreshProgressLayer];
     
     [self setMoveTherCircleWithProgress:_progress];
 
 }
-
+//图片做环形运动
 -(void)setMoveTherCircleWithProgress:(double)progress
 {
     
@@ -112,11 +140,12 @@
     //创建一个track shape layer
     _progressLayer = [CAShapeLayer layer];
     _progressLayer.frame = CGRectMake(0, 0, self.bounds.size.width-40, self.bounds.size.width-40);
-    
+//    _progressLayer.lineCap = kCALineCapRound;//指定线的边缘是圆的
+
     ///填充色为无色
     _progressLayer.fillColor = [[UIColor clearColor] CGColor];
     ///指定path的渲染颜色,这里可以设置任意不透明颜色
-    _progressLayer.strokeColor = [[UIColor grayColor] CGColor];
+    _progressLayer.strokeColor = [[UIColor greenColor] CGColor];
     ///画虚线
     _progressLayer.lineDashPattern = @[@5, @5];
     //背景颜色的透明度

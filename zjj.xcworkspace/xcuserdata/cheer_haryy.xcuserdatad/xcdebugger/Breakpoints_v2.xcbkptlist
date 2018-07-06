@@ -50,14 +50,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zjj/shop/mine/controller/SuperiorViewController.m"
-            timestampString = "540954717.449008"
+            filePath = "zjj/shop/order/UpdataOrderViewController.m"
+            timestampString = "543376200.975744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-getQrCodeInfo:"
-            landmarkType = "7">
+            startingLineNumber = "957"
+            endingLineNumber = "957">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -66,13 +64,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "zjj/shop/mine/controller/SuperiorViewController.m"
-            timestampString = "540954717.452346"
+            filePath = "zjj/health/controller/NewHealthHistoryListViewController.m"
+            timestampString = "551694951.5150599"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-getQrCodeInfo:"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "-showShareView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

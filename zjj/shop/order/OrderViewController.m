@@ -15,6 +15,7 @@
 #import "OrderHeader.h"
 #import "BaseWebViewController.h"
 @interface OrderViewController ()<orderFootBtnViewDelegate,orderDetailViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *orderEmptyView;
 @end
 
 @implementation OrderViewController
@@ -24,6 +25,7 @@
     int page;
     int pageSize;
     OrderFootBtnView * footBtn;
+    UISegmentedControl * titleSegment;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -34,6 +36,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"纤客订单";
+    
+    
+    
+    
+    
+    
+    
     [self setTBWhiteColor];
     self.tableview.delegate =self;
     self.tableview.dataSource = self;
@@ -50,6 +59,10 @@
     [self.tableview.mj_header beginRefreshing];
     // Do any additional setup after loading the view from its nib.
 }
+
+
+
+
 -(void)headerRereshing
 {
     [super headerRereshing];
@@ -382,7 +395,11 @@
 - (IBAction)didChangeStatussegment:(UISegmentedControl *)sender {
     
     [self getinfoWithStatus:sender.selectedSegmentIndex];
-    
+        if (_dataArray.count<1) {
+            self.orderEmptyView.hidden = NO;
+        }else{
+            self.orderEmptyView.hidden = YES;
+        }
     [self.tableview reloadData];
 }
 -(void)didClickFirstBtnWithView:(OrderFootBtnView*)view

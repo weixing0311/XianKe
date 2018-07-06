@@ -25,4 +25,5 @@
 -(void)setUpCellWithShopCarCellItem:(shopCarCellItem *)item;
 -(void)setUpInfoWithIntegralDetailModel:(IntegralShopDetailModel *)model;
 -(void)setUpCellWithDict:(NSDictionary *)dic;
+-(void)setUpWbInfoWithDict:(NSDictionary *)dic;
 @end

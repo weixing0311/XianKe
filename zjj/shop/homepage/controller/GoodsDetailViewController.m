@@ -369,13 +369,13 @@
         upd.goodsCount = self.goodsCount;
         [upd.param safeSetObject:@([item.productPrice floatValue]*self.goodsCount) forKey:@"totalPrice"];
         [upd.param safeSetObject:@([item.productPrice floatValue]*self.goodsCount -[self getPreferentialPrice] ) forKey:@"payableAmount"];
-        [upd.param safeSetObject:[self getUpdateInfo] forKey:@"orderItem"];
+        [upd.param safeSetObject:[self getUpInfo] forKey:@"orderItem"];
         
         [self.navigationController pushViewController:upd animated:YES];
 
 }
 //获取上传数据
--(NSString *)getUpdateInfo
+-(NSString *)getUpInfo
 {
     NSMutableDictionary * dic =[NSMutableDictionary dictionary];
     [dic safeSetObject:item.productNo forKey:@"productNo"];

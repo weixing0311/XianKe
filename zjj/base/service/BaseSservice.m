@@ -103,7 +103,7 @@
         
         NSString * statusStr =[dic safeObjectForKey:@"status"];
         int  code =[[dic safeObjectForKey:@"code"]intValue];
-        DLog(@"%@--%@--%@",dic ,[dic objectForKey:@"code"],[dic objectForKey:@"message"]);
+        DLog(@"%@--%@--%@-url=%@",dic ,[dic objectForKey:@"code"],[dic objectForKey:@"message"],url);
        
         
         if (code  ==601) {//登录失效
@@ -118,9 +118,13 @@
                 if (statusStr&&[statusStr isEqualToString:@"success"]) {
                     success(dic);
                 }else{
-                    if ([url isEqualToString:@"app/integral/growthsystem/gainPoints.do"]||[url isEqualToString:@"app/userGreat/queryGreatPerson.do"]||[url isEqualToString:@"app/integral/growthsystem/queryAll.do"]||[url isEqualToString:@"app/integral/growthsystem/queryTaskRule.do"]||isHidden==YES) {
+                    if ([url isEqualToString:@"app/integral/growthsystem/gainPoints.do"]||[url isEqualToString:@"app/userGreat/queryGreatPerson.do"]||
+                        [url isEqualToString:@"app/integral/growthsystem/queryAll.do"]||
+                        [url isEqualToString:@"app/integral/growthsystem/queryTaskRule.do"]||
+                        [url isEqualToString:@"app/evaluatData/queryEvaluatOneDay.do"]||isHidden==YES) {
                         DLog(@"ISHIDDEN=YES url =%@",url);
                     }else{
+                        
                         [[UserModel shareInstance] showInfoWithStatus:[dic objectForKey:@"message"]];
                     }
                     NSError * error = [[NSError alloc]initWithDomain:NSURLErrorDomain code:[[dic objectForKey:@"code"]intValue] userInfo:dic];
@@ -148,6 +152,7 @@
         if ([error code]==-1011) {
             [[UserModel shareInstance]showInfoWithStatus:@"页面丢失--404"];
         }
+        
         failure(error);
     }];    return task;
 }

@@ -14,6 +14,14 @@
 @end
 
 @implementation AddressListViewController
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+//    self.tabBarController.tabBar.hidden = NO;
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNbColor];

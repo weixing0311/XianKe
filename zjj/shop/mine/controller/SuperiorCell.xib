@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hX7-jm-hMb">
@@ -33,7 +33,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRu-tD-CkA">
-                        <rect key="frame" x="169" y="25" width="46" height="21"/>
+                        <rect key="frame" x="169" y="28" width="46" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="BFW-4Y-QYc"/>
                             <constraint firstAttribute="height" constant="21" id="rg1-Lu-VYc"/>
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deV-xr-WpU">
-                        <rect key="frame" x="225" y="25" width="85" height="21"/>
+                        <rect key="frame" x="225" y="28" width="85" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="1g0-v6-lYB"/>
                         </constraints>
@@ -52,7 +52,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17r-2h-iWP">
-                        <rect key="frame" x="169" y="61" width="46" height="21"/>
+                        <rect key="frame" x="169" y="64" width="46" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="46" id="GPM-Jz-Gsb"/>
                             <constraint firstAttribute="height" constant="21" id="M3M-Fq-ccC"/>
@@ -62,7 +62,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEe-xX-qbO">
-                        <rect key="frame" x="225" y="61" width="77" height="21"/>
+                        <rect key="frame" x="225" y="64" width="69" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="6oT-mX-hKc"/>
                         </constraints>
@@ -80,7 +80,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btq-bC-B0r">
-                        <rect key="frame" x="80" y="18" width="1" height="63.5"/>
+                        <rect key="frame" x="80" y="21" width="1" height="58"/>
                         <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="1" id="FTs-R2-SRK"/>
@@ -111,10 +111,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="gradeNamelb" destination="deV-xr-WpU" id="HEj-aJ-aM1"/>
                 <outlet property="headImageView" destination="hX7-jm-hMb" id="fhD-Xy-0dE"/>
                 <outlet property="mblb" destination="ZEe-xX-qbO" id="QuF-Qk-mgI"/>
-                <outlet property="nickNamelb" destination="MRu-tD-CkA" id="eAM-Xa-cHr"/>
+                <outlet property="nickNamelb" destination="deV-xr-WpU" id="ALv-Tm-CpL"/>
             </connections>
         </tableViewCell>
     </objects>

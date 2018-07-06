@@ -51,10 +51,9 @@
 
 //domain
 //正式-生产
-//#define kMyBaseUrl @"https://mall.fitgeneral.com/"
-#define kMyBaseUrl @"https://app.i851.com/"
+//#define kMyBaseUrl @"https://app.i851.com/"
 //测试
-//#define kMyBaseUrl @"http://test123.fitgeneral.com:8104/"
+#define kMyBaseUrl @"https://newxianke.i851.com/"
 //测试域名
 //#define kMyBaseUrl @"http://192.168.1.130:8101/"
 //鹏飞
@@ -64,8 +63,12 @@
 //#define kMyBaseUrl @"http://192.168.1.74:9099/"
 
 //老张
-//#define kMyBaseUrl @"http://192.168.1.64:8080/"
+//#define kMyBaseUrl @"http://192.168.1.94:8080/"
 
+
+//////------REFRERE
+//#define  weChatPayRefere @"test234.i851.com"
+#define  weChatPayRefere @"app.i851.com"
 
 
 #import "GoodsModel.h"

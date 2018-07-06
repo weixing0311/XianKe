@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol adVertisingDelegate;
 @interface AdvertisingView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 -(void)setImageWithUrl:(NSString * )imageUrl;
+@property (nonatomic,strong)NSDictionary * infoDict;
 @end
+
+

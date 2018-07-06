@@ -32,7 +32,7 @@
 {
     [super viewWillAppear:animated];
     [self setTBWhiteColor];
-    self.title = @"纤客商城";
+    self.title = @"商城";
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 
 }

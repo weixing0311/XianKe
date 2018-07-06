@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="WBMembersCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Eh2-PK-jKA">
+                        <rect key="frame" x="20" y="15" width="50" height="49.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="3lN-vF-q35"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小逗比" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXb-dI-S0d">
+                        <rect key="frame" x="80" y="15" width="46" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买了20注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wVk-kE-QSV">
+                        <rect key="frame" x="80" y="47" width="74.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018.05.24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFG-4q-9AZ">
+                        <rect key="frame" x="221" y="47" width="73" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="HFG-4q-9AZ" firstAttribute="baseline" secondItem="wVk-kE-QSV" secondAttribute="baseline" id="1XN-pA-ucn"/>
+                    <constraint firstAttribute="bottom" secondItem="Eh2-PK-jKA" secondAttribute="bottom" constant="15" id="CFf-wj-EXV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HFG-4q-9AZ" secondAttribute="trailing" constant="10" id="DpC-Hb-Rt5"/>
+                    <constraint firstItem="Eh2-PK-jKA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="L2S-Mn-0ax"/>
+                    <constraint firstItem="wVk-kE-QSV" firstAttribute="bottom" secondItem="Eh2-PK-jKA" secondAttribute="bottom" id="fJd-MF-pgp"/>
+                    <constraint firstItem="Eh2-PK-jKA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="g6Y-ip-hlr"/>
+                    <constraint firstItem="wVk-kE-QSV" firstAttribute="leading" secondItem="Eh2-PK-jKA" secondAttribute="trailing" constant="10" id="iNC-X4-FxB"/>
+                    <constraint firstItem="iXb-dI-S0d" firstAttribute="top" secondItem="Eh2-PK-jKA" secondAttribute="top" id="naZ-mr-cq3"/>
+                    <constraint firstItem="iXb-dI-S0d" firstAttribute="leading" secondItem="Eh2-PK-jKA" secondAttribute="trailing" constant="10" id="sJ3-Jg-evy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="countlb" destination="wVk-kE-QSV" id="yZX-QG-xUX"/>
+                <outlet property="headImageView" destination="Eh2-PK-jKA" id="EnM-cA-kmd"/>
+                <outlet property="nicknamelb" destination="iXb-dI-S0d" id="pgv-tr-1At"/>
+                <outlet property="timelb" destination="HFG-4q-9AZ" id="GZH-yr-wn3"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

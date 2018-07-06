@@ -10,4 +10,5 @@
 
 @interface WXAlipayController : JFABaseTableViewController
 @property (nonatomic,copy)NSString * urlStr;
+@property (nonatomic,copy)NSString * orderNoUrl;
 @end

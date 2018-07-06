@@ -27,6 +27,11 @@
 
 @property (weak, nonatomic) IBOutlet QQView *qqView;
 
+@property (weak, nonatomic) IBOutlet UILabel *bmilb;
+
+@property (weak, nonatomic) IBOutlet UILabel *healthIndexlb;
+
+
 @property (nonatomic,assign)id<newHealthCellDelegate>delegate;
 
 @property (weak, nonatomic) IBOutlet UIButton *weightIngBtn;
@@ -38,6 +43,6 @@
 -(void)didWeighting;
 -(void)didEnterDetailVC;
 -(void)didEnterRightVC;
-
+-(void)showWaBaoVC;
 
 @end

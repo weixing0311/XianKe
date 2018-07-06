@@ -32,7 +32,7 @@
     self.nameLabel.text = [UserModel shareInstance].nickName;
     self.levelLabel.text = [UserModel shareInstance].gradeName;
     self.levelImage.image = [[UserModel shareInstance] getLevelImage];
-    [self.qrcodeImage sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].qrcodeImageUrl] placeholderImage:[UIImage imageNamed:@"demoimage_"]options:SDWebImageRetryFailed];
+    [self.qrcodeImage sd_setImageWithURL:[NSURL URLWithString:[UserModel shareInstance].qrcodeImageUrl] placeholderImage:[UIImage imageNamed:@"shareQRCode"]options:SDWebImageRetryFailed];
     _linkStr = [UserModel shareInstance].linkerUrl;
 
 

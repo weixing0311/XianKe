@@ -63,7 +63,7 @@
     self.currentTasks =[[BaseSservice sharedManager]post1:@"app/msg/queryMsgList.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
-        
+
         if (page ==1) {
             [self.dataArray removeAllObjects];
             self.tableview.mj_footer.hidden = NO;
@@ -74,7 +74,6 @@
         if (infoArr.count<30) {
             self.tableview.mj_footer.hidden = YES;
         }
-        
         [self.dataArray addObjectsFromArray:infoArr];
         
         [self.tableview reloadData];

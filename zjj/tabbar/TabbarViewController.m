@@ -18,8 +18,10 @@
 #import "NewMineViewController.h"
 #import "CommunityViewController.h"
 #import "NewHealthViewController.h"
-#import "IntegralSignInView.h"
 #import "GrowthStstemViewController.h"
+#import "HomePageViewController.h"
+#import "NewMy2ViewController.h"
+#import "NewMineThreeViewController.h"
 @interface TabbarViewController ()<UITabBarControllerDelegate>
 
 @end
@@ -30,6 +32,8 @@
     NewHealthViewController *health;
     MessageViewController *news;
     foundViewController * found;
+    UITabBarItem * item2;
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,106 +49,66 @@
     UINavigationController * nav1 = [[UINavigationController alloc]initWithRootViewController:health];
     health.title = @"健康";
     
-    news = [[MessageViewController alloc]init];
-    UINavigationController * nav2 = [[UINavigationController alloc]initWithRootViewController:news];
-    news.title = @"消息";
+    
+    MessageViewController * message = [[MessageViewController alloc]init];
+    UINavigationController * nav2 = [[UINavigationController alloc]initWithRootViewController:message];
+    message.title = @"消息";
+
     
     
-    //    found = [[foundViewController alloc]init];
-    //
     CommunityViewController *found = [[CommunityViewController alloc]init];
     UINavigationController * nav3 = [[UINavigationController alloc]initWithRootViewController:found];
     found.title = @"社群";
-    
-    //    ShopTabbbarController *shop = [[ShopTabbbarController alloc]init];
-    //    shop.title = @"商城";
-    
-    
-    
-    
-    YFWViewController *shop = [[YFWViewController alloc]init];
-    UINavigationController * nav4 = [[UINavigationController alloc]initWithRootViewController:shop];
-    
-    shop.title = @"云服务";
+//    HomePageViewController *home = [[HomePageViewController alloc]init];
+//    UINavigationController * nav3 = [[UINavigationController alloc]initWithRootViewController:home];
+//    home.title = @"商城";
+
     
     
-    
-    NewMineViewController * user = [[NewMineViewController alloc]init];
-    //    UserViewController *user = [[UserViewController alloc]init];
-    UINavigationController * nav5 = [[UINavigationController alloc]initWithRootViewController:user];
+    NewMineThreeViewController * user = [[NewMineThreeViewController alloc]init];
+    UINavigationController * nav4 = [[UINavigationController alloc]initWithRootViewController:user];
     user.title = @"我的";
     
-    self.viewControllers = @[nav1,nav2,nav3,nav4,nav5];
+    self.viewControllers = @[nav1,nav2,nav3,nav4];
     
     
     UITabBarItem * item1 =[self.tabBar.items objectAtIndex:0];
-    UITabBarItem * item2 =[self.tabBar.items objectAtIndex:1];
+    item2 =[self.tabBar.items objectAtIndex:1];
     UITabBarItem * item3 =[self.tabBar.items objectAtIndex:2];
     UITabBarItem * item4 =[self.tabBar.items objectAtIndex:3];
-    UITabBarItem * item5 =[self.tabBar.items lastObject];
     
     item1.image = [UIImage imageNamed:@"health  gray_"];
     item1.selectedImage = [UIImage imageNamed:@"health_"];
     
-    item2.image = [UIImage imageNamed:@"discuss  gray_"];
-    item2.selectedImage = [UIImage imageNamed:@"discuss_"];
     
-    item3.image = [UIImage imageNamed:@"tab_comm_"];
+
+    item2.image = [UIImage imageNamed:@"tab_message_"];
     //    item3.selectedImage = [UIImage imageNamed:@"tab_comm1_"];
     
-    item4.image = [UIImage imageNamed:@"store gray_"];
-    item4.selectedImage = [UIImage imageNamed:@"store_"];
-    
-    item5.image = [UIImage imageNamed:@"mine  gray_"];
-    item5.selectedImage = [UIImage imageNamed:@"mine_"];
+    item3.image = [UIImage imageNamed:@"tab_comm_"];
+//    item3.selectedImage = [UIImage imageNamed:@"discuss_"];
+
+    item4.image = [UIImage imageNamed:@"mine  gray_"];
+    item4.selectedImage = [UIImage imageNamed:@"mine_"];
     self.tabBar.backgroundColor = [UIColor whiteColor];
     self.tabBar.tintColor = HEXCOLOR(0xfb0628);
 
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didClickNotification:) name:@"GETNOTIFICATIONINFOS" object:nil];
     
-    [self getIntegralInfo];
-}
 
-///获取积分信息---拿出来是否签到参数 循环ing
--(void)getIntegralInfo
-{
-    if ([[UserModel shareInstance]getSignInNotifacationStatus]==NO) {
-        return;
-    }
     
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
-    [[BaseSservice sharedManager]post1:@"app/integral/growthsystem/queryAll.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-        NSMutableDictionary * infoDict = [dic objectForKey:@"data"];
-        NSArray * qdArr = [infoDict safeObjectForKey:@"taskArry"];
-        NSDictionary * signInDict = [NSDictionary dictionary];
-        for (NSDictionary *QDdict in qdArr) {
-            NSString * taskName = [QDdict safeObjectForKey:@"taskName"];
-            if ([taskName isEqualToString:@"签到"]) {
-                signInDict = QDdict;
-            }
-        }
-        //如果签到成功 直接过 滚蛋ing---否则弹出签到框
-        if ([[signInDict allKeys]containsObject:@"success"]) {
-            return ;
-        }
-        [self showSignInView];
-    } failure:^(NSError *error) {
-        
-    }];
+
+    
+    
+    [self getNotiInfo];
 }
 
 
-///显示弹框 然后请求接口
--(void)showSignInView
-{
-    IntegralSignInView  * signView = [[[NSBundle mainBundle]loadNibNamed:@"IntegralSignInView" owner:nil options:nil]lastObject];
-    signView.frame = CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT);
-    UIApplication *ap = [UIApplication sharedApplication];
-    [ap.keyWindow addSubview:signView];
 
-}
+
+
+
 -(void)didClickNotification:(NSNotification *)noti
 {
     //判断是不是mainview
@@ -183,8 +147,42 @@
             return YES;
         }
     }
+    if (viewController ==self.viewControllers[1]) {
+        item2.badgeValue = nil;
+    }
     return YES;
 
+}
+
+
+#pragma mark ---获取消息数量
+-(void)getNotiInfo
+{
+   // http: //test234.i851.com/app/community/articlepage/queryMsgDynamic.do
+    NSMutableDictionary * params =[NSMutableDictionary dictionary];
+    [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
+    [[BaseSservice sharedManager]post1:@"app/community/articlepage/queryMsgDynamic.do" HiddenProgress:YES paramters:params success:^(NSDictionary *dic) {
+        NSDictionary * dataDict =[dic safeObjectForKey:@"data"];
+        NSString * lastMsgTime = [dataDict safeObjectForKey:@"lastMsgTime"];
+        NSString * defTimes =[[NSUserDefaults standardUserDefaults]objectForKey:@"NotiMessageTimes"];
+        
+        if (defTimes&&defTimes.length>0) {
+            if ([defTimes isEqualToString:lastMsgTime]) {
+                item2.badgeValue = nil;
+                return ;
+            }
+            item2.badgeValue = @"";
+        }
+        {
+            item2.badgeValue = @"";
+
+        }
+        [[NSUserDefaults standardUserDefaults]setValue:lastMsgTime forKey:@"NotiMessageTimes"];
+
+    } failure:^(NSError *error) {
+        item2.badgeValue = nil;
+
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

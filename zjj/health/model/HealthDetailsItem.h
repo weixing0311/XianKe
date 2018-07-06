@@ -123,6 +123,11 @@
 @property (nonatomic,assign) double              boneMusclePercentage ;
 ///水分指数
 @property (nonatomic,assign) double              waterPercentage;
+
+
+
+
+
 -(NSString *)getHealthDetailShuoMingWithStatus:(NSInteger)myType item:(HealthDetailsItem*)item;//获取等级说明
 -(NSString *)getinstructionsWithType:(NSInteger)index;
 -(void)getInfoWithDict:(NSDictionary *)dict;

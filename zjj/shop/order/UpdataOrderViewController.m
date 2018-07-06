@@ -547,141 +547,142 @@
     return str;
 }
 #pragma mark ----计算运费
--(NSString *)getufUpdatainfo
-{
-    //proviceId 省份 products
-    NSMutableArray * arr =[NSMutableArray array];
-    NSMutableDictionary * products1 =[NSMutableDictionary dictionary];
-    NSMutableDictionary * products2 =[NSMutableDictionary dictionary];
-    float weight1 =0.0;
-    float weight2 = 0.0;
-
-    for (int i=0; i<_dataArray.count; i++) {
-        if (self.orderType==IS_FROM_SHOPCART) {
-            
-            shopCarCellItem * item  =[self.dataArray objectAtIndex:i];
-            int freightTemplateId  =[item.freightTemplateId intValue];
-            DLog(@"%@",item.freightTemplateId);
-            DLog(@"fre--%d",freightTemplateId);
-            float weight = [item.productWeight floatValue];
-            float giveWeight = 0.0;//赠品重量
-            //获取赠品重量
-            if (item.promotList.count>0) {
-                for (NSDictionary * dic in item.promotList) {
-                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
-                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
-                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
-                        giveWeight +=productWeight*giveQuantity;
-                    }
-                }
-            }
-            
-            
-            int count = [item.quantity intValue];
-            if (freightTemplateId ==0) {
-                weight1 +=weight*count;
-                weight1 +=giveWeight;
-            }else{
-                weight2 +=weight * count;
-                weight2 +=giveWeight;
-            }
-
-        }else if(self.orderType ==IS_FROM_GOODSDETAIL)
-        {
-            GoodsDetailItem * item = [self.dataArray objectAtIndex:i];
-            int freightTemplateId  =[item.freightTemplateId intValue];
-            DLog(@"%@",item.freightTemplateId);
-            DLog(@"fre--%d",freightTemplateId);
-            float weight = [item.productWeight floatValue];
-            int count = self.goodsCount;
-            
-            float giveWeight = 0.0;//赠品重量
-            //获取赠品重量
-            if (item.promotList.count>0) {
-                for (NSDictionary * dic in item.promotList) {
-                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
-                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
-                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
-
-                        int maxCount = [[dic safeObjectForKey:@"maxQuantity"]intValue];
-                        int minCount = [[dic safeObjectForKey:@"minQuantity"]intValue];
-                        if (self.goodsCount>=minCount&&self.goodsCount<maxCount) {
-  
-                            giveWeight +=productWeight*giveQuantity;
-                        }
-                        
-                    }
-                }
-            }
-            
-            if (freightTemplateId ==0) {
-                weight1 +=weight*count;
-                weight1 +=giveWeight;
-            }else{
-                weight2 +=weight * count;
-                weight2 +=giveWeight;
-            }
-        }else
-        {
-            NSDictionary * item = [self.dataArray objectAtIndex:i];
-            int freightTemplateId  =[[item safeObjectForKey:@"freightTemplateId"] intValue];
-            DLog(@"%@",[item safeObjectForKey:@"freightTemplateId"]);
-            DLog(@"fre--%d",freightTemplateId);
-            float weight = [[item safeObjectForKey:@"productWeight"] floatValue];
-            int count = self.goodsCount;
-            
-            float giveWeight = 0.0;//赠品重量
-            
-            NSArray * promotListArr = [item safeObjectForKey:@"promotList"];
-            
-            //获取赠品重量
-            if (promotListArr.count>0) {
-                for (NSDictionary * dic in promotListArr) {
-                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
-                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
-                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
-                        
-                        int maxCount = [[dic safeObjectForKey:@"maxQuantity"]intValue];
-                        int minCount = [[dic safeObjectForKey:@"minQuantity"]intValue];
-                        if (self.goodsCount>=minCount&&self.goodsCount<maxCount) {
-                            
-                            giveWeight +=productWeight*giveQuantity;
-                        }
-                        
-                    }
-                }
-            }
-            
-            if (freightTemplateId ==0) {
-                weight1 +=weight*count;
-                weight1 +=giveWeight;
-                
-            }else{
-                weight2 +=weight * count;
-                weight2 +=giveWeight;
-                
-            }
-        }
-
-        
-    }
-    [products1 setObject:@(weight1) forKey:@"weight"];
-    [products1 setObject:@(0) forKey:@"freightTemplateId"];
-    [products2 setObject:@(weight2) forKey:@"weight"];
-    [products2 setObject:@(1) forKey:@"freightTemplateId"];
-    if (weight1>0) {
-        [arr addObject:products1];
-    }
-    if (weight2>0) {
-        [arr addObject:products2];
-    }
-    
-    DLog(@"计算运费参数 arr-%@",arr);
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
-    NSString * str =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-
-    return str;
-}
+//-(NSString *)getufUpdatainfo
+//{
+//    //proviceId 省份 products
+//    NSMutableArray * arr =[NSMutableArray array];
+//    NSMutableDictionary * products1 =[NSMutableDictionary dictionary];
+//    NSMutableDictionary * products2 =[NSMutableDictionary dictionary];
+//    float weight1 =0.0;
+//    float weight2 = 0.0;
+//
+//    for (int i=0; i<_dataArray.count; i++) {
+//        if (self.orderType==IS_FROM_SHOPCART) {
+//
+//            shopCarCellItem * item  =[self.dataArray objectAtIndex:i];
+//            int freightTemplateId  =[item.freightTemplateId intValue];
+//            DLog(@"%@",item.freightTemplateId);
+//            DLog(@"fre--%d",freightTemplateId);
+//            float weight = [item.productWeight floatValue];
+//            float giveWeight = 0.0;//赠品重量
+//            //获取赠品重量
+//            if (item.promotList.count>0) {
+//                for (NSDictionary * dic in item.promotList) {
+//                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
+//                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
+//                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
+//                        giveWeight +=productWeight*giveQuantity;
+//                    }
+//                }
+//            }
+//
+//
+//            int count = [item.quantity intValue];
+//            if (freightTemplateId ==0) {
+//                weight1 +=weight*count;
+//                weight1 +=giveWeight;
+//            }else{
+//                weight2 +=weight * count;
+//                weight2 +=giveWeight;
+//            }
+//
+//        }else if(self.orderType ==IS_FROM_GOODSDETAIL)
+//        {
+//            GoodsDetailItem * item = [self.dataArray objectAtIndex:i];
+//            int freightTemplateId  =[item.freightTemplateId intValue];
+//            DLog(@"%@",item.freightTemplateId);
+//            DLog(@"fre--%d",freightTemplateId);
+//            float weight = [item.productWeight floatValue];
+//            int count = self.goodsCount;
+//
+//            float giveWeight = 0.0;//赠品重量
+//            //获取赠品重量
+//            if (item.promotList.count>0) {
+//                for (NSDictionary * dic in item.promotList) {
+//                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
+//                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
+//                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
+//
+//                        int maxCount = [[dic safeObjectForKey:@"maxQuantity"]intValue];
+//                        int minCount = [[dic safeObjectForKey:@"minQuantity"]intValue];
+//                        if (self.goodsCount>=minCount&&self.goodsCount<maxCount) {
+//
+//                            giveWeight +=productWeight*giveQuantity;
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//            if (freightTemplateId ==0) {
+//                weight1 +=weight*count;
+//                weight1 +=giveWeight;
+//            }else{
+//                weight2 +=weight * count;
+//                weight2 +=giveWeight;
+//            }
+//        }
+//        else
+//        {
+//            NSDictionary * item = [self.dataArray objectAtIndex:i];
+//            int freightTemplateId  =[[item safeObjectForKey:@"freightTemplateId"] intValue];
+//            DLog(@"%@",[item safeObjectForKey:@"freightTemplateId"]);
+//            DLog(@"fre--%d",freightTemplateId);
+//            float weight = [[item safeObjectForKey:@"productWeight"] floatValue];
+//            int count = self.goodsCount;
+//
+//            float giveWeight = 0.0;//赠品重量
+//
+//            NSArray * promotListArr = [item safeObjectForKey:@"promotList"];
+//
+//            //获取赠品重量
+//            if (promotListArr.count>0) {
+//                for (NSDictionary * dic in promotListArr) {
+//                    if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
+//                        float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
+//                        int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
+//
+//                        int maxCount = [[dic safeObjectForKey:@"maxQuantity"]intValue];
+//                        int minCount = [[dic safeObjectForKey:@"minQuantity"]intValue];
+//                        if (self.goodsCount>=minCount&&self.goodsCount<maxCount) {
+//
+//                            giveWeight +=productWeight*giveQuantity;
+//                        }
+//
+//                    }
+//                }
+//            }
+//
+//            if (freightTemplateId ==0) {
+//                weight1 +=weight*count;
+//                weight1 +=giveWeight;
+//
+//            }else{
+//                weight2 +=weight * count;
+//                weight2 +=giveWeight;
+//
+//            }
+//        }
+//
+//
+//    }
+//    [products1 setObject:@(weight1) forKey:@"weight"];
+//    [products1 setObject:@(0) forKey:@"freightTemplateId"];
+//    [products2 setObject:@(weight2) forKey:@"weight"];
+//    [products2 setObject:@(1) forKey:@"freightTemplateId"];
+//    if (weight1>0) {
+//        [arr addObject:products1];
+//    }
+//    if (weight2>0) {
+//        [arr addObject:products2];
+//    }
+//
+//    DLog(@"计算运费参数 arr-%@",arr);
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:arr options:NSJSONWritingPrettyPrinted error:nil];
+//    NSString * str =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//
+//    return str;
+//}
 
 
 
@@ -784,4 +785,148 @@
         return weightPrice;
     }
 }
+
+
+-(NSString *)getufUpdatainfo
+{
+    
+    
+    
+    
+    
+   NSArray * titleArray =  [self classifiedArray:_dataArray];
+    NSMutableArray * resultArr =[NSMutableArray array];
+    
+    
+    for (int i =0; i<titleArray.count; i++) {
+        NSArray  * arr = [titleArray objectAtIndex:i];
+        double weight = 0.00;
+        double giveWeight =0.00;
+        NSString * freightTemplateId ;
+        for (int j =0; j<arr.count; j++) {
+            if (self.orderType==IS_FROM_SHOPCART) {
+                
+                shopCarCellItem * item = [arr objectAtIndex:j];
+                int count = [item.quantity intValue];
+                weight += [item.productWeight doubleValue]*count;
+                
+                
+                //获取赠品重量
+                if (item.promotList.count>0) {
+                    for (NSDictionary * dic in item.promotList) {
+                        if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
+                            float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
+                            int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
+                            giveWeight +=productWeight*giveQuantity;
+                        }
+                    }
+                }
+                weight +=giveWeight;
+                
+                freightTemplateId = item.freightTemplateId;
+                
+            }
+            else
+            {
+                GoodsDetailItem * item = [arr objectAtIndex:j];
+                int count = self.goodsCount;
+                weight += [item.productWeight doubleValue]*count;
+                
+                
+                //获取赠品重量
+                if (item.promotList.count>0) {
+                    for (NSDictionary * dic in item.promotList) {
+                        if ([[dic safeObjectForKey:@"promotionType"]intValue]==2) {
+                            float productWeight = [[dic safeObjectForKey:@"productWeight"]floatValue];
+                            int giveQuantity = [[dic safeObjectForKey:@"giveQuantity"]intValue];
+                            giveWeight +=productWeight*giveQuantity;
+                        }
+                    }
+                }
+                weight +=giveWeight;
+                
+                freightTemplateId = item.freightTemplateId;
+        }
+        }
+        NSMutableDictionary * dic = [NSMutableDictionary dictionary];
+        [dic safeSetObject:@(weight) forKey:@"weight"];
+        [dic safeSetObject:freightTemplateId forKey:@"freightTemplateId"];
+        if (weight>0) {
+            [resultArr addObject:dic];
+        }
+    }
+    
+            
+            
+            
+    DLog(@"计算运费参数 arr-%@",resultArr);
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:resultArr options:NSJSONWritingPrettyPrinted error:nil];
+    NSString * str =[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return str;
+            
+            
+            
+
+}
+
+-(NSArray *)classifiedArray:(NSMutableArray *)array
+{
+    
+    NSMutableArray * classArray =[NSMutableArray array];
+    NSMutableArray * currArray = [NSMutableArray array];
+    NSMutableArray * perArray  = [NSMutableArray array];
+    
+    [perArray addObject:[array objectAtIndex:0]];
+    [classArray addObject:perArray];
+    
+    for (int i =1; i<array.count; i++) {
+        if (self.orderType==IS_FROM_SHOPCART) {
+
+        shopCarCellItem * item = array[i];
+        BOOL isHaveSame = NO;
+        for (int j = 0;j<classArray.count; j++) {
+            NSMutableArray * currperArray = [classArray objectAtIndex:j];
+            shopCarCellItem * classItem = currperArray[0];
+            if ([item.freightTemplateId isEqualToString:classItem.freightTemplateId]) {
+                isHaveSame = YES;
+                [currperArray addObject:item];
+            }
+            
+        }
+        if (isHaveSame ==NO) {
+            currArray = [NSMutableArray array];
+            [currArray addObject:item];
+            [classArray addObject:currArray];
+        }
+        }else{
+            GoodsDetailItem * item = array[i];
+            BOOL isHaveSame = NO;
+            for (int j = 0;j<classArray.count; j++) {
+                NSMutableArray * currperArray = [classArray objectAtIndex:j];
+                GoodsDetailItem * classItem = currperArray[0];
+                if ([item.freightTemplateId isEqualToString:classItem.freightTemplateId]) {
+                    isHaveSame = YES;
+                    [currperArray addObject:item];
+                }
+                
+            }
+            if (isHaveSame ==NO) {
+                currArray = [NSMutableArray array];
+                [currArray addObject:item];
+                [classArray addObject:currArray];
+            }
+
+            
+        }
+
+    }
+    
+    
+    
+    
+    
+    return classArray;
+}
+
+
 @end

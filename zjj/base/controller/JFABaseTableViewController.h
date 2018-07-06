@@ -74,4 +74,6 @@
 -(void)showWXProgressViewWithTitle:(NSString *)title integral:(int)integral;
 ///上传完成任务接口
 -(void)didCompleteTheTaskWithId:(NSString *)taskId;
+///查看大图
+-(void)showBigImageWithArray:(NSArray *)imgArray imageView:(UIImageView*)currentImageview index:(NSInteger)index;
 @end

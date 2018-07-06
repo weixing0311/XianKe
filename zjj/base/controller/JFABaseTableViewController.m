@@ -15,6 +15,8 @@
 {
     NSTimer * hiddenErrorTimer;
     UILabel * errorLabel;
+    CGRect oldframe;
+    UIView * bigImageBgView;
 }
 @end
 
@@ -402,6 +404,179 @@
 -(void)didTapEmptyView
 {
     [self refreshEmptyView];
+}
+
+
+-(void)showBigImageWithArray:(NSArray *)imgArray imageView:(UIImageView*)currentImageview index:(NSInteger)index
+{
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    //  背景
+    
+    oldframe = [currentImageview convertRect:currentImageview.bounds toView:window];
+
+    
+    bigImageBgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    //  当前imageview的原始尺寸->将像素currentImageview.bounds由currentImageview.bounds所在视图转换到目标视图window中，返回在目标视图window中的像素值
+    
+    UIScrollView *scr = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT)];
+    scr.backgroundColor = [UIColor redColor];
+    scr.contentSize = CGSizeMake(JFA_SCREEN_WIDTH*imgArray.count, 0);
+    scr.contentOffset = CGPointMake(JFA_SCREEN_WIDTH*index, 0);
+    scr.pagingEnabled = YES;
+    [bigImageBgView addSubview:scr];
+    for (int i =0; i<imgArray.count; i++) {
+        
+        id currImage = imgArray[i];
+        if (![currImage isKindOfClass:[NSString class]]) {
+            currImage = [currImage objectForKey:@"imgUrl"];
+        }
+
+        UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(i*JFA_SCREEN_WIDTH, 0, JFA_SCREEN_WIDTH, JFA_SCREEN_HEIGHT)];
+//        scrollView.backgroundColor = [UIColor clearColor];
+        [scr addSubview:scrollView];
+        
+        CGRect rect;
+        
+        if (i ==index) {
+            rect = oldframe;
+        }else{
+            rect = CGRectZero;
+        }
+        UIImageView * imageView = [[UIImageView alloc]initWithFrame:rect];
+        [scrollView addSubview:imageView];
+        imageView.contentMode =UIViewContentModeScaleAspectFit;
+        [imageView setAlpha:1];
+        NSString *encodedString = (NSString *)
+        
+        CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                  
+                                                                  (CFStringRef)currImage,
+                                                                  
+                                                                  (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                                  
+                                                                  NULL,
+                                                                  
+                                                                  kCFStringEncodingUTF8));
+        
+        [self loadImageWithScr:scr ImageView:imageView Url:encodedString];
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    [bigImageBgView setBackgroundColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5]];
+    
+    //  此时视图不会显示
+//    [backgroundView setAlpha:0];
+    //  将所展示的imageView重新绘制在Window中
+    [window addSubview:bigImageBgView];
+    
+    
+    //  添加点击事件同样是类方法 -> 作用是再次点击回到初始大小
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideImageView:)];
+    [bigImageBgView addGestureRecognizer:tapGestureRecognizer];
+    
+    
+}
+/**
+ *  恢复imageView原始尺寸
+ *
+ *  @param tap 点击事件
+ */
+-(void)hideImageView:(UITapGestureRecognizer *)tap{
+    
+    //  恢复
+    [UIView animateWithDuration:0.4 animations:^{
+        [bigImageBgView setAlpha:0];
+    } completion:^(BOOL finished) {
+        //完成后操作->将背景视图删掉
+        [bigImageBgView removeFromSuperview];
+    }];
+}
+
+-(void)loadImageWithScr:(UIScrollView*)scr ImageView:(UIImageView *)imageView Url:(NSString *)imageUrl
+{
+    UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:imageUrl];
+    
+    if ( !cachedImage ) {
+        imageView.image = getImage(@"default");
+        [self downloadImageWithScr:scr ImageView:imageView Url:imageUrl];
+    } else {
+        imageView.image = cachedImage;
+        //  动画放大所展示的ImageView
+        [UIView animateWithDuration:0.4 animations:^{
+            CGFloat y,width,height;
+            y = (JFA_SCREEN_HEIGHT - cachedImage.size.height * JFA_SCREEN_WIDTH / cachedImage.size.width) * 0.5;
+            //宽度为屏幕宽度
+            width = [UIScreen mainScreen].bounds.size.width;
+            //高度 根据图片宽高比设置
+            height = cachedImage.size.height * JFA_SCREEN_WIDTH / cachedImage.size.width;
+            [imageView setFrame:CGRectMake(0, y, width, height)];
+            //重要！ 将视图显示出来
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+
+        
+        
+        
+//        float imageHeight = JFA_SCREEN_WIDTH * cachedImage.size.height/cachedImage.size.width ;
+//        imageView.image = cachedImage;
+//        imageView.frame =CGRectMake(0, 0, JFA_SCREEN_WIDTH-10, imageHeight);
+//        scr.contentSize = CGSizeMake(JFA_SCREEN_WIDTH, imageHeight);
+//        imageView.center = CGPointMake(JFA_SCREEN_WIDTH/2, scr.center.y);
+        
+    }
+}
+
+- (void)downloadImageWithScr:(UIScrollView*)scr ImageView:(UIImageView *)imageView Url:(NSString *)imageUrl {
+    // 利用 SDWebImage 框架提供的功能下载图片
+    [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:imageUrl] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        if (error) {
+            imageView.image = getImage(@"default");
+            return ;
+        }
+        [[SDImageCache sharedImageCache]storeImage:image forKey:imageUrl completion:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            imageView.image = image;
+            
+            [UIView animateWithDuration:0.4 animations:^{
+                CGFloat y,width,height;
+                y = (JFA_SCREEN_HEIGHT - image.size.height * JFA_SCREEN_WIDTH / image.size.width) * 0.5;
+                //宽度为屏幕宽度
+                width = [UIScreen mainScreen].bounds.size.width;
+                //高度 根据图片宽高比设置
+                height = image.size.height * JFA_SCREEN_WIDTH / image.size.width;
+                [imageView setFrame:CGRectMake(0, y, width, height)];
+                //重要！ 将视图显示出来
+                [imageView setAlpha:1];
+            } completion:^(BOOL finished) {
+                
+            }];
+
+            
+            
+            
+//            float imageHeight = JFA_SCREEN_WIDTH * image.size.height/image.size.width ;
+//            imageView.frame =CGRectMake(0, 0, JFA_SCREEN_WIDTH-10, imageHeight);
+//            scr.contentSize = CGSizeMake(JFA_SCREEN_WIDTH, imageHeight);
+//
+//            if (imageHeight>JFA_SCREEN_HEIGHT) {
+//                imageView.center = CGPointMake(JFA_SCREEN_WIDTH/2, scr.contentSize.height/2);
+//            }else{
+//                imageView.center = CGPointMake(JFA_SCREEN_WIDTH/2, JFA_SCREEN_HEIGHT/2);
+//
+//            }
+            
+            
+        });
+    }];
 }
 
 

@@ -35,7 +35,7 @@
 {
     [super viewWillAppear:animated];
     //    self.navigationController.navigationBarHidden = YES;
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self setTBWhiteColor];
 
 }
@@ -104,22 +104,22 @@
     }];
 
     
-    return;
+
     
     
     
     
-    NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    
-    
-    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/community/usertArticleDetail/queryUserHome.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
-        _infoDict = [dic safeObjectForKey:@"data"];
-        
-        
-        
-    } failure:^(NSError *error) {
-        
-    }];
+//    NSMutableDictionary * params = [NSMutableDictionary dictionary];
+//
+//
+//    self.currentTasks = [[BaseSservice sharedManager]post1:@"app/community/usertArticleDetail/queryUserHome.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
+//        _infoDict = [dic safeObjectForKey:@"data"];
+//
+//
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

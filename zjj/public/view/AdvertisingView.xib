@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +24,7 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zfS-rL-AhZ">
                                     <rect key="frame" x="0.0" y="0.0" width="315" height="362"/>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                             <integer key="value" value="5"/>
@@ -31,17 +32,29 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jx6-E8-emZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="315" height="362"/>
+                                    <state key="normal">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="showUrlPage:" destination="iN0-l3-epB" eventType="touchUpInside" id="MDY-bk-AQ3"/>
+                                    </connections>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="0.024159888698630137" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="zfS-rL-AhZ" secondAttribute="trailing" id="JiB-ze-RdD"/>
+                                <constraint firstItem="jx6-E8-emZ" firstAttribute="leading" secondItem="zo2-Tc-lVy" secondAttribute="leading" id="NO9-gn-XiO"/>
                                 <constraint firstItem="zfS-rL-AhZ" firstAttribute="leading" secondItem="zo2-Tc-lVy" secondAttribute="leading" id="RYs-JI-S8t"/>
                                 <constraint firstAttribute="bottom" secondItem="zfS-rL-AhZ" secondAttribute="bottom" id="U6r-Xk-TR0"/>
+                                <constraint firstItem="jx6-E8-emZ" firstAttribute="top" secondItem="zo2-Tc-lVy" secondAttribute="top" id="bcf-Mn-ya6"/>
+                                <constraint firstAttribute="trailing" secondItem="jx6-E8-emZ" secondAttribute="trailing" id="tkc-fY-8gF"/>
+                                <constraint firstAttribute="bottom" secondItem="jx6-E8-emZ" secondAttribute="bottom" id="vzk-KF-hds"/>
                                 <constraint firstItem="zfS-rL-AhZ" firstAttribute="top" secondItem="zo2-Tc-lVy" secondAttribute="top" id="zVB-qq-Cub"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.029002568493150686" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="zo2-Tc-lVy" secondAttribute="trailing" id="HD9-kd-nJl"/>
                         <constraint firstAttribute="bottom" secondItem="zo2-Tc-lVy" secondAttribute="bottom" id="Kgp-vn-tmE"/>
@@ -76,7 +89,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.42505886130136988" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6dq-hX-dL4" secondAttribute="trailing" constant="30" id="4RK-wT-3bb"/>
                 <constraint firstItem="J4q-sa-Mdr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="6G7-Il-hHx"/>

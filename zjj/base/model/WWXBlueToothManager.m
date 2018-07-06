@@ -366,6 +366,7 @@ static WWXBlueToothManager * manager;
         }
         else
         {
+            [[HealthModel shareInstance]setLogInUpLoadString:[NSString stringWithFormat:@"%s",byte]];
             self.faileBlock(nil, @"测量出现异常，请下秤重测");
             DLog(@"测量出现异常，请下秤重测");
         }
@@ -392,6 +393,7 @@ static WWXBlueToothManager * manager;
         if (byte[6] == 255 || byte[7] == 255) {
 //            self.faileBlock(nil, @"数据出错");
             self.faileBlock(nil, @"测量出现异常，请下秤重测");
+            [[HealthModel shareInstance]setLogInUpLoadString:[NSString stringWithFormat:@"%s",byte]];
 
             return;
         }

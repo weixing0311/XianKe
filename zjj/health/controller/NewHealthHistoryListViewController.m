@@ -51,10 +51,10 @@
     [tisView addSubview:imageView];
     
     UILabel * tsLabel = [UILabel new];
-    tsLabel.text = @"请选择您测量结果中的2条数据,并生成体脂趋势报告分享给好友";
-    tsLabel.frame = CGRectMake(40, 10, tisView.frame.size.width-50, 50);
+    tsLabel.text = @"请选择您测量结果中的2条数据，并生成体制趋势报告分享给好友。如需分享历史所有数据，选择右上方“分享”-“一键分享到社区";
+    tsLabel.frame = CGRectMake(40, 5, tisView.frame.size.width-50, 60);
     tsLabel.font = [UIFont systemFontOfSize:14];
-    tsLabel.numberOfLines = 2;
+    tsLabel.numberOfLines = 0;
     tsLabel.textColor = [UIColor whiteColor];
     [tisView addSubview:tsLabel];
     

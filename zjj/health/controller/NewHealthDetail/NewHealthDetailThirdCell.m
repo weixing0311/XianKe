@@ -1,0 +1,34 @@
+//
+//  NewHealthDetailThirdCell.m
+//  zjj
+//
+//  Created by iOSdeveloper on 2017/10/13.
+//  Copyright © 2017年 ZhiJiangjun-iOS. All rights reserved.
+//
+
+#import "NewHealthDetailThirdCell.h"
+
+@implementation NewHealthDetailThirdCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+-(void)setInfoWithDict:(HealthDetailsItem *)item
+{
+    self.connectlb.text = [NSString stringWithFormat:@"根据您的身体状况判断，您的最佳体重为%.1fkg,您距离最佳体重还有%.1fkg的距离，继续努力奥！",item.standardWeight,fabs(item.weight-item.standardWeight)];
+}
+- (IBAction)didClickShare:(id)sender {
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(didShareImage)]) {
+    
+        [self.delegate didShareImage];
+    }
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

@@ -22,6 +22,7 @@
 #import "HomePageViewController.h"
 #import "OrderViewController.h"
 #import "VouchersGetViewController.h"
+#import "InvitationFriendsViewController.h"
 #import "NewMy1Cell.h"
 #import "NewMy2Cell.h"
 //#import "Yd1View.h"
@@ -76,7 +77,7 @@
 //    self.tableview.backgroundColor = HEXCOLOR(0xeeeeee);
 //    [self setExtraCellLineHiddenWithTb:self.tableview];
     
-    titleArray =@[@"个人中心",@"成长体系",@"积分商城",@"我的订单",@"我的推荐人",@"纤客商城",@"纤客订单"];
+    titleArray =@[@"个人中心",@"成长体系",@"积分商城",@"我的订单",@"我的推荐人",@"纤客商城",@"纤客订单",@"邀请好友"];
     
     
     self.collectionView.delegate = self;
@@ -194,12 +195,12 @@
         cell.titlelb.text = titleArray[indexPath.row];
         NSString * img = [NSString stringWithFormat:@"home_%ld_",indexPath.row+1];
         cell.headImageView.image = getImage(img);
-        if ((notifacationCount==0||!notifacationCount)||indexPath.row !=1) {
-            cell.notifationCountLb.hidden = YES;
-        }else{
-            cell.notifationCountLb.hidden = NO;
-        }
-        cell.notifationCountLb.text =[NSString stringWithFormat:@"%d",notifacationCount];
+//        if ((notifacationCount==0||!notifacationCount)||indexPath.row !=1) {
+//            cell.notifationCountLb.hidden = YES;
+//        }else{
+//            cell.notifationCountLb.hidden = NO;
+//        }
+//        cell.notifationCountLb.text =[NSString stringWithFormat:@"%d",notifacationCount];
         return cell;
     }
 }
@@ -284,13 +285,16 @@
         }
         else if (indexPath.row ==7)
         {
-            VouchersGetViewController * vo = [[VouchersGetViewController alloc]init];
+            DLog(@"邀请好友");
+
+            InvitationFriendsViewController * vo = [[InvitationFriendsViewController alloc]init];
             vo.hidesBottomBarWhenPushed=YES;
-            vo.myType = 5;
+//            vo.myType = 5;
             [self.navigationController pushViewController:vo animated:YES];
             
+        }else if (indexPath.row ==8){
+            DLog(@"邀请好友");
         }
-
         
     }
     

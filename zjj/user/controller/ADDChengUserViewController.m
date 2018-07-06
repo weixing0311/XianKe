@@ -11,6 +11,7 @@
 #import "UIImage+Extension.h"
 #import "TabbarViewController.h"
 #import "LoignViewController.h"
+#import "ADDChengUser2ViewController.h"
 @interface ADDChengUserViewController ()<UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 - (IBAction)didChangeHeaderImage:(id)sender;
@@ -28,6 +29,16 @@
 @property (nonatomic,strong) UIDatePicker * datePicker;
 @property (weak, nonatomic) IBOutlet UILabel *StitleLabel;
 @property (nonatomic,assign) UIImage * headImage;
+
+
+
+
+
+
+
+
+
+
 @end
 
 @implementation ADDChengUserViewController
@@ -108,16 +119,22 @@
         return;
         
     }
-    if (self.agetf.text.length<1) {
-        [[UserModel shareInstance] showInfoWithStatus:@"请填写年龄"];
+    if (self.nicknametf.text.length<1) {
+        [[UserModel shareInstance] showInfoWithStatus:@"昵称不能为空"];
         return;
         
     }
-    if (self.heighttf.text.length<1) {
-        [[UserModel shareInstance] showInfoWithStatus:@"请填写身高"];
-        return;
-        
-    }
+
+//    if (self.agetf.text.length<1) {
+//        [[UserModel shareInstance] showInfoWithStatus:@"请填写年龄"];
+//        return;
+//
+//    }
+//    if (self.heighttf.text.length<1) {
+//        [[UserModel shareInstance] showInfoWithStatus:@"请填写身高"];
+//        return;
+//
+//    }
     
     NSData *fileData = UIImageJPEGRepresentation(self.headImageView.image,0.01);
 
@@ -459,6 +476,51 @@
     }
     return YES;
 }
+
+
+#pragma mark-----
+
+- (IBAction)didNext:(id)sender {
+    
+    
+    if ([[UserModel shareInstance] valiNickName:self.nicknametf.text]!=YES) {
+        [[UserModel shareInstance]showInfoWithStatus:@"昵称只能由中文、字母或数字组成"];
+        return;
+    }
+    
+    if (self.nicknametf.text.length>6) {
+        [[UserModel shareInstance] showInfoWithStatus:@"昵称最长为6字符"];
+        return;
+        
+    }
+    if (self.nicknametf.text.length<1) {
+        [[UserModel shareInstance] showInfoWithStatus:@"昵称不能为空"];
+        return;
+        
+    }
+
+    
+    
+    
+    ADDChengUser2ViewController * addc2 =[[ADDChengUser2ViewController alloc]init];
+    addc2.nickname = self.nicknametf.text;
+    addc2.sex = [NSString stringWithFormat:@"%d",self.manBtn.selected==YES?1:2];
+    addc2.isResignUser = self.isResignUser;
+    if (self.headImage) {
+        addc2.imageData = UIImageJPEGRepresentation(self.headImage,0.01);
+    }
+
+    [self.navigationController pushViewController:addc2 animated:YES];
+    
+    
+}
+
+
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

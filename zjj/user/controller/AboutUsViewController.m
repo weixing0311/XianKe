@@ -102,11 +102,11 @@
 }
 - (IBAction)checkTheUpdate:(id)sender {
     
-    [self getUpdateInfo];
+    [self getUpInfo];
     
 }
 
--(void)getUpdateInfo
+-(void)getUpInfo
 {
     return;
     

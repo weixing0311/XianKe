@@ -100,12 +100,13 @@
                 [UserModel shareInstance].tabbarStyle = @"health";
                 [self.window setRootViewController:tabbar];
                 
-                if ([[UserModel shareInstance].userType isEqualToString:@"2"]) {
+//                if ([[UserModel shareInstance].userType isEqualToString:@"2"]) {
                     [[UserModel shareInstance]getNotiadvertising];
-                }
+//                }
             }else{
                 ADDChengUserViewController * cg =[[ADDChengUserViewController alloc]init];
                 cg.isResignUser = YES;
+//                UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:cg];
                 [self.window setRootViewController:cg];
             }
         }else{

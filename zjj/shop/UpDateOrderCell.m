@@ -43,6 +43,13 @@
     }
 
 }
+-(void)setUpWbInfoWithDict:(NSDictionary *)dic
+{
+    [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dic safeObjectForKey:@"defPicture"]]];
+    self.titleLabel.text = [dic safeObjectForKey:@"goodName"];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[[dic safeObjectForKey:@"goodunit"]doubleValue]];
+//    self.countLabel.text = [NSString stringWithFormat:@"x%@",[dic safeObjectForKey:@"minCount"]];
+}
 -(void)setUpCellWithDict:(NSDictionary *)dic
 {
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[dic safeObjectForKey:@"picture"]]];

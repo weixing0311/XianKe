@@ -101,8 +101,26 @@
     NSString  * urlss =@"";
     if ([_urlStr containsString:@"https://shouyin.yeepay.com"]) {
         urlss =self.urlStr;
-    }else{
+    }else if ([_urlStr containsString:@"https://"]||[_urlStr containsString:@"http://"])
+    {
+        urlss =self.urlStr;
+    }
+    else
+    {
         urlss = [kMyBaseUrl stringByAppendingString:self.urlStr];
+    }
+    
+    
+    if ([urlss containsString:@"https://wx.tenpay.com"] ) {
+        if ([urlss containsString:@"redirect_url"]) {
+            
+            NSDictionary *dic =[[UserModel shareInstance]getURLParameters:urlss];
+            DLog(@"%@",dic);
+            self.wxPayCallBackUrl = [dic safeObjectForKey:@"redirect_url"];
+            NSArray *array = [urlss componentsSeparatedByString:@"?"]; //从字符A中分隔成2个元素的数组
+            
+            urlss =[NSString stringWithFormat:@"%@?package=%@&prepay_id=%@",array[0],[dic safeObjectForKey:@"package"],[dic safeObjectForKey:@"prepay_id"]];
+        }
     }
     NSURL * url  =[NSURL URLWithString:urlss];
     self.webView.UIDelegate = self;
@@ -113,9 +131,36 @@
     [self.view addSubview:self.webView];
 
     [self buildProgressView];
-
-    [self.webView loadRequest:[NSURLRequest requestWithURL:url]] ;
     
+    
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];
+
+    if ([urlss containsString:@"https://wx.tenpay.com"]) {
+        NSDictionary *headers = [request allHTTPHeaderFields];
+        BOOL hasReferer = [headers objectForKey:@"Referer"]!=nil;
+        if (hasReferer) {
+            // .. is this my referer?
+        } else {
+            // relaunch with a modified request
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSURL *url = [request URL];
+                    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+                    [request setHTTPMethod:@"GET"];
+                    
+                    NSString * referer = [NSString stringWithFormat:@"%@://",weChatPayRefere];
+                    
+                    [request setValue:referer forHTTPHeaderField: @"Referer"];
+                    [self.webView loadRequest:request] ;
+                });
+            });
+        }
+    }else{
+        [self.webView loadRequest:request] ;
+        
+    }
+    
+
     // Do any additional setup after loading the view from its nib.
     
 }
@@ -162,6 +207,8 @@
 //在发送请求之前，决定是否跳转  如果不实现这个代理方法,默认会屏蔽掉打电话等url
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
+    WKNavigationActionPolicy actionPolicy = WKNavigationActionPolicyAllow;
+
     NSString *url = [navigationAction.request.URL.absoluteString stringByRemovingPercentEncoding];
     NSString* reUrl=[[webView URL] absoluteString];
     if ([url containsString:kMyBaseUrl]) {
@@ -172,6 +219,11 @@
     if (navigationAction.targetFrame == nil) {
         [webView loadRequest:navigationAction.request];
     }
+    if ([url containsString:@"weixindetermine.jsp?"]) {
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
+
     DLog(@"navi.url --%@",url);
     if ([url containsString:@"alipay://"]) {
         NSString* dataStr=[url substringFromIndex:23];
@@ -180,18 +232,24 @@
         
         
         
-        
-//        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[dataStr dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
-//        NSMutableString* mString=[[NSMutableString alloc] init];
-//        [mString appendString:@"alipays://platformapi/startApp?appId=20000125&orderSuffix="];
-//        //url进行编码
-//        [mString appendString:[self encodeString:dict[@"dataString"]]];
-//        
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:mString]];
-        
         decisionHandler(WKNavigationActionPolicyAllow);
         return;
     }
+    
+    if ([url containsString:@"weixin://wap/pay?"]) {
+        actionPolicy =WKNavigationActionPolicyCancel;
+        WXAlipayController * wchatPay = [[WXAlipayController alloc]init];
+        wchatPay.urlStr = url;
+        wchatPay.orderNoUrl = self.wxPayCallBackUrl;
+        [self.navigationController pushViewController:wchatPay animated:YES];
+        decisionHandler(WKNavigationActionPolicyAllow);
+        
+        
+        return;
+    }
+
+    
+    
     if([url containsString:@"notify.jsp?"]&&![url containsString:@"https://openapi.alipay.com/gateway.do"] )//支付成功回调
     {
         NSDictionary * urlDict = [self getURLParameters:url];
@@ -612,7 +670,7 @@
     [dic safeSetObject:[NSString stringWithFormat:@"%.2f",[self.payableAmount floatValue]] forKey:@"payableAmount"];
     [dic safeSetObject:@(self.payType) forKey:@"orderType"];
     [dic safeSetObject:@(self.opt) forKey:@"opt"];
-    if ([self.integral isEqualToString:@"1"]) {
+    if ([self.integral isEqualToString:@"1"]||[self.integral isEqualToString:@"2"]||[self.integral isEqualToString:@"3"]) {
         [dic safeSetObject:self.integral forKey:@"integral"];
     }
     else{

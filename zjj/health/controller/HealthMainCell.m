@@ -77,33 +77,35 @@
 //        self.lessWeightlb.text = @"";
 //    }
     
+    self.statuslb.text = @"体重";
+    self.bmilb.text = [NSString stringWithFormat:@"%.1f",item.bmi];
+    self.healthIndexlb.text = [NSString stringWithFormat:@"%.2f",item.score];
     
     
-    
-    switch (item.weightLevel) {
-        case 1:
-            self.statuslb.text = [NSString stringWithFormat:@"偏瘦"];
-            break;
-        case 2:
-            self.statuslb.text = [NSString stringWithFormat:@"标准"];
-            break;
-        case 3:
-            self.statuslb.text = [NSString stringWithFormat:@"偏胖"];
-            break;
-        case 4:
-            self.statuslb.text = [NSString stringWithFormat:@"中度肥胖"];
-            break;
-        case 5:
-            self.statuslb.text = [NSString stringWithFormat:@"重度肥胖"];
-            break;
-//        case 6:
-//            self.statuslb.text = [NSString stringWithFormat:@"极度肥胖"];
-//            //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
+//    switch (item.weightLevel) {
+//        case 1:
+//            self.statuslb.text = [NSString stringWithFormat:@"偏瘦"];
 //            break;
-            
-        default:
-            break;
-    }
+//        case 2:
+//            self.statuslb.text = [NSString stringWithFormat:@"标准"];
+//            break;
+//        case 3:
+//            self.statuslb.text = [NSString stringWithFormat:@"偏胖"];
+//            break;
+//        case 4:
+//            self.statuslb.text = [NSString stringWithFormat:@"中度肥胖"];
+//            break;
+//        case 5:
+//            self.statuslb.text = [NSString stringWithFormat:@"重度肥胖"];
+//            break;
+////        case 6:
+////            self.statuslb.text = [NSString stringWithFormat:@"极度肥胖"];
+////            //            self.fatStatuslb.textColor = HEXCOLOR(0xe84849);
+////            break;
+//
+//        default:
+//            break;
+//    }
     [_qqView getProgressWithBfp:item.fatPercentage];
 }
 
@@ -159,6 +161,13 @@
         [self.delegate didEnterRightVC];
     }
     
+}
+- (IBAction)tapThree:(id)sender {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showWaBaoVC)]) {
+        [self.delegate showWaBaoVC];
+    }
+}
+- (IBAction)tapFour:(id)sender {
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

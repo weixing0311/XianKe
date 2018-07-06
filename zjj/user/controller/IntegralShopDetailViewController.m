@@ -186,7 +186,7 @@
         PhoneChargesViewController * phone = [[PhoneChargesViewController alloc]init];
         phone.model = model;
         phone.goodsCount = goodsCount;
-        [phone.param safeSetObject:[self getUpdateInfo] forKey:@"orderItem"];
+        [phone.param safeSetObject:[self getUpInfo] forKey:@"orderItem"];
         [self.navigationController pushViewController:phone animated:YES];
     }
     else if([model.classId isEqualToString:@"2"])
@@ -194,7 +194,7 @@
     IntegralOrderUpdateViewController *upd =[[IntegralOrderUpdateViewController alloc]init];
     upd.model= model;
     upd.goodsCount = goodsCount;
-    [upd.param safeSetObject:[self getUpdateInfo] forKey:@"orderItem"];
+    [upd.param safeSetObject:[self getUpInfo] forKey:@"orderItem"];
     [self.navigationController pushViewController:upd animated:YES];
     }
     else if ([model.classId isEqualToString:@"3"])
@@ -202,14 +202,14 @@
         VouchersUpOrderViewController * phone = [[VouchersUpOrderViewController alloc]init];
         phone.model = model;
         phone.goodsCount = goodsCount;
-        [phone.param safeSetObject:[self getUpdateInfo] forKey:@"orderItem"];
+        [phone.param safeSetObject:[self getUpInfo] forKey:@"orderItem"];
         [self.navigationController pushViewController:phone animated:YES];
 
         
     }
 }
 //获取上传数据
--(NSString *)getUpdateInfo
+-(NSString *)getUpInfo
 {
     if (_listArray.count<1) {
         return nil;

@@ -320,8 +320,28 @@
  */
 
 -(BOOL)valiNickName:(NSString * )nickName;
+/**
+ *是否需要显示广告
+ */
+@property (nonatomic,assign) BOOL isHaveShowAdc;
+/**
+ *是否需要显示签到
+ */
+@property (nonatomic,assign) BOOL isHaveShowSignIn;
+/**
+ *是否获取完成更新信息
+ */
+@property (nonatomic,assign) BOOL isFinishGetUpDate;
+/**
+ *是否完成获取签到信息
+ */
+@property (nonatomic,assign) BOOL isFinishSignIn;
+/**
+ *是否完成获取广告弹窗信息
+ */
+@property (nonatomic,assign) BOOL isFinishGetAdc;
 
-
+@property (nonatomic,copy )NSString * backgroundUrl;
 
 
 ///判断是否显示签到弹窗----YES--显示 --NO 不显示

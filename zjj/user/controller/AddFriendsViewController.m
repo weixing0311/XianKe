@@ -20,10 +20,14 @@
 @implementation AddFriendsViewController
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+
     [self setTBWhiteColor];
 
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"添加关注";
