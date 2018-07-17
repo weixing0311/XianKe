@@ -22,7 +22,7 @@
 
 #import "HomePageWebViewController.h"
 #import "GuidePageViewController.h"
-
+#import "OpenAdViewController.h"
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -91,29 +91,49 @@
     [self.window makeKeyAndVisible];
     
     
-    
-    if ([[NSUserDefaults standardUserDefaults]objectForKey:kShowGuidePage]) {
-        if ([[UserModel shareInstance]isHaveUserInfo]==YES) {
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:kShowGuidePage])
+    {
+        if ([[UserModel shareInstance]isHaveUserInfo]==YES)
+        {
             [[UserModel shareInstance]readToDoc];
-            if ([UserModel shareInstance].birthday.length>2) {
-                TabbarViewController * tabbar = [[TabbarViewController alloc]init];
-                [UserModel shareInstance].tabbarStyle = @"health";
-                [self.window setRootViewController:tabbar];
+            if ([UserModel shareInstance].birthday.length>2)
+            {
                 
-//                if ([[UserModel shareInstance].userType isEqualToString:@"2"]) {
-                    [[UserModel shareInstance]getNotiadvertising];
-//                }
-            }else{
+                [[UserModel shareInstance]getNotiadvertising];
+//                [[UserModel shareInstance]getOpenAD];
+
+                if ([UserModel shareInstance].adDict)
+                {
+                    OpenAdViewController * adVc =[[OpenAdViewController alloc]init];
+                    [self.window setRootViewController:adVc];
+                }
+                else
+                {
+                    TabbarViewController * tabbar = [[TabbarViewController alloc]init];
+                    [UserModel shareInstance].tabbarStyle = @"health";
+                    [self.window setRootViewController:tabbar];
+
+                }
+                
+                
+                
+                
+                
+                
+                
+            }
+            else
+            {
                 ADDChengUserViewController * cg =[[ADDChengUserViewController alloc]init];
                 cg.isResignUser = YES;
-//                UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:cg];
                 [self.window setRootViewController:cg];
             }
-        }else{
+        }
+        else
+        {
             
             lo = [[LoignViewController alloc]initWithNibName:@"LoignViewController" bundle:nil];
             [self.window setRootViewController:lo];
-            
         }
 
     }else{
@@ -162,6 +182,8 @@
 
     
     // Override point for customization after application launch.
+    
+    [[UserModel shareInstance] getLocation];
     return YES;
 }
 -(void)loignOut

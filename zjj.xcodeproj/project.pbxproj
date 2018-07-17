@@ -174,6 +174,9 @@
 		6C47123F1F25CE0000E5E750 /* WebViewCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C47123E1F25CE0000E5E750 /* WebViewCall.m */; };
 		6C47124D1F27391700E5E750 /* WXPsTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C47124B1F27391700E5E750 /* WXPsTitleCell.m */; };
 		6C47124E1F27391700E5E750 /* WXPsTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C47124C1F27391700E5E750 /* WXPsTitleCell.xib */; };
+		6C523D0A20F85722000CD873 /* MessageDetail1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C523D0820F85722000CD873 /* MessageDetail1ViewController.m */; };
+		6C523D0B20F85722000CD873 /* MessageDetail1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C523D0920F85722000CD873 /* MessageDetail1ViewController.xib */; };
+		6C523D0E20F888AF000CD873 /* WXSuspensionBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C523D0D20F888AF000CD873 /* WXSuspensionBtn.m */; };
 		6C57799A1FA701B800388986 /* ClearCecheModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5779991FA701B800388986 /* ClearCecheModel.m */; };
 		6C5779A01FA8668300388986 /* EmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C57799F1FA8668300388986 /* EmptyView.m */; };
 		6C5779A21FA8669000388986 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C5779A11FA8669000388986 /* EmptyView.xib */; };
@@ -253,6 +256,8 @@
 		6C7767E320AE699900AF2D69 /* RefundTheDepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7767E120AE699900AF2D69 /* RefundTheDepositViewController.xib */; };
 		6C7767E820AECDDD00AF2D69 /* RefundScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7767E620AECDDD00AF2D69 /* RefundScheduleViewController.m */; };
 		6C7767E920AECDDD00AF2D69 /* RefundScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C7767E720AECDDD00AF2D69 /* RefundScheduleViewController.xib */; };
+		6C77E7FD20F486EB00C76D0A /* OpenAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C77E7FB20F486EB00C76D0A /* OpenAdViewController.m */; };
+		6C77E7FE20F486EC00C76D0A /* OpenAdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C77E7FC20F486EB00C76D0A /* OpenAdViewController.xib */; };
 		6C7939D61FCBAE7100A243A1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7939D51FCBAE7100A243A1 /* CoreLocation.framework */; };
 		6C7939D91FCBAEED00A243A1 /* WXLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C7939D81FCBAEED00A243A1 /* WXLocationManager.m */; };
 		6C7939DB1FCBB09300A243A1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C7939DA1FCBB09300A243A1 /* MapKit.framework */; };
@@ -1166,6 +1171,11 @@
 		6C47124A1F27391700E5E750 /* WXPsTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXPsTitleCell.h; sourceTree = "<group>"; };
 		6C47124B1F27391700E5E750 /* WXPsTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXPsTitleCell.m; sourceTree = "<group>"; };
 		6C47124C1F27391700E5E750 /* WXPsTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXPsTitleCell.xib; sourceTree = "<group>"; };
+		6C523D0720F85722000CD873 /* MessageDetail1ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageDetail1ViewController.h; sourceTree = "<group>"; };
+		6C523D0820F85722000CD873 /* MessageDetail1ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageDetail1ViewController.m; sourceTree = "<group>"; };
+		6C523D0920F85722000CD873 /* MessageDetail1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageDetail1ViewController.xib; sourceTree = "<group>"; };
+		6C523D0C20F888AF000CD873 /* WXSuspensionBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXSuspensionBtn.h; sourceTree = "<group>"; };
+		6C523D0D20F888AF000CD873 /* WXSuspensionBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXSuspensionBtn.m; sourceTree = "<group>"; };
 		6C5779981FA701B800388986 /* ClearCecheModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClearCecheModel.h; sourceTree = "<group>"; };
 		6C5779991FA701B800388986 /* ClearCecheModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClearCecheModel.m; sourceTree = "<group>"; };
 		6C57799E1FA8668300388986 /* EmptyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyView.h; sourceTree = "<group>"; };
@@ -1298,6 +1308,15 @@
 		6C7767E520AECDDD00AF2D69 /* RefundScheduleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefundScheduleViewController.h; sourceTree = "<group>"; };
 		6C7767E620AECDDD00AF2D69 /* RefundScheduleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefundScheduleViewController.m; sourceTree = "<group>"; };
 		6C7767E720AECDDD00AF2D69 /* RefundScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundScheduleViewController.xib; sourceTree = "<group>"; };
+		6C77E7DB20F447B300C76D0A /* BodyFatDivisionAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BodyFatDivisionAgreementViewController.h; sourceTree = "<group>"; };
+		6C77E7DC20F447B300C76D0A /* BodyFatDivisionAgreementViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BodyFatDivisionAgreementViewController.xib; sourceTree = "<group>"; };
+		6C77E7DD20F447B300C76D0A /* RealNameAuthenticationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealNameAuthenticationViewController.h; sourceTree = "<group>"; };
+		6C77E7DE20F447B300C76D0A /* RealNameAuthenticationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RealNameAuthenticationViewController.m; sourceTree = "<group>"; };
+		6C77E7DF20F447B300C76D0A /* BodyFatDivisionAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BodyFatDivisionAgreementViewController.m; sourceTree = "<group>"; };
+		6C77E7E020F447B300C76D0A /* RealNameAuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RealNameAuthenticationViewController.xib; sourceTree = "<group>"; };
+		6C77E7FA20F486EB00C76D0A /* OpenAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenAdViewController.h; sourceTree = "<group>"; };
+		6C77E7FB20F486EB00C76D0A /* OpenAdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenAdViewController.m; sourceTree = "<group>"; };
+		6C77E7FC20F486EB00C76D0A /* OpenAdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenAdViewController.xib; sourceTree = "<group>"; };
 		6C7939D51FCBAE7100A243A1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6C7939D71FCBAEED00A243A1 /* WXLocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXLocationManager.h; sourceTree = "<group>"; };
 		6C7939D81FCBAEED00A243A1 /* WXLocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXLocationManager.m; sourceTree = "<group>"; };
@@ -2275,6 +2294,8 @@
 		6C1B2B751EECDEFD0092AAF0 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				6CFD99321EF26DBB00802AA4 /* UserModel.h */,
+				6CFD99331EF26DBB00802AA4 /* UserModel.m */,
 				6CA024C61F19DBA100F54DF3 /* YMSocketUtils.h */,
 				6CA024C71F19DBA100F54DF3 /* YMSocketUtils.m */,
 				6C8F53781F11C18000C7A275 /* WWXBlueToothManager.h */,
@@ -2383,8 +2404,6 @@
 		6C1B2B871EECDEFD0092AAF0 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				6CFD99321EF26DBB00802AA4 /* UserModel.h */,
-				6CFD99331EF26DBB00802AA4 /* UserModel.m */,
 				6CD92FD41F0A300A00D7989E /* SubUserItem.h */,
 				6CD92FD51F0A300A00D7989E /* SubUserItem.m */,
 				6CD010891EF3D19400FB9419 /* HealthItem.h */,
@@ -2453,6 +2472,7 @@
 		6C1B2B8B1EECDEFD0092AAF0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				6C523D0620F8570D000CD873 /* messageDetail */,
 				6C64633A20EDAD070071A26B /* message1 */,
 				6C64633B20EDAD0C0071A26B /* message2 */,
 				6C64633C20EDAD110071A26B /* message3 */,
@@ -2545,6 +2565,7 @@
 		6C1B2B991EECDEFD0092AAF0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				6C77E7F920F486C700C76D0A /* Ad(开机广告) */,
 				6CBC0ABC1FAC455C00FB7857 /* ChooseImage */,
 				6CDBC3E81F4E67D30059A15E /* payController */,
 				6C73AFF31F31AC550042C1A2 /* WXAlipayController.h */,
@@ -2634,6 +2655,8 @@
 				6CA6FE152011893D00CDDAD5 /* WXProgressView.h */,
 				6CA6FE162011893D00CDDAD5 /* WXProgressView.m */,
 				6CA6FE182011894800CDDAD5 /* WXProgressView.xib */,
+				6C523D0C20F888AF000CD873 /* WXSuspensionBtn.h */,
+				6C523D0D20F888AF000CD873 /* WXSuspensionBtn.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2669,20 +2692,23 @@
 		6C1B2BBB1EECDEFD0092AAF0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				6C77E7F820F44A9F00C76D0A /* allorder(全部订单) */,
+				6C77E7F320F44A1B00C76D0A /* Mine(我的) */,
+				6C77E7F220F449F500C76D0A /* edit(设置) */,
+				6C77E7F120F449E500C76D0A /* AddFriend(添加好友) */,
+				6C77E7EA20F4495E00C76D0A /* integralShop(积分商城) */,
+				6C77E7E920F4494B00C76D0A /* Levelinstructions(等级说明) */,
+				6C77E7E820F448F600C76D0A /* growthSystem(成长体系) */,
+				6C77E7E720F448BD00C76D0A /* UserHomePage(个人信息主页) */,
+				6C77E7E620F4489400C76D0A /* MyFuns(关注、粉丝) */,
+				6C77E7E520F4487900C76D0A /* changUserInfo(修改个人信息) */,
+				6C77E7E420F4485700C76D0A /* addUser(添加用户) */,
+				6C77E7E320F4483600C76D0A /* aboutUs(关于我们) */,
+				6C77E7E220F4481600C76D0A /* changePassword(修改密码) */,
+				6C77E7E120F447E600C76D0A /* intiveFriends(邀请好友) */,
+				6C77E7DA20F447B300C76D0A /* BodyFatDivisionAgreement(体脂师认证) */,
 				6C7767C720AE624300AF2D69 /* Rent balance(租秤) */,
-				6C6A5AA82043F253006C2B8D /* intiveFriends(邀请好友) */,
-				6C57799D1FA704F300388986 /* changepassword(修改密码) */,
-				6C57799C1FA704C600388986 /* aboutUs(关于我们) */,
 				6C57799B1FA704B200388986 /* myCollection我的收藏 */,
-				6C6CFE611F8E33DF005C2738 /* ADDChengUser(添加用秤用户) */,
-				6C2241A51F7CF753001BB2FD /* infoEdit(修改个人信息) */,
-				6CD19FA81F74FB2D00DF1289 /* Gz(关注) */,
-				6C2AF26E1F7206D800C00F2A /* HomePage */,
-				6C2AF2581F71F9C700C00F2A /* Growth system（成长体系） */,
-				6C2AF2461F71107000C00F2A /* integralShop(积分商城) */,
-				6C2AF2401F710D8200C00F2A /* AddFriend(添加好友) */,
-				6C2AF23A1F710B6200C00F2A /* Edit */,
-				6C2AF2251F7102A000C00F2A /* NewMineVC */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2810,19 +2836,6 @@
 			path = "articleDetail(文章详情)";
 			sourceTree = "<group>";
 		};
-		6C2241A51F7CF753001BB2FD /* infoEdit(修改个人信息) */ = {
-			isa = PBXGroup;
-			children = (
-				6C2241A61F7CF782001BB2FD /* EditUserInfoViewController.h */,
-				6C2241A71F7CF782001BB2FD /* EditUserInfoViewController.m */,
-				6C2241A81F7CF782001BB2FD /* EditUserInfoViewController.xib */,
-				6C2241AB1F7CF8E4001BB2FD /* EditUserInfoImageCell.h */,
-				6C2241AC1F7CF8E4001BB2FD /* EditUserInfoImageCell.m */,
-				6C2241AD1F7CF8E4001BB2FD /* EditUserInfoImageCell.xib */,
-			);
-			name = "infoEdit(修改个人信息)";
-			sourceTree = "<group>";
-		};
 		6C2AF21F1F71021900C00F2A /* community(社区) */ = {
 			isa = PBXGroup;
 			children = (
@@ -2833,156 +2846,6 @@
 				6CB7508E1F749AAE007BAE04 /* Share */,
 			);
 			path = "community(社区)";
-			sourceTree = "<group>";
-		};
-		6C2AF2251F7102A000C00F2A /* NewMineVC */ = {
-			isa = PBXGroup;
-			children = (
-				6CBD937E20A41E9300B1F580 /* 第三版 */,
-				6CD1933A20807E8A00C62238 /* AllOrder */,
-				6CD1932C207EEF0600C62238 /* 第二版 */,
-				6C2AF2261F7102B300C00F2A /* NewMineViewController.h */,
-				6C2AF2271F7102B300C00F2A /* NewMineViewController.m */,
-				6C2AF2281F7102B300C00F2A /* NewMineViewController.xib */,
-				6C2AF22B1F71035700C00F2A /* NewMineHeaderCell.h */,
-				6C2AF22C1F71035700C00F2A /* NewMineHeaderCell.m */,
-				6C2AF22D1F71035700C00F2A /* NewMineHeaderCell.xib */,
-				6C2AF2351F71081E00C00F2A /* NewMineRelationsCell.h */,
-				6C2AF2361F71081E00C00F2A /* NewMineRelationsCell.m */,
-				6C2AF2371F71081E00C00F2A /* NewMineRelationsCell.xib */,
-				6C027F1D1F9F245A00556440 /* NewMineTableViewCell.h */,
-				6C027F1E1F9F245A00556440 /* NewMineTableViewCell.m */,
-				6C027F1F1F9F245A00556440 /* NewMineTableViewCell.xib */,
-				6C2BB72D2022F2B100D7222D /* NewMy1Cell.h */,
-				6C2BB72E2022F2B100D7222D /* NewMy1Cell.m */,
-				6C2BB72F2022F2B100D7222D /* NewMy1Cell.xib */,
-				6C2BB7322022F2C400D7222D /* NewMy2Cell.h */,
-				6C2BB7332022F2C400D7222D /* NewMy2Cell.m */,
-				6C2BB7342022F2C400D7222D /* NewMy2Cell.xib */,
-			);
-			name = NewMineVC;
-			sourceTree = "<group>";
-		};
-		6C2AF23A1F710B6200C00F2A /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				6C2AF23B1F710B7900C00F2A /* NewMineEditViewController.h */,
-				6C2AF23C1F710B7900C00F2A /* NewMineEditViewController.m */,
-				6C2AF23D1F710B7900C00F2A /* NewMineEditViewController.xib */,
-			);
-			name = Edit;
-			sourceTree = "<group>";
-		};
-		6C2AF2401F710D8200C00F2A /* AddFriend(添加好友) */ = {
-			isa = PBXGroup;
-			children = (
-				6CA6FDCF20085B0300CDDAD5 /* QRCodeResignViewController.h */,
-				6CA6FDCE20085B0200CDDAD5 /* QRCodeResignViewController.m */,
-				6C2AF2411F710D9400C00F2A /* AddFriendsViewController.h */,
-				6C2AF2421F710D9400C00F2A /* AddFriendsViewController.m */,
-				6C2AF2431F710D9400C00F2A /* AddFriendsViewController.xib */,
-			);
-			name = "AddFriend(添加好友)";
-			sourceTree = "<group>";
-		};
-		6C2AF2461F71107000C00F2A /* integralShop(积分商城) */ = {
-			isa = PBXGroup;
-			children = (
-				6CB7509A1F74A090007BAE04 /* UpdateOrder */,
-				6C2AF2631F71FF6400C00F2A /* order(订单) */,
-				6C2AF2521F71F94100C00F2A /* detail(详情) */,
-				6C2AF2511F71F92C00C00F2A /* List(列表) */,
-			);
-			name = "integralShop(积分商城)";
-			sourceTree = "<group>";
-		};
-		6C2AF2511F71F92C00C00F2A /* List(列表) */ = {
-			isa = PBXGroup;
-			children = (
-				6C2AF2471F71108B00C00F2A /* IntegralShopViewController.h */,
-				6C2AF2481F71108B00C00F2A /* IntegralShopViewController.m */,
-				6C2AF2491F71108B00C00F2A /* IntegralShopViewController.xib */,
-				6C2AF24C1F7111E400C00F2A /* integralShopCell.h */,
-				6C2AF24D1F7111E400C00F2A /* integralShopCell.m */,
-				6C2AF24E1F7111E400C00F2A /* integralShopCell.xib */,
-			);
-			name = "List(列表)";
-			sourceTree = "<group>";
-		};
-		6C2AF2521F71F94100C00F2A /* detail(详情) */ = {
-			isa = PBXGroup;
-			children = (
-				6C027F3D1FA2BF1900556440 /* IntegralShopDetailViewController.h */,
-				6C027F3E1FA2BF1900556440 /* IntegralShopDetailViewController.m */,
-				6C027F401FA2C0A400556440 /* IntegralShopDetailContentCell.h */,
-				6C027F411FA2C0A400556440 /* IntegralShopDetailContentCell.m */,
-				6C027F431FA2C11500556440 /* IntegralShopDetailModel.h */,
-				6C027F441FA2C11500556440 /* IntegralShopDetailModel.m */,
-			);
-			name = "detail(详情)";
-			sourceTree = "<group>";
-		};
-		6C2AF2581F71F9C700C00F2A /* Growth system（成长体系） */ = {
-			isa = PBXGroup;
-			children = (
-				6C6CFE5B1F8DFEAA005C2738 /* Levelinstructions(等级说明) */,
-				6C2AF2591F71F9FC00C00F2A /* GrowthStstemViewController.h */,
-				6C2AF25A1F71F9FC00C00F2A /* GrowthStstemViewController.m */,
-				6C2AF25B1F71F9FC00C00F2A /* GrowthStstemViewController.xib */,
-				6C6CFE6C1F8F165C005C2738 /* GrowthStstemHeaderCell.h */,
-				6C6CFE6D1F8F165C005C2738 /* GrowthStstemHeaderCell.m */,
-				6C6CFE6E1F8F165C005C2738 /* GrowthStstemHeaderCell.xib */,
-				6C2AF2791F72118400C00F2A /* GrowthHeader2View.h */,
-				6C2AF27A1F72118400C00F2A /* GrowthHeader2View.m */,
-				6C2AF27C1F72118D00C00F2A /* GrowthHeader2View.xib */,
-				6C2AF25E1F71FA3800C00F2A /* GrowthHeaderView.h */,
-				6C2AF25F1F71FA3800C00F2A /* GrowthHeaderView.m */,
-				6C2AF2611F71FA4700C00F2A /* GrowthHeaderView.xib */,
-				6C0F287B1F7267BF00FD27FF /* GrowthCell.h */,
-				6C0F287C1F7267BF00FD27FF /* GrowthCell.m */,
-				6C0F287D1F7267BF00FD27FF /* GrowthCell.xib */,
-			);
-			name = "Growth system（成长体系）";
-			sourceTree = "<group>";
-		};
-		6C2AF2631F71FF6400C00F2A /* order(订单) */ = {
-			isa = PBXGroup;
-			children = (
-				6CA9C8351F78B48000E0941B /* roderDetail */,
-				6CA9C8341F78B47200E0941B /* orderList */,
-			);
-			name = "order(订单)";
-			sourceTree = "<group>";
-		};
-		6C2AF26E1F7206D800C00F2A /* HomePage */ = {
-			isa = PBXGroup;
-			children = (
-				6C2AF26F1F7206EF00C00F2A /* NewMineHomePageViewController.h */,
-				6C2AF2701F7206EF00C00F2A /* NewMineHomePageViewController.m */,
-				6C2AF2711F7206EF00C00F2A /* NewMineHomePageViewController.xib */,
-				6CB750891F73942E007BAE04 /* NewMineHomePageCell.h */,
-				6CB7508A1F73942E007BAE04 /* NewMineHomePageCell.m */,
-				6CB7508B1F73942E007BAE04 /* NewMineHomePageCell.xib */,
-				6CFDE7F21F8B49FE005D3971 /* BeforeAfterContrastCell.h */,
-				6CFDE7F31F8B49FE005D3971 /* BeforeAfterContrastCell.m */,
-				6CFDE7F41F8B49FE005D3971 /* BeforeAfterContrastCell.xib */,
-				6C934DEC1FD930BA00D375AC /* NewMineFatStarHeadCell.h */,
-				6C934DED1FD930BA00D375AC /* NewMineFatStarHeadCell.m */,
-				6C934DEE1FD930BA00D375AC /* NewMineFatStarHeadCell.xib */,
-				6CD5F1141FDA635E00C8C31E /* NewMineFatInterCell.h */,
-				6CD5F1151FDA635E00C8C31E /* NewMineFatInterCell.m */,
-				6CD5F1161FDA635E00C8C31E /* NewMineFatInterCell.xib */,
-				6CD5F1191FDA64E300C8C31E /* NewMineFatLineCell.h */,
-				6CD5F11A1FDA64E300C8C31E /* NewMineFatLineCell.m */,
-				6CD5F11B1FDA64E300C8C31E /* NewMineFatLineCell.xib */,
-				6C934DF11FD935EA00D375AC /* reducedFatInterviewTableViewCell.h */,
-				6C934DF21FD935EA00D375AC /* reducedFatInterviewTableViewCell.m */,
-				6C934DF41FD9380400D375AC /* ReducedFatLineCell.h */,
-				6C934DF51FD9380400D375AC /* ReducedFatLineCell.m */,
-				6CD5F1111FDA20A300C8C31E /* NewMineModel.h */,
-				6CD5F1121FDA20A300C8C31E /* NewMineModel.m */,
-			);
-			name = HomePage;
 			sourceTree = "<group>";
 		};
 		6C3638E01EFCEB3800268851 /* message */ = {
@@ -3127,6 +2990,16 @@
 			path = AAOptionsModel;
 			sourceTree = "<group>";
 		};
+		6C523D0620F8570D000CD873 /* messageDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6C523D0720F85722000CD873 /* MessageDetail1ViewController.h */,
+				6C523D0820F85722000CD873 /* MessageDetail1ViewController.m */,
+				6C523D0920F85722000CD873 /* MessageDetail1ViewController.xib */,
+			);
+			path = messageDetail;
+			sourceTree = "<group>";
+		};
 		6C57799B1FA704B200388986 /* myCollection我的收藏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3135,26 +3008,6 @@
 				6CD0107C1EF3CABE00FB9419 /* MyCollectionViewController.xib */,
 			);
 			name = "myCollection我的收藏";
-			sourceTree = "<group>";
-		};
-		6C57799C1FA704C600388986 /* aboutUs(关于我们) */ = {
-			isa = PBXGroup;
-			children = (
-				6CD0108F1EF4082700FB9419 /* AboutUsViewController.h */,
-				6CD010901EF4082700FB9419 /* AboutUsViewController.m */,
-				6CD010911EF4082700FB9419 /* AboutUsViewController.xib */,
-			);
-			name = "aboutUs(关于我们)";
-			sourceTree = "<group>";
-		};
-		6C57799D1FA704F300388986 /* changepassword(修改密码) */ = {
-			isa = PBXGroup;
-			children = (
-				6CA024AC1F14C01700F54DF3 /* ChangPasswordViewController.h */,
-				6CA024AD1F14C01700F54DF3 /* ChangPasswordViewController.m */,
-				6CA024AE1F14C01700F54DF3 /* ChangPasswordViewController.xib */,
-			);
-			name = "changepassword(修改密码)";
 			sourceTree = "<group>";
 		};
 		6C64633A20EDAD070071A26B /* message1 */ = {
@@ -3250,44 +3103,6 @@
 				6C6773771F9596520007CB2D /* NewHealthHistoryListViewController.m */,
 			);
 			name = HistoryList;
-			sourceTree = "<group>";
-		};
-		6C6A5AA82043F253006C2B8D /* intiveFriends(邀请好友) */ = {
-			isa = PBXGroup;
-			children = (
-				6C6A5AA92043F291006C2B8D /* InvitationFriendsViewController.h */,
-				6C6A5AAA2043F291006C2B8D /* InvitationFriendsViewController.m */,
-				6C6A5AAB2043F291006C2B8D /* InvitationFriendsViewController.xib */,
-			);
-			name = "intiveFriends(邀请好友)";
-			sourceTree = "<group>";
-		};
-		6C6CFE5B1F8DFEAA005C2738 /* Levelinstructions(等级说明) */ = {
-			isa = PBXGroup;
-			children = (
-				6C6CFE5C1F8DFED9005C2738 /* LevelSnstructionsViewController.h */,
-				6C6CFE5D1F8DFED9005C2738 /* LevelSnstructionsViewController.m */,
-				6C6CFE5E1F8DFED9005C2738 /* LevelSnstructionsViewController.xib */,
-			);
-			name = "Levelinstructions(等级说明)";
-			sourceTree = "<group>";
-		};
-		6C6CFE611F8E33DF005C2738 /* ADDChengUser(添加用秤用户) */ = {
-			isa = PBXGroup;
-			children = (
-				6CD19337207F06CF00C62238 /* SXSRulerControl.h */,
-				6CD19338207F06CF00C62238 /* SXSRulerControl.m */,
-				6C6CFE621F8E3408005C2738 /* ADDChengUserViewController.h */,
-				6C6CFE631F8E3408005C2738 /* ADDChengUserViewController.m */,
-				6C6CFE641F8E3408005C2738 /* ADDChengUserViewController.xib */,
-				6CD1932D207F053D00C62238 /* ADDChengUser2ViewController.h */,
-				6CD1932E207F053D00C62238 /* ADDChengUser2ViewController.m */,
-				6CD1932F207F053D00C62238 /* ADDChengUser2ViewController.xib */,
-				6CD19332207F054900C62238 /* ADDCheng3ViewController.h */,
-				6CD19333207F054900C62238 /* ADDCheng3ViewController.m */,
-				6CD19334207F054900C62238 /* ADDCheng3ViewController.xib */,
-			);
-			name = "ADDChengUser(添加用秤用户)";
 			sourceTree = "<group>";
 		};
 		6C6CFE711F8F3D24005C2738 /* NewHealth */ = {
@@ -3449,6 +3264,353 @@
 				6C7767E720AECDDD00AF2D69 /* RefundScheduleViewController.xib */,
 			);
 			path = "RefundProgress(退款进度)";
+			sourceTree = "<group>";
+		};
+		6C77E7DA20F447B300C76D0A /* BodyFatDivisionAgreement(体脂师认证) */ = {
+			isa = PBXGroup;
+			children = (
+				6C77E7DB20F447B300C76D0A /* BodyFatDivisionAgreementViewController.h */,
+				6C77E7DC20F447B300C76D0A /* BodyFatDivisionAgreementViewController.xib */,
+				6C77E7DD20F447B300C76D0A /* RealNameAuthenticationViewController.h */,
+				6C77E7DE20F447B300C76D0A /* RealNameAuthenticationViewController.m */,
+				6C77E7DF20F447B300C76D0A /* BodyFatDivisionAgreementViewController.m */,
+				6C77E7E020F447B300C76D0A /* RealNameAuthenticationViewController.xib */,
+			);
+			path = "BodyFatDivisionAgreement(体脂师认证)";
+			sourceTree = "<group>";
+		};
+		6C77E7E120F447E600C76D0A /* intiveFriends(邀请好友) */ = {
+			isa = PBXGroup;
+			children = (
+				6C6A5AA92043F291006C2B8D /* InvitationFriendsViewController.h */,
+				6C6A5AAA2043F291006C2B8D /* InvitationFriendsViewController.m */,
+				6C6A5AAB2043F291006C2B8D /* InvitationFriendsViewController.xib */,
+			);
+			path = "intiveFriends(邀请好友)";
+			sourceTree = "<group>";
+		};
+		6C77E7E220F4481600C76D0A /* changePassword(修改密码) */ = {
+			isa = PBXGroup;
+			children = (
+				6CA024AC1F14C01700F54DF3 /* ChangPasswordViewController.h */,
+				6CA024AD1F14C01700F54DF3 /* ChangPasswordViewController.m */,
+				6CA024AE1F14C01700F54DF3 /* ChangPasswordViewController.xib */,
+			);
+			path = "changePassword(修改密码)";
+			sourceTree = "<group>";
+		};
+		6C77E7E320F4483600C76D0A /* aboutUs(关于我们) */ = {
+			isa = PBXGroup;
+			children = (
+				6CD0108F1EF4082700FB9419 /* AboutUsViewController.h */,
+				6CD010901EF4082700FB9419 /* AboutUsViewController.m */,
+				6CD010911EF4082700FB9419 /* AboutUsViewController.xib */,
+			);
+			path = "aboutUs(关于我们)";
+			sourceTree = "<group>";
+		};
+		6C77E7E420F4485700C76D0A /* addUser(添加用户) */ = {
+			isa = PBXGroup;
+			children = (
+				6CD19337207F06CF00C62238 /* SXSRulerControl.h */,
+				6CD19338207F06CF00C62238 /* SXSRulerControl.m */,
+				6C6CFE621F8E3408005C2738 /* ADDChengUserViewController.h */,
+				6C6CFE631F8E3408005C2738 /* ADDChengUserViewController.m */,
+				6C6CFE641F8E3408005C2738 /* ADDChengUserViewController.xib */,
+				6CD1932D207F053D00C62238 /* ADDChengUser2ViewController.h */,
+				6CD1932E207F053D00C62238 /* ADDChengUser2ViewController.m */,
+				6CD1932F207F053D00C62238 /* ADDChengUser2ViewController.xib */,
+				6CD19332207F054900C62238 /* ADDCheng3ViewController.h */,
+				6CD19333207F054900C62238 /* ADDCheng3ViewController.m */,
+				6CD19334207F054900C62238 /* ADDCheng3ViewController.xib */,
+			);
+			path = "addUser(添加用户)";
+			sourceTree = "<group>";
+		};
+		6C77E7E520F4487900C76D0A /* changUserInfo(修改个人信息) */ = {
+			isa = PBXGroup;
+			children = (
+				6C2241A61F7CF782001BB2FD /* EditUserInfoViewController.h */,
+				6C2241A71F7CF782001BB2FD /* EditUserInfoViewController.m */,
+				6C2241A81F7CF782001BB2FD /* EditUserInfoViewController.xib */,
+				6C2241AB1F7CF8E4001BB2FD /* EditUserInfoImageCell.h */,
+				6C2241AC1F7CF8E4001BB2FD /* EditUserInfoImageCell.m */,
+				6C2241AD1F7CF8E4001BB2FD /* EditUserInfoImageCell.xib */,
+			);
+			path = "changUserInfo(修改个人信息)";
+			sourceTree = "<group>";
+		};
+		6C77E7E620F4489400C76D0A /* MyFuns(关注、粉丝) */ = {
+			isa = PBXGroup;
+			children = (
+				6CD19FA91F74FB4700DF1289 /* GuanZViewController.h */,
+				6CD19FAA1F74FB4700DF1289 /* GuanZViewController.m */,
+				6CD19FAB1F74FB4700DF1289 /* GuanZViewController.xib */,
+				6CD19FAE1F74FCB100DF1289 /* UserListCell.h */,
+				6CD19FAF1F74FCB100DF1289 /* UserListCell.m */,
+				6CD19FB01F74FCB100DF1289 /* UserListCell.xib */,
+				6C2241A21F7CDB8C001BB2FD /* GuanzModel.h */,
+				6C2241A31F7CDB8C001BB2FD /* GuanzModel.m */,
+			);
+			path = "MyFuns(关注、粉丝)";
+			sourceTree = "<group>";
+		};
+		6C77E7E720F448BD00C76D0A /* UserHomePage(个人信息主页) */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF26F1F7206EF00C00F2A /* NewMineHomePageViewController.h */,
+				6C2AF2701F7206EF00C00F2A /* NewMineHomePageViewController.m */,
+				6C2AF2711F7206EF00C00F2A /* NewMineHomePageViewController.xib */,
+				6CB750891F73942E007BAE04 /* NewMineHomePageCell.h */,
+				6CB7508A1F73942E007BAE04 /* NewMineHomePageCell.m */,
+				6CB7508B1F73942E007BAE04 /* NewMineHomePageCell.xib */,
+				6CFDE7F21F8B49FE005D3971 /* BeforeAfterContrastCell.h */,
+				6CFDE7F31F8B49FE005D3971 /* BeforeAfterContrastCell.m */,
+				6CFDE7F41F8B49FE005D3971 /* BeforeAfterContrastCell.xib */,
+				6C934DEC1FD930BA00D375AC /* NewMineFatStarHeadCell.h */,
+				6C934DED1FD930BA00D375AC /* NewMineFatStarHeadCell.m */,
+				6C934DEE1FD930BA00D375AC /* NewMineFatStarHeadCell.xib */,
+				6CD5F1141FDA635E00C8C31E /* NewMineFatInterCell.h */,
+				6CD5F1151FDA635E00C8C31E /* NewMineFatInterCell.m */,
+				6CD5F1161FDA635E00C8C31E /* NewMineFatInterCell.xib */,
+				6CD5F1191FDA64E300C8C31E /* NewMineFatLineCell.h */,
+				6CD5F11A1FDA64E300C8C31E /* NewMineFatLineCell.m */,
+				6CD5F11B1FDA64E300C8C31E /* NewMineFatLineCell.xib */,
+				6C934DF11FD935EA00D375AC /* reducedFatInterviewTableViewCell.h */,
+				6C934DF21FD935EA00D375AC /* reducedFatInterviewTableViewCell.m */,
+				6C934DF41FD9380400D375AC /* ReducedFatLineCell.h */,
+				6C934DF51FD9380400D375AC /* ReducedFatLineCell.m */,
+				6CD5F1111FDA20A300C8C31E /* NewMineModel.h */,
+				6CD5F1121FDA20A300C8C31E /* NewMineModel.m */,
+			);
+			path = "UserHomePage(个人信息主页)";
+			sourceTree = "<group>";
+		};
+		6C77E7E820F448F600C76D0A /* growthSystem(成长体系) */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF2591F71F9FC00C00F2A /* GrowthStstemViewController.h */,
+				6C2AF25A1F71F9FC00C00F2A /* GrowthStstemViewController.m */,
+				6C2AF25B1F71F9FC00C00F2A /* GrowthStstemViewController.xib */,
+				6C6CFE6C1F8F165C005C2738 /* GrowthStstemHeaderCell.h */,
+				6C6CFE6D1F8F165C005C2738 /* GrowthStstemHeaderCell.m */,
+				6C6CFE6E1F8F165C005C2738 /* GrowthStstemHeaderCell.xib */,
+				6C2AF2791F72118400C00F2A /* GrowthHeader2View.h */,
+				6C2AF27A1F72118400C00F2A /* GrowthHeader2View.m */,
+				6C2AF27C1F72118D00C00F2A /* GrowthHeader2View.xib */,
+				6C2AF25E1F71FA3800C00F2A /* GrowthHeaderView.h */,
+				6C2AF25F1F71FA3800C00F2A /* GrowthHeaderView.m */,
+				6C2AF2611F71FA4700C00F2A /* GrowthHeaderView.xib */,
+				6C0F287B1F7267BF00FD27FF /* GrowthCell.h */,
+				6C0F287C1F7267BF00FD27FF /* GrowthCell.m */,
+				6C0F287D1F7267BF00FD27FF /* GrowthCell.xib */,
+			);
+			path = "growthSystem(成长体系)";
+			sourceTree = "<group>";
+		};
+		6C77E7E920F4494B00C76D0A /* Levelinstructions(等级说明) */ = {
+			isa = PBXGroup;
+			children = (
+				6C6CFE5C1F8DFED9005C2738 /* LevelSnstructionsViewController.h */,
+				6C6CFE5D1F8DFED9005C2738 /* LevelSnstructionsViewController.m */,
+				6C6CFE5E1F8DFED9005C2738 /* LevelSnstructionsViewController.xib */,
+			);
+			path = "Levelinstructions(等级说明)";
+			sourceTree = "<group>";
+		};
+		6C77E7EA20F4495E00C76D0A /* integralShop(积分商城) */ = {
+			isa = PBXGroup;
+			children = (
+				6C77E7EE20F4497F00C76D0A /* List(列表) */,
+				6C77E7ED20F4497D00C76D0A /* detail(详情) */,
+				6C77E7EC20F4497A00C76D0A /* order(订单) */,
+				6C77E7EB20F4496C00C76D0A /* UpdateOrder */,
+			);
+			path = "integralShop(积分商城)";
+			sourceTree = "<group>";
+		};
+		6C77E7EB20F4496C00C76D0A /* UpdateOrder */ = {
+			isa = PBXGroup;
+			children = (
+				6CEDADF31F74A9F000D3C223 /* IntegralOrderUpdateViewController.h */,
+				6CEDADF41F74A9F000D3C223 /* IntegralOrderUpdateViewController.m */,
+				6CEDADF51F74A9F000D3C223 /* IntegralOrderUpdateViewController.xib */,
+				6C2F46391FAD90CC00E9C914 /* PhoneChargesViewController.h */,
+				6C2F463A1FAD90CC00E9C914 /* PhoneChargesViewController.m */,
+				6C2F463B1FAD90CC00E9C914 /* PhoneChargesViewController.xib */,
+				6C7939E61FCC3BBF00A243A1 /* VouchersUpOrderViewController.h */,
+				6C7939E71FCC3BBF00A243A1 /* VouchersUpOrderViewController.m */,
+				6C7939E81FCC3BBF00A243A1 /* VouchersUpOrderViewController.xib */,
+			);
+			path = UpdateOrder;
+			sourceTree = "<group>";
+		};
+		6C77E7EC20F4497A00C76D0A /* order(订单) */ = {
+			isa = PBXGroup;
+			children = (
+				6C77E7F020F4499900C76D0A /* orderList */,
+				6C77E7EF20F4499100C76D0A /* roderDetail */,
+			);
+			path = "order(订单)";
+			sourceTree = "<group>";
+		};
+		6C77E7ED20F4497D00C76D0A /* detail(详情) */ = {
+			isa = PBXGroup;
+			children = (
+				6C027F3D1FA2BF1900556440 /* IntegralShopDetailViewController.h */,
+				6C027F3E1FA2BF1900556440 /* IntegralShopDetailViewController.m */,
+				6C027F401FA2C0A400556440 /* IntegralShopDetailContentCell.h */,
+				6C027F411FA2C0A400556440 /* IntegralShopDetailContentCell.m */,
+				6C027F431FA2C11500556440 /* IntegralShopDetailModel.h */,
+				6C027F441FA2C11500556440 /* IntegralShopDetailModel.m */,
+			);
+			path = "detail(详情)";
+			sourceTree = "<group>";
+		};
+		6C77E7EE20F4497F00C76D0A /* List(列表) */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF2471F71108B00C00F2A /* IntegralShopViewController.h */,
+				6C2AF2481F71108B00C00F2A /* IntegralShopViewController.m */,
+				6C2AF2491F71108B00C00F2A /* IntegralShopViewController.xib */,
+				6C2AF24C1F7111E400C00F2A /* integralShopCell.h */,
+				6C2AF24D1F7111E400C00F2A /* integralShopCell.m */,
+				6C2AF24E1F7111E400C00F2A /* integralShopCell.xib */,
+			);
+			path = "List(列表)";
+			sourceTree = "<group>";
+		};
+		6C77E7EF20F4499100C76D0A /* roderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6CA9C8361F78B49300E0941B /* IntegralOrderDetailViewController.h */,
+				6CA9C8371F78B49300E0941B /* IntegralOrderDetailViewController.m */,
+				6CA9C8381F78B49300E0941B /* IntegralOrderDetailViewController.xib */,
+				6C2F463E1FAD936200E9C914 /* PhoneChargesOrderViewController.h */,
+				6C2F463F1FAD936200E9C914 /* PhoneChargesOrderViewController.m */,
+				6C2F46401FAD936200E9C914 /* PhoneChargesOrderViewController.xib */,
+				6C7939E11FCC3AE900A243A1 /* VouchersOrderDetailViewController.h */,
+				6C7939E21FCC3AE900A243A1 /* VouchersOrderDetailViewController.m */,
+				6C7939E31FCC3AE900A243A1 /* VouchersOrderDetailViewController.xib */,
+			);
+			path = roderDetail;
+			sourceTree = "<group>";
+		};
+		6C77E7F020F4499900C76D0A /* orderList */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF2641F71FF8C00C00F2A /* IntegralOrderViewController.h */,
+				6C2AF2651F71FF8C00C00F2A /* IntegralOrderViewController.m */,
+				6C2AF2661F71FF8C00C00F2A /* IntegralOrderViewController.xib */,
+				6C2AF2691F71FFC200C00F2A /* IntegralOrderCell.h */,
+				6C2AF26A1F71FFC200C00F2A /* IntegralOrderCell.m */,
+				6C2AF26B1F71FFC200C00F2A /* IntegralOrderCell.xib */,
+			);
+			path = orderList;
+			sourceTree = "<group>";
+		};
+		6C77E7F120F449E500C76D0A /* AddFriend(添加好友) */ = {
+			isa = PBXGroup;
+			children = (
+				6CA6FDCF20085B0300CDDAD5 /* QRCodeResignViewController.h */,
+				6CA6FDCE20085B0200CDDAD5 /* QRCodeResignViewController.m */,
+				6C2AF2411F710D9400C00F2A /* AddFriendsViewController.h */,
+				6C2AF2421F710D9400C00F2A /* AddFriendsViewController.m */,
+				6C2AF2431F710D9400C00F2A /* AddFriendsViewController.xib */,
+			);
+			path = "AddFriend(添加好友)";
+			sourceTree = "<group>";
+		};
+		6C77E7F220F449F500C76D0A /* edit(设置) */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF23B1F710B7900C00F2A /* NewMineEditViewController.h */,
+				6C2AF23C1F710B7900C00F2A /* NewMineEditViewController.m */,
+				6C2AF23D1F710B7900C00F2A /* NewMineEditViewController.xib */,
+			);
+			path = "edit(设置)";
+			sourceTree = "<group>";
+		};
+		6C77E7F320F44A1B00C76D0A /* Mine(我的) */ = {
+			isa = PBXGroup;
+			children = (
+				6C77E7F620F44A4C00C76D0A /* 第一版 */,
+				6C77E7F520F44A4A00C76D0A /* 第二版 */,
+				6C77E7F420F44A3900C76D0A /* 第三版 */,
+				6C77E7F720F44A6D00C76D0A /* Cell */,
+			);
+			path = "Mine(我的)";
+			sourceTree = "<group>";
+		};
+		6C77E7F420F44A3900C76D0A /* 第三版 */ = {
+			isa = PBXGroup;
+			children = (
+				6CBD937F20A41EA900B1F580 /* NewMineThreeViewController.h */,
+				6CBD938020A41EA900B1F580 /* NewMineThreeViewController.m */,
+				6CBD938120A41EAA00B1F580 /* NewMineThreeViewController.xib */,
+			);
+			path = "第三版";
+			sourceTree = "<group>";
+		};
+		6C77E7F520F44A4A00C76D0A /* 第二版 */ = {
+			isa = PBXGroup;
+			children = (
+				6CD19327207EEEFD00C62238 /* NewMy2ViewController.h */,
+				6CD19328207EEEFD00C62238 /* NewMy2ViewController.m */,
+				6CD19329207EEEFD00C62238 /* NewMy2ViewController.xib */,
+			);
+			path = "第二版";
+			sourceTree = "<group>";
+		};
+		6C77E7F620F44A4C00C76D0A /* 第一版 */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF2261F7102B300C00F2A /* NewMineViewController.h */,
+				6C2AF2271F7102B300C00F2A /* NewMineViewController.m */,
+				6C2AF2281F7102B300C00F2A /* NewMineViewController.xib */,
+			);
+			path = "第一版";
+			sourceTree = "<group>";
+		};
+		6C77E7F720F44A6D00C76D0A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6C2AF22B1F71035700C00F2A /* NewMineHeaderCell.h */,
+				6C2AF22C1F71035700C00F2A /* NewMineHeaderCell.m */,
+				6C2AF22D1F71035700C00F2A /* NewMineHeaderCell.xib */,
+				6C2AF2351F71081E00C00F2A /* NewMineRelationsCell.h */,
+				6C2AF2361F71081E00C00F2A /* NewMineRelationsCell.m */,
+				6C2AF2371F71081E00C00F2A /* NewMineRelationsCell.xib */,
+				6C027F1D1F9F245A00556440 /* NewMineTableViewCell.h */,
+				6C027F1E1F9F245A00556440 /* NewMineTableViewCell.m */,
+				6C027F1F1F9F245A00556440 /* NewMineTableViewCell.xib */,
+				6C2BB72D2022F2B100D7222D /* NewMy1Cell.h */,
+				6C2BB72E2022F2B100D7222D /* NewMy1Cell.m */,
+				6C2BB72F2022F2B100D7222D /* NewMy1Cell.xib */,
+				6C2BB7322022F2C400D7222D /* NewMy2Cell.h */,
+				6C2BB7332022F2C400D7222D /* NewMy2Cell.m */,
+				6C2BB7342022F2C400D7222D /* NewMy2Cell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6C77E7F820F44A9F00C76D0A /* allorder(全部订单) */ = {
+			isa = PBXGroup;
+			children = (
+				6CD1933B20807E9E00C62238 /* AllOrderViewController.h */,
+				6CD1933C20807E9E00C62238 /* AllOrderViewController.m */,
+			);
+			path = "allorder(全部订单)";
+			sourceTree = "<group>";
+		};
+		6C77E7F920F486C700C76D0A /* Ad(开机广告) */ = {
+			isa = PBXGroup;
+			children = (
+				6C77E7FA20F486EB00C76D0A /* OpenAdViewController.h */,
+				6C77E7FB20F486EB00C76D0A /* OpenAdViewController.m */,
+				6C77E7FC20F486EB00C76D0A /* OpenAdViewController.xib */,
+			);
+			path = "Ad(开机广告)";
 			sourceTree = "<group>";
 		};
 		6C803D6C1FAAE77300B2E186 /* GuidePage引导页 */ = {
@@ -3689,35 +3851,6 @@
 			name = "Loign(登录)";
 			sourceTree = "<group>";
 		};
-		6CA9C8341F78B47200E0941B /* orderList */ = {
-			isa = PBXGroup;
-			children = (
-				6C2AF2641F71FF8C00C00F2A /* IntegralOrderViewController.h */,
-				6C2AF2651F71FF8C00C00F2A /* IntegralOrderViewController.m */,
-				6C2AF2661F71FF8C00C00F2A /* IntegralOrderViewController.xib */,
-				6C2AF2691F71FFC200C00F2A /* IntegralOrderCell.h */,
-				6C2AF26A1F71FFC200C00F2A /* IntegralOrderCell.m */,
-				6C2AF26B1F71FFC200C00F2A /* IntegralOrderCell.xib */,
-			);
-			name = orderList;
-			sourceTree = "<group>";
-		};
-		6CA9C8351F78B48000E0941B /* roderDetail */ = {
-			isa = PBXGroup;
-			children = (
-				6CA9C8361F78B49300E0941B /* IntegralOrderDetailViewController.h */,
-				6CA9C8371F78B49300E0941B /* IntegralOrderDetailViewController.m */,
-				6CA9C8381F78B49300E0941B /* IntegralOrderDetailViewController.xib */,
-				6C2F463E1FAD936200E9C914 /* PhoneChargesOrderViewController.h */,
-				6C2F463F1FAD936200E9C914 /* PhoneChargesOrderViewController.m */,
-				6C2F46401FAD936200E9C914 /* PhoneChargesOrderViewController.xib */,
-				6C7939E11FCC3AE900A243A1 /* VouchersOrderDetailViewController.h */,
-				6C7939E21FCC3AE900A243A1 /* VouchersOrderDetailViewController.m */,
-				6C7939E31FCC3AE900A243A1 /* VouchersOrderDetailViewController.xib */,
-			);
-			name = roderDetail;
-			sourceTree = "<group>";
-		};
 		6CAC56651FD90E2E00D47E04 /* -fatStar(减脂明星) */ = {
 			isa = PBXGroup;
 			children = (
@@ -3761,22 +3894,6 @@
 			path = "postArticle()写文章";
 			sourceTree = "<group>";
 		};
-		6CB7509A1F74A090007BAE04 /* UpdateOrder */ = {
-			isa = PBXGroup;
-			children = (
-				6CEDADF31F74A9F000D3C223 /* IntegralOrderUpdateViewController.h */,
-				6CEDADF41F74A9F000D3C223 /* IntegralOrderUpdateViewController.m */,
-				6CEDADF51F74A9F000D3C223 /* IntegralOrderUpdateViewController.xib */,
-				6C2F46391FAD90CC00E9C914 /* PhoneChargesViewController.h */,
-				6C2F463A1FAD90CC00E9C914 /* PhoneChargesViewController.m */,
-				6C2F463B1FAD90CC00E9C914 /* PhoneChargesViewController.xib */,
-				6C7939E61FCC3BBF00A243A1 /* VouchersUpOrderViewController.h */,
-				6C7939E71FCC3BBF00A243A1 /* VouchersUpOrderViewController.m */,
-				6C7939E81FCC3BBF00A243A1 /* VouchersUpOrderViewController.xib */,
-			);
-			name = UpdateOrder;
-			sourceTree = "<group>";
-		};
 		6CBC0ABC1FAC455C00FB7857 /* ChooseImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -3785,16 +3902,6 @@
 				6CBC0ABF1FAC457F00FB7857 /* TailoringImageViewController.xib */,
 			);
 			name = ChooseImage;
-			sourceTree = "<group>";
-		};
-		6CBD937E20A41E9300B1F580 /* 第三版 */ = {
-			isa = PBXGroup;
-			children = (
-				6CBD937F20A41EA900B1F580 /* NewMineThreeViewController.h */,
-				6CBD938020A41EA900B1F580 /* NewMineThreeViewController.m */,
-				6CBD938120A41EAA00B1F580 /* NewMineThreeViewController.xib */,
-			);
-			name = "第三版";
 			sourceTree = "<group>";
 		};
 		6CCA6DBE209FE71B00CDBB4A /* wabao */ = {
@@ -4310,25 +4417,6 @@
 			path = image;
 			sourceTree = "<group>";
 		};
-		6CD1932C207EEF0600C62238 /* 第二版 */ = {
-			isa = PBXGroup;
-			children = (
-				6CD19327207EEEFD00C62238 /* NewMy2ViewController.h */,
-				6CD19328207EEEFD00C62238 /* NewMy2ViewController.m */,
-				6CD19329207EEEFD00C62238 /* NewMy2ViewController.xib */,
-			);
-			name = "第二版";
-			sourceTree = "<group>";
-		};
-		6CD1933A20807E8A00C62238 /* AllOrder */ = {
-			isa = PBXGroup;
-			children = (
-				6CD1933B20807E9E00C62238 /* AllOrderViewController.h */,
-				6CD1933C20807E9E00C62238 /* AllOrderViewController.m */,
-			);
-			name = AllOrder;
-			sourceTree = "<group>";
-		};
 		6CD1933E208443DB00C62238 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -4339,21 +4427,6 @@
 				6CD1934B208447FE00C62238 /* NewCharCell.xib */,
 			);
 			name = Chat;
-			sourceTree = "<group>";
-		};
-		6CD19FA81F74FB2D00DF1289 /* Gz(关注) */ = {
-			isa = PBXGroup;
-			children = (
-				6CD19FA91F74FB4700DF1289 /* GuanZViewController.h */,
-				6CD19FAA1F74FB4700DF1289 /* GuanZViewController.m */,
-				6CD19FAB1F74FB4700DF1289 /* GuanZViewController.xib */,
-				6CD19FAE1F74FCB100DF1289 /* UserListCell.h */,
-				6CD19FAF1F74FCB100DF1289 /* UserListCell.m */,
-				6CD19FB01F74FCB100DF1289 /* UserListCell.xib */,
-				6C2241A21F7CDB8C001BB2FD /* GuanzModel.h */,
-				6C2241A31F7CDB8C001BB2FD /* GuanzModel.m */,
-			);
-			name = "Gz(关注)";
 			sourceTree = "<group>";
 		};
 		6CD92FD71F0A784C00D7989E /* share(分享) */ = {
@@ -5311,6 +5384,7 @@
 				6C7767DD20AE697500AF2D69 /* RentBalanceLogisticsViewController.xib in Resources */,
 				6CEA17B020182AE300CB7E7F /* CXdetailView.xib in Resources */,
 				6C1B2BED1EED25F00092AAF0 /* LoignViewController.xib in Resources */,
+				6C523D0B20F85722000CD873 /* MessageDetail1ViewController.xib in Resources */,
 				6CFDECA61F8B7DE8005D3971 /* personal-recode.png in Resources */,
 				6CFDEBCC1F8B7DE7005D3971 /* arrows@3x.png in Resources */,
 				6CEA17ED20182AE300CB7E7F /* AddressListCell.xib in Resources */,
@@ -5350,6 +5424,7 @@
 				6CFDEC2B1F8B7DE7005D3971 /* footer-ShoppingMall-red@3x.png in Resources */,
 				6CFDECA71F8B7DE8005D3971 /* personal-tou@2x.png in Resources */,
 				6CFDEC2E1F8B7DE7005D3971 /* girl@2x.png in Resources */,
+				6C77E7FE20F486EC00C76D0A /* OpenAdViewController.xib in Resources */,
 				6CFDEBDE1F8B7DE7005D3971 /* bodyfat_wallet_4.png in Resources */,
 				6CA024C21F19021C00F54DF3 /* AddSubUserCell.xib in Resources */,
 				6CFDEC2A1F8B7DE7005D3971 /* footer-ShoppingMall-red@2x.png in Resources */,
@@ -5447,6 +5522,7 @@
 				6C2241981F7C946E001BB2FD /* UIViewController+CLPlayerRotation.m in Sources */,
 				6CD19FB11F74FCB100DF1289 /* UserListCell.m in Sources */,
 				6CA024C11F19021C00F54DF3 /* AddSubUserCell.m in Sources */,
+				6C77E7FD20F486EB00C76D0A /* OpenAdViewController.m in Sources */,
 				6C2241B31F7DE43C001BB2FD /* CommunityCell.m in Sources */,
 				6C5779A01FA8668300388986 /* EmptyView.m in Sources */,
 				6C5779A81FAAAD1700388986 /* UIImageView+wx_imageView.m in Sources */,
@@ -5549,6 +5625,7 @@
 				6CEA17BA20182AE300CB7E7F /* FootView.m in Sources */,
 				6C1B2BDB1EECEB030092AAF0 /* ServiceResultErrorView.m in Sources */,
 				6C1B2BD51EECE6520092AAF0 /* BaseSservice.m in Sources */,
+				6C523D0E20F888AF000CD873 /* WXSuspensionBtn.m in Sources */,
 				6C36392C1EFE04CE00268851 /* UserView.m in Sources */,
 				6CD011121EF82A0A00FB9419 /* HelpViewController.m in Sources */,
 				6C2F463C1FAD90CC00E9C914 /* PhoneChargesViewController.m in Sources */,
@@ -5697,6 +5774,7 @@
 				6C2241AE1F7CF8E4001BB2FD /* EditUserInfoImageCell.m in Sources */,
 				6CAC56631FD7BA9C00D47E04 /* QQView.m in Sources */,
 				6C803D701FAAE79900B2E186 /* GuidePageViewController.m in Sources */,
+				6C523D0A20F85722000CD873 /* MessageDetail1ViewController.m in Sources */,
 				6CAC566B1FD90F4500D47E04 /* ReducedFatCell.m in Sources */,
 				6CEA17A320182AE300CB7E7F /* DistributionView.m in Sources */,
 				6C027F201F9F245A00556440 /* NewMineTableViewCell.m in Sources */,

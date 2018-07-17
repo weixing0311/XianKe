@@ -10,6 +10,12 @@
 #import "MessageCell.h"
 #import "HomePageWebViewController.h"
 #import "jzsSchoolWebViewController.h"
+
+#import "MessageSub1ViewController.h"
+#import "MessageSub2ViewController.h"
+#import "MessageSub3ViewController.h"
+#import "MessageSub4ViewController.h"
+#import "KfViewController.h"
 @interface MessageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
@@ -34,33 +40,33 @@
     self.tableview.dataSource = self;
     self.tableview.backgroundColor = HEXCOLOR(0xeeeeee);
     self.tableview.separatorColor = HEXCOLOR(0xeeeeee);
-    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     pageSize =30;
     self.dataArray = [NSMutableArray array];
     self.view.backgroundColor = [UIColor grayColor];
     [self setExtraCellLineHiddenWithTb:self.tableview];
-    [self setRefrshWithTableView:self.tableview];
-    [self.tableview.mj_header beginRefreshing];
-    self.tableview.tableFooterView.backgroundColor = [UIColor orangeColor];
+//    [self setRefrshWithTableView:self.tableview];
+//    [self.tableview.mj_header beginRefreshing];
+//    self.tableview.tableFooterView.backgroundColor = [UIColor orangeColor];
     // Do any additional setup after loading the view from its nib.
 }
--(void)headerRereshing
-{
-    page =1;
-    [self getinfo];
-}
--(void)footerRereshing
-{
-    page++;
-    [self getinfo];
-}
+//-(void)headerRereshing
+//{
+//    page =1;
+//    [self getinfo];
+//}
+//-(void)footerRereshing
+//{
+//    page++;
+//    [self getinfo];
+//}
 -(void)getinfo
 {
     NSMutableDictionary * params = [NSMutableDictionary dictionary];
-    [params safeSetObject:@(page) forKey:@"page"];
-    [params safeSetObject:@(pageSize) forKey:@"pageSize"];
+    [params safeSetObject:[UserModel shareInstance].userId forKey:@"userId"];
+//    [params safeSetObject:@(pageSize) forKey:@"pageSize"];
 
-    self.currentTasks =[[BaseSservice sharedManager]post1:@"app/msg/queryMsgList.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
+    self.currentTasks =[[BaseSservice sharedManager]post1:@"app/msg/msgClassList.do" HiddenProgress:NO paramters:params success:^(NSDictionary *dic) {
         [self.tableview.mj_header endRefreshing];
         [self.tableview.mj_footer endRefreshing];
 
@@ -93,23 +99,23 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return 4;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSDictionary * dic =[_dataArray objectAtIndex:indexPath.row];
-    NSMutableParagraphStyle * paragraph = [[NSMutableParagraphStyle alloc] init];
-    paragraph.lineSpacing = 10;
-    
-    UIFont *font = [UIFont systemFontOfSize:15];
-    NSDictionary * dict = @{NSFontAttributeName:font,
-                            NSParagraphStyleAttributeName:paragraph};
-
-    NSString * contentStr = [dic safeObjectForKey:@"content"];
-    CGSize size = [contentStr boundingRectWithSize:CGSizeMake(JFA_SCREEN_WIDTH-52, 50) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
-
-    return 38+JFA_SCREEN_WIDTH/2.18+size.height+63;
+    return 70;
+//    NSDictionary * dic =[_dataArray objectAtIndex:indexPath.row];
+//    NSMutableParagraphStyle * paragraph = [[NSMutableParagraphStyle alloc] init];
+//    paragraph.lineSpacing = 10;
+//
+//    UIFont *font = [UIFont systemFontOfSize:15];
+//    NSDictionary * dict = @{NSFontAttributeName:font,
+//                            NSParagraphStyleAttributeName:paragraph};
+//
+//    NSString * contentStr = [dic safeObjectForKey:@"content"];
+//    CGSize size = [contentStr boundingRectWithSize:CGSizeMake(JFA_SCREEN_WIDTH-52, 50) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
+//
+//    return 38+JFA_SCREEN_WIDTH/2.18+size.height+63;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,25 +124,60 @@
     if (!cell) {
         cell = [self getXibCellWithTitle:identifier];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSDictionary * dic =[self.dataArray objectAtIndex:indexPath.row];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    NSDictionary * dic =[self.dataArray objectAtIndex:indexPath.row];
     cell.tag = indexPath.row;
-    [cell setInfoWithDict:dic];
+    [cell setInfoWithDict:nil];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary * dic = [self.dataArray objectAtIndex:indexPath.row];
-//    jzsSchoolWebViewController * home = [[jzsSchoolWebViewController alloc]init];
-    HomePageWebViewController * home = [[HomePageWebViewController alloc]init];
-    home.urlStr = [dic safeObjectForKey:@"linkUrl"];
-    home.isShare = YES;
-    home.title = @"消息详情";
-    home.titleStr = [dic safeObjectForKey:@"title"];
-    home.contentStr = [dic safeObjectForKey:@"content"];
-    home.imageUrl = [dic safeObjectForKey:@"imgUrl"];
-    home.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController: home animated:YES];
+//    NSDictionary * dic = [self.dataArray objectAtIndex:indexPath.row];
+////    jzsSchoolWebViewController * home = [[jzsSchoolWebViewController alloc]init];
+//    HomePageWebViewController * home = [[HomePageWebViewController alloc]init];
+//    home.urlStr = [dic safeObjectForKey:@"linkUrl"];
+//    home.isShare = YES;
+//    home.title = @"消息详情";
+//    home.titleStr = [dic safeObjectForKey:@"title"];
+//    home.contentStr = [dic safeObjectForKey:@"content"];
+//    home.imageUrl = [dic safeObjectForKey:@"imgUrl"];
+//    home.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController: home animated:YES];
+    
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.row ==0) {
+        MessageSub1ViewController * sub1 =[[MessageSub1ViewController alloc]init];
+        sub1.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:sub1 animated:YES];
+    }
+    else if(indexPath.row ==1)
+    {
+        MessageSub2ViewController * sub2 =[[MessageSub2ViewController alloc]init];
+        sub2.hidesBottomBarWhenPushed = YES;
+
+        [self.navigationController pushViewController:sub2 animated:YES];
+
+    }
+    else if(indexPath.row ==2)
+    {
+        MessageSub3ViewController * sub3 =[[MessageSub3ViewController alloc]init];
+        sub3.hidesBottomBarWhenPushed = YES;
+
+        [self.navigationController pushViewController:sub3 animated:YES];
+
+    }
+    else if(indexPath.row ==3)
+    {
+        KfViewController * kfVC = [[KfViewController alloc]init];
+        kfVC.hidesBottomBarWhenPushed =YES;
+        [self.navigationController pushViewController:kfVC animated:YES];
+
+    }
+
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

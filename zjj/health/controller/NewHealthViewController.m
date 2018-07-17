@@ -69,7 +69,15 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pushIntegralPage) name:@"QDSuccess" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didShowAdUrlpage:) name:@"kShowAdcPage" object:nil];
-     
+    
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"kShowAdcPage"]isEqualToString:@"1"]) {
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"kShowAdcPage"];
+        [self didShowAdUrlpage:nil];
+    }
+    
+    
+    
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bg_navbar.png"] forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
     headerArr = [NSMutableArray array];
     self.tableview.delegate = self;
@@ -95,7 +103,7 @@
 //    [self buildProgressView];
     [self getIntegralInfo];
     //广告
-    [self showAd];
+//    [self showAd];
 }
 -(void)headerRereshing
 {
@@ -455,7 +463,7 @@
 {
     
     HomePageWebViewController * page =[[HomePageWebViewController alloc]init];
-    page.urlStr = [noti.userInfo safeObjectForKey:@"linkUrl"];
+    page.urlStr = [[UserModel shareInstance].adDict safeObjectForKey:@"linkUrl"];
     page.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:page animated:YES];

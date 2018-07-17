@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageSub3ViewController">
             <connections>
+                <outlet property="tableview" destination="iV9-7e-Qev" id="y1O-rb-SnW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,19 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iV9-7e-Qev">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="iV9-7e-Qev" secondAttribute="bottom" id="1f6-DN-atJ"/>
+                <constraint firstItem="iV9-7e-Qev" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q9d-Lz-38m"/>
+                <constraint firstAttribute="trailing" secondItem="iV9-7e-Qev" secondAttribute="trailing" id="cdm-tZ-Qsh"/>
+                <constraint firstItem="iV9-7e-Qev" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gQa-Dc-fL0"/>
+            </constraints>
         </view>
     </objects>
 </document>

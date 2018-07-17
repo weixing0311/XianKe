@@ -902,11 +902,15 @@ BigImageArticleCellDelegate
 -(void)showBigImageViewWithIndex:(NSInteger)index page:(int)page
 {
     CommunityModel * item = [_dataArray objectAtIndex:index];
-    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
-    fc.images = [NSMutableArray arrayWithArray:item.pictures];
-    fc.page = page;
     
-    [self presentViewController:fc animated:YES completion:nil];
+    [self showBigImageWithArray:[NSMutableArray arrayWithArray:item.pictures] imageView:nil index:page];
+
+    
+//    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
+//    fc.images = [NSMutableArray arrayWithArray:item.pictures];
+//    fc.page = page;
+//    
+//    [self presentViewController:fc animated:YES completion:nil];
     
 }
 -(void)didJbWithIndex:(NSInteger)index

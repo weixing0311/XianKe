@@ -13,37 +13,40 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.bgView.layer.borderWidth= 1;
-    self.bgView.layer.borderColor = HEXCOLOR(0xffffff).CGColor;
-
-    
-    // Initialization code
 }
+
 -(void)setInfoWithDict:(NSDictionary * )dict
 {
-    [self.BigImageView sd_setImageWithURL:[NSURL URLWithString:[dict safeObjectForKey:@"imgUrl"]] placeholderImage:[UIImage imageNamed:@"find_default2"]];;
+    switch (self.tag) {
+        case 0:
+            self.BigImageView.image = getImage(@"default");
+            self.titleLabel.text = @"系统消息";
+            self.timeLabel.text = @"2018/07/12";
 
-    self.timeLabel.text = [dict safeObjectForKey:@"releaseTime"];
-    self.timeLabel.frame = CGRectMake((JFA_SCREEN_WIDTH-[self getWidthWithString:self.timeLabel.text]-20)/2, 8, [self getWidthWithString:self.timeLabel.text]+20, 20) ;
-    
-    
-    self.contentLabel.text = [dict safeObjectForKey:@"content"];
-    self.contentLabel.hidden =NO;
-    self.titleLabel.text = [dict safeObjectForKey:@"title"];
+            break;
+        case 1:
+            self.BigImageView.image = getImage(@"default");
+            self.titleLabel.text = @"交易物流";
+            self.timeLabel.text = @"2018/07/12";
+            
+            break;
+        case 2:
+            self.BigImageView.image = getImage(@"default");
+            self.titleLabel.text = @"优惠活动";
+            self.timeLabel.text = @"2018/07/12";
+            
+            break;
+        case 3:
+            self.BigImageView.image = getImage(@"default");
+            self.titleLabel.text = @"智能客服";
+            self.timeLabel.text = @"2018/07/12";
+            
+            break;
+
+        default:
+            break;
+    }
 }
--(float)getWidthWithString:(NSString *)str
-{
-    NSMutableParagraphStyle * paragraph = [[NSMutableParagraphStyle alloc] init];
-    paragraph.lineSpacing = 10;
-    
-    UIFont *font = [UIFont systemFontOfSize:13];
-    NSDictionary * dict = @{NSFontAttributeName:font,
-                            NSParagraphStyleAttributeName:paragraph};
-    CGSize size = [self.timeLabel.text boundingRectWithSize:CGSizeMake(JFA_SCREEN_WIDTH-52, 50) options:NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil].size;
-    return size.width;
-}
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

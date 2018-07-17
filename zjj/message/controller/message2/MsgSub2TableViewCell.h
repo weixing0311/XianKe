@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface MsgSub2TableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImg;
+@property (weak, nonatomic) IBOutlet UILabel *timelb;
+@property (weak, nonatomic) IBOutlet UILabel *statuslb;
+@property (weak, nonatomic) IBOutlet UILabel *titlelb;
+-(void)setInfoWithDict:(NSDictionary * )dict;
+@property (weak, nonatomic) IBOutlet UILabel *wlNumlb;
 
 @end

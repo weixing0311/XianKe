@@ -161,6 +161,14 @@
  *简介
  */
 @property (nonatomic,copy)NSString * jjStr;
+
+/**
+ *开机广告信息
+ */
+@property (nonatomic,copy)NSDictionary * adDict;
+
+
+
 /**
  *   获取修改个人信息Dict
  */
@@ -253,6 +261,14 @@
 /**
  * 切换用户保存subid
  */
+
+
+///积分等级
+@property (nonatomic,copy) NSString * integralGrade;
+
+///位置信息
+@property (nonatomic,copy) NSString * locationStr;
+-(void)getLocation;
 -(void)childUserChange;
 
 #define mark ----广告
@@ -342,6 +358,11 @@
 @property (nonatomic,assign) BOOL isFinishGetAdc;
 
 @property (nonatomic,copy )NSString * backgroundUrl;
+
+///保存开机广告信息
+//-(void)getOpenAD;
+
+
 
 
 ///判断是否显示签到弹窗----YES--显示 --NO 不显示

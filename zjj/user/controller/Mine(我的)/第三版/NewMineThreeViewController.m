@@ -22,7 +22,7 @@
 #import "InvitationFriendsViewController.h"
 #import "SuperiorViewController.h"
 #import "RentBalanceViewController.h"
-
+#import "HelpViewController.h"
 @interface NewMineThreeViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *sexImageView;
@@ -31,7 +31,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *gzlb;
 @property (weak, nonatomic) IBOutlet UILabel *funslb;
 @property (weak, nonatomic) IBOutlet UILabel *integrallb;
+@property (weak, nonatomic) IBOutlet UILabel *levelLb;
 @property (nonatomic,strong) NSMutableDictionary * infoDict;
+@property (weak, nonatomic) IBOutlet UILabel *tzslb;
+@property (weak, nonatomic) IBOutlet UILabel *locationlb;
 @end
 
 @implementation NewMineThreeViewController
@@ -53,7 +56,8 @@
     self.nickNamelb.text = [UserModel shareInstance].nickName;
     self.jjlb.text = [UserModel shareInstance].jjStr;
     self.sexImageView.image = [UserModel shareInstance].gender==1?getImage(@"man_"):getImage(@"woman_");
-    
+    self.locationlb.text = [UserModel shareInstance].locationStr;
+    self.tzslb.text  = [UserModel shareInstance].gradeName;
 }
 - (IBAction)didSearchFriends:(id)sender {
     AddFriendsViewController * add =[[AddFriendsViewController alloc]init];
@@ -82,7 +86,8 @@
         self.gzlb.text  = [_infoDict safeObjectForKey:@"followNum"];
         self.integrallb.text  = [_infoDict safeObjectForKey:@"integral"];
         self.sexImageView.image = [[_infoDict safeObjectForKey:@"sex"]isEqualToString:@"1"]?getImage(@"man_"):getImage(@"woman_");
-        
+        self.levelLb.text = [NSString stringWithFormat:@"LV%@",[_infoDict safeObjectForKey:@"integralGrade"]];
+
 
     } failure:^(NSError *error) {
     }];
@@ -125,81 +130,87 @@
 - (IBAction)didEnterNextPage:(UIButton *)sender {
     if(sender.tag==4)
     {
-        NewMineHomePageViewController * page = [[NewMineHomePageViewController alloc]init];
-        page.hidesBottomBarWhenPushed=YES;
-        page.userId = [UserModel shareInstance].userId;
-        [self.navigationController pushViewController:page animated:YES];
+        DLog(@"邀请好友");
+
+        InvitationFriendsViewController * vo = [[InvitationFriendsViewController alloc]init];
+        vo.hidesBottomBarWhenPushed=YES;
+        //            vo.myType = 5;
+        [self.navigationController pushViewController:vo animated:YES];
+
+//        NewMineHomePageViewController * page = [[NewMineHomePageViewController alloc]init];
+//        page.hidesBottomBarWhenPushed=YES;
+//        page.userId = [UserModel shareInstance].userId;
+//        [self.navigationController pushViewController:page animated:YES];
         
     }
     else if(sender.tag ==5)
-    {
-        DLog(@"成长体系");
-        GrowthStstemViewController * gs = [[GrowthStstemViewController alloc]init];
-        gs.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:gs animated:YES];
-        
-    }
-    else if(sender.tag==6)
-    {
-        DLog(@"积分商城");
-        IntegralShopViewController * its = [[IntegralShopViewController alloc]init];
-        its.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:its animated:YES];
-    }
-    else if (sender.tag ==7)
-    {
-        DLog(@"购买记录");
-        IntegralOrderViewController * ord = [[IntegralOrderViewController alloc]init];
-        ord.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:ord animated:YES];
-    }
-    else if (sender.tag ==8)
-    {
-        SuperiorViewController * sp =[[SuperiorViewController alloc]init];
-        sp.hidesBottomBarWhenPushed = YES;
-        
-        [self.navigationController pushViewController:sp animated:YES];
-        
-    }
-    else if (sender.tag ==9)
-    {
-        DLog(@"纤客商城");
-        HomePageViewController * ord = [[HomePageViewController alloc]init];
-        ord.hidesBottomBarWhenPushed=YES;
-        
-        [self.navigationController pushViewController:ord animated:YES];
-    }
-    else if (sender.tag ==10)
     {
         DLog(@"纤客订单");
         OrderViewController * ord = [[OrderViewController alloc]init];
         ord.hidesBottomBarWhenPushed=YES;
         ord.getOrderType =IS_ALL;
         [self.navigationController pushViewController:ord animated:YES];
+
+    }
+    else if(sender.tag==6)
+    {
+        DLog(@"纤客商城");
+        HomePageViewController * ord = [[HomePageViewController alloc]init];
+        ord.hidesBottomBarWhenPushed=YES;
+        
+        [self.navigationController pushViewController:ord animated:YES];
+
+    }
+    else if (sender.tag ==7)
+    {
+        DLog(@"购买记录");
+        SuperiorViewController * sp =[[SuperiorViewController alloc]init];
+        sp.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:sp animated:YES];
+
+    }
+    else if (sender.tag ==8)
+    {
+        DLog(@"积分商城");
+        IntegralShopViewController * its = [[IntegralShopViewController alloc]init];
+        its.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:its animated:YES];
+
+        
+    }
+    else if (sender.tag ==9)
+    {
+        DLog(@"积分订单");
+
+        IntegralOrderViewController * ord = [[IntegralOrderViewController alloc]init];
+        ord.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:ord animated:YES];
+
+    }
+    else if (sender.tag ==10)
+    {
     }
     else if (sender.tag ==11)
     {
-        DLog(@"邀请好友");
+        DLog(@"成长体系");
+        GrowthStstemViewController * gs = [[GrowthStstemViewController alloc]init];
+        gs.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:gs animated:YES];
+
         
-        InvitationFriendsViewController * vo = [[InvitationFriendsViewController alloc]init];
-        vo.hidesBottomBarWhenPushed=YES;
-        //            vo.myType = 5;
-        [self.navigationController pushViewController:vo animated:YES];
+//        InvitationFriendsViewController * vo = [[InvitationFriendsViewController alloc]init];
+//        vo.hidesBottomBarWhenPushed=YES;
+//        //            vo.myType = 5;
+//        [self.navigationController pushViewController:vo animated:YES];
         
     }else if (sender.tag ==12){
         
         
-//        RentBalanceViewController * rent =[[RentBalanceViewController alloc]init];
-//        rent.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:rent animated:YES];
+        HelpViewController * rent =[[HelpViewController alloc]init];
+        rent.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:rent animated:YES];
         
-        NSURL * url = [NSURL URLWithString:@"Zhijiangjun://"];
-        if ([[UIApplication sharedApplication]canOpenURL:url]) {
-            
-            [[UIApplication sharedApplication]openURL:url options:@{} completionHandler:nil];
-        }else{
-            [[UIApplication sharedApplication ] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1335471147"]];
-        }
         
 
     }else if (sender.tag ==13)
@@ -211,9 +222,6 @@
         }else{
             [[UIApplication sharedApplication ] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/cn/app/id1335471147"]];
         }
-        
-        
-
     }
 
 }

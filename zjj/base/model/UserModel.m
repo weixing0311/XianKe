@@ -9,9 +9,16 @@
 #import "UserModel.h"
 #import "TimeModel.h"
 #import "AppDelegate.h"
+#import "TZLocationManager.h"
+#import "WXLocationManager.h"
+
 static UserModel *model;
 @implementation UserModel
+{
+    CLLocationManager *_locationManager;//定位服务管理类
+    CLGeocoder * _geocoder;//初始化地理编码器
 
+}
 +(UserModel *)shareInstance
 {
     static dispatch_once_t onceToken;
@@ -50,7 +57,38 @@ static UserModel *model;
 
 }
 
+//-(void)getOpenAD
+//{
+//    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+//
+//    [dict safeSetObject:@"http://i9.download.fd.pchome.net/t_600x1024/g1/M00/12/1C/ooYBAFbvsjSIb0IdAAGEYrZsr6UAAC4GwHmxWYAAYR6847.jpg" forKey:@"bgimg"];
+//
+//    NSString * urlStr = [dict safeObjectForKey:@"bgimg"];
+//
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:urlStr]];
+//    UIImage *image = [UIImage imageWithData:data]; // 取得图片
+//
+//    // 本地沙盒目录
+//    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    // 得到本地沙盒中名为"MyImage"的路径，"MyImage"是保存的图片名
+//    NSString *imageFilePath = [path stringByAppendingPathComponent:@"MyImage"];
+//    // 将取得的图片写入本地的沙盒中，其中0.5表示压缩比例，1表示不压缩，数值越小压缩比例越大
+//    BOOL success = [UIImageJPEGRepresentation(image, 1) writeToFile:imageFilePath  atomically:YES];
+//    if (success){
+//        NSLog(@"写入本地成功");
+//        self.adDict = [NSDictionary dictionaryWithDictionary:dict];
+//        [self writeToDoc];
+//
+//    }
+//
+//}
+-(void)getLocation
+{
+    [[WXLocationManager shareLocation]getCity:^(NSString *addressString) {
+        self.locationStr = addressString;
+    }];
 
+}
 
 -(void)setInfoWithDic:(NSDictionary *)dict
 {
@@ -112,6 +150,9 @@ static UserModel *model;
     [dict safeSetObject:self.qrcodeImageData forKey:@"qrcodeImageData"];
     [dict safeSetObject:self.qrcodeImageUrl forKey:@"qrcodeImageUrl"];
     [dict safeSetObject:self.backgroundUrl forKey:@"backgroundUrl"];
+    [dict safeSetObject:self.integralGrade forKey:@"integralGrade"];
+    [dict safeSetObject:self.locationStr forKey:@"locationStr"];
+    [dict safeSetObject:self.adDict forKey:@"adDict"];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [path stringByAppendingPathComponent:@"UserInfo.plist"];
     [dict writeToFile:filePath atomically:YES];
@@ -148,7 +189,9 @@ static UserModel *model;
     self.qrcodeImageData = [dict safeObjectForKey:@"qrcodeImageData"];
     self.qrcodeImageUrl = [dict safeObjectForKey:@"qrcodeImageUrl"];
     self.backgroundUrl = [dict safeObjectForKey:@"backgroundUrl"];
-    
+    self.integralGrade =[dict safeObjectForKey:@"integralGrade"];
+    self.locationStr = [dict safeObjectForKey:@"locationStr"];
+    self.adDict = [dict safeObjectForKey:@"adDict"];
     [[SubUserItem shareInstance]setInfoWithHealthId:self.subId];
 }
 -(BOOL)isHaveUserInfo
@@ -280,6 +323,7 @@ static UserModel *model;
     self.qrcodeImageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:self.qrcodeImageUrl]];
     self.superiorDict  = [dict safeObjectForKey:@"parent"];
     self.backgroundUrl = [dict safeObjectForKey:@"backgroundUrl"];
+    self.integralGrade = [dict safeObjectForKey:@"integralGrade"];
     [self writeToDoc];
 }
 
@@ -475,8 +519,25 @@ static UserModel *model;
         
         NSDictionary * dataDict = [dic safeObjectForKey:@"data"];
         
-        self.advertisingDict =[NSMutableDictionary dictionaryWithDictionary:dataDict];
+        NSArray * infoArr = [dataDict safeObjectForKey:@"array"];
         
+        NSString * urlStr = [infoArr[0] safeObjectForKey:@"imgUrl"];
+        
+        NSData *data = [NSData dataWithContentsOfURL:[NSURL  URLWithString:urlStr]];
+        UIImage *image = [UIImage imageWithData:data]; // 取得图片
+        
+        // 本地沙盒目录
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        // 得到本地沙盒中名为"MyImage"的路径，"MyImage"是保存的图片名
+        NSString *imageFilePath = [path stringByAppendingPathComponent:@"MyImage"];
+        // 将取得的图片写入本地的沙盒中，其中0.5表示压缩比例，1表示不压缩，数值越小压缩比例越大
+        BOOL success = [UIImageJPEGRepresentation(image, 1) writeToFile:imageFilePath  atomically:YES];
+        if (success){
+            NSLog(@"写入本地成功");
+            self.adDict = [NSDictionary dictionaryWithDictionary:infoArr[0]];
+            [self writeToDoc];
+            
+        }
         
         
     } failure:^(NSError *error) {

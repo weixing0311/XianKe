@@ -174,12 +174,13 @@
 {
     LoadedImageModel * item = [self.dataArray objectAtIndex:cell.tag];
     NSArray * images = item.pictures;
-    
-    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
-    fc.images = [NSMutableArray arrayWithArray:images];
-    fc.page = button.tag-1;
-    
-    [self presentViewController:fc animated:YES completion:nil];
+    [self showBigImageWithArray:[NSMutableArray arrayWithArray:item.pictures] imageView:nil index:button.tag-1];
+
+//    FcBigImgViewController * fc =[[FcBigImgViewController alloc]init];
+//    fc.images = [NSMutableArray arrayWithArray:images];
+//    fc.page = button.tag-1;
+//
+//    [self presentViewController:fc animated:YES completion:nil];
     
     
 }

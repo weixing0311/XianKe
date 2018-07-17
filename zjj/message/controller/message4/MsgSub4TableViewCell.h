@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MsgSub4TableViewCell : UITableViewCell
+-(void)setInfoWithDict:(NSDictionary * )dict;
 
 @end
